@@ -1,4 +1,16 @@
-@import "./initial-styles/";
+//initial styles
+@import "./initial-styles/nullstyle.scss";
 @import "./initial-styles/mixins";
 @import "./initial-styles/variables";
 @import "./initial-styles/fonts";
+
+//component styles
+@import "./componentStyles/header.scss";
+
+.loading-spinner {
+  position: absolute;
+  width: 150px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
