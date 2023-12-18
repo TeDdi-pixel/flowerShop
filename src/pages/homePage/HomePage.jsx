@@ -1,8 +1,13 @@
 import React from "react";
-import Header from "../../widgets/Header";
+import Header from "../../widgets/header/Header";
+import Footer from "../../widgets/footer/Footer";
 
 const HomePage = () => {
-  return <Header />;
+  return <>
+  <Header />
+  <div>s</div>
+  <Footer/>
+  </>
 };
 
 export default HomePage;

@@ -6,6 +6,7 @@
 
 //component styles
 @import "./componentStyles/header.scss";
+@import './componentStyles/footer.scss';
 
 .loading-spinner {
   position: absolute;
@@ -14,3 +15,12 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+#root{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+
