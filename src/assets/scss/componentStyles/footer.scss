@@ -59,7 +59,9 @@
     justify-content: center;
     gap: 6px;
     margin-bottom: 17px;
-
+    svg{
+      @include adaptive-font(55,33);
+    }
     a {
       color: #665f5f;
     }
@@ -70,5 +72,46 @@
     font-family: Montserrat;
     margin-bottom: 30px;
     color: #665f5f;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 767px) {
+    &__tabs {
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+    &__logo {
+      margin-bottom: 24px;
+    }
+    &__tab {
+      border-top: 1px solid #ffd1d7;
+      width: 100%;
+      padding-bottom: 21px;
+      padding-top: 21px;
+      &:nth-child(4) {
+        padding-bottom: 0;
+        padding-top: 0;
+      }
+      &-title {
+        margin-top: 0;
+      }
+      &-link {
+        max-width: 199px;
+      }
+    }
+  }
+  @media screen and (max-width: 374px){
+    &__socials{
+      margin-bottom: 5px;
+    }
+    &__credit-cards{
+      margin-bottom: 5px;
+    }
+    &__rights{
+      margin-bottom: 6px;
+    }
   }
 }
