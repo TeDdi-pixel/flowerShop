@@ -5,7 +5,7 @@ import { CgMenuLeft } from "react-icons/cg";
 import HeaderIcon from "../../shared/headerIcon/HeaderIcon.jsx";
 
 const Header = () => {
-  let moneyCount = 0;
+  let moneyCount = 40.25;
   return (
     <header className="header">
       <div className="header__container">
