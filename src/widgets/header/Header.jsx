@@ -1,8 +1,8 @@
 import React from "react";
 import logo from "../../assets/icons/logo.svg";
 import HeaderRight from "../../entities/headerRight/HeaderRight";
-import HeaderIcon from "../../shared/headerIcon/HeaderIcon";
 import { CgMenuLeft } from "react-icons/cg";
+import HeaderIcon from "../../shared/headerIcon/HeaderIcon";
 
 const Header = () => {
   let moneyCount = 0;
