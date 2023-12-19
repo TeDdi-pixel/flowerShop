@@ -1,12 +1,15 @@
 import React from "react";
 import Header from "../../widgets/header/Header";
 import Footer from "../../widgets/footer/Footer";
+import TopRated from "../../widgets/topRated/TopRated";
 
 const HomePage = () => {
   return (
     <>
       <Header />
-      <div>s</div>
+      <main>
+        <TopRated />
+      </main>
       <Footer />
     </>
   );

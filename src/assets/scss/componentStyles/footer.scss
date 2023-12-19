@@ -59,8 +59,8 @@
     justify-content: center;
     gap: 6px;
     margin-bottom: 17px;
-    svg{
-      @include adaptive-font(55,33);
+    svg {
+      @include adaptive-font(55, 33);
     }
     a {
       color: #665f5f;
@@ -91,6 +91,12 @@
       width: 100%;
       padding-bottom: 21px;
       padding-top: 21px;
+      &:nth-child(1) {
+        padding-top: 0;
+      }
+      &:nth-child(1),&:nth-child(2){
+        border-top: none;
+      }
       &:nth-child(4) {
         padding-bottom: 0;
         padding-top: 0;
@@ -103,14 +109,14 @@
       }
     }
   }
-  @media screen and (max-width: 374px){
-    &__socials{
+  @media screen and (max-width: 374px) {
+    &__socials {
       margin-bottom: 5px;
     }
-    &__credit-cards{
+    &__credit-cards {
       margin-bottom: 5px;
     }
-    &__rights{
+    &__rights {
       margin-bottom: 6px;
     }
   }
