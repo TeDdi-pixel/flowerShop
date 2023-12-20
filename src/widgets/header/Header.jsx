@@ -1,8 +1,8 @@
 import React from "react";
 import logo from "../../assets/icons/logo.svg";
 import HeaderRight from "../../entities/headerRight/HeaderRight";
-import { CgMenuLeft } from "react-icons/cg";
-import HeaderIcon from "../../shared/headerIcon/HeaderIcon.jsx";
+
+import HeaderIconMenu from "../../shared/headerIcon/HeaderIconMenu.jsx";
 
 const Header = () => {
   let moneyCount = 40.25;
@@ -11,11 +11,7 @@ const Header = () => {
       <div className="header__container">
         <nav className="header__nav">
           <div className="header__left">
-            <HeaderIcon
-              icon={
-                <CgMenuLeft style={{ fontSize: "20px", color: "#665F5F" }} />
-              }
-            />
+            <HeaderIconMenu />
           </div>
           <img src={logo} alt="logo" className="header__logo" />
           <HeaderRight moneyCount={moneyCount} />

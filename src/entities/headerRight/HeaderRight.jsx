@@ -1,14 +1,11 @@
 import React from "react";
-import { LuSearch } from "react-icons/lu";
 import cart from "../../assets/icons/cart.svg";
-import HeaderIcon from "../../shared/headerIcon/HeaderIcon";
+import HeaderIconSearch from "../../shared/headerIcon/HeaderIconSearch";
 
 const HeaderRight = ({ moneyCount }) => {
   return (
     <div className="header__right">
-      <HeaderIcon
-        icon={<LuSearch style={{ color: "#665F5F", fontSize: "17px" }} />}
-      />
+      <HeaderIconSearch />
       <div className="header__cart-block">
         <img src={cart} alt="cart" style={{ width: "16px" }} />
         <div className="header__money">{`${moneyCount}$`}</div>
