@@ -1,22 +1,21 @@
 import React from "react";
-import flowers1 from "../../assets/img/flowers1.png";
 import ProductCardTitle from "./ui/ProductCardTitle";
 import ProductCardPrice from "./ui/ProductCardPrice";
 import ProductCardImg from "./ui/ProductCardImg";
 import ProductCardButton from "./ui/ProductCardButton";
 
-const ProductCard = () => {
+const ProductCard = ({img,title,price,text}) => {
   return (
     <div className="product-card">
-      <ProductCardImg img={flowers1} alt="flowers" />
+      <ProductCardImg img={img} alt="flowers" />
       <div className="product-card__info-wrapper">
         <div className="product-card__info">
           <ProductCardTitle
-            title={"Cristal (pink carnations with mix flowers)"}
+            title={title}
           />
-          <ProductCardPrice price={"$125.00"} />
+          <ProductCardPrice price={price} />
         </div>
-        <ProductCardButton text={'Add to cart'}/>
+        <ProductCardButton text={text}/>
       </div>
     </div>
   );

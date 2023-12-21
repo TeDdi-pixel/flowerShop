@@ -1,16 +1,6 @@
 .top-rated {
   margin-bottom: 90px;
   padding: 0 25px;
-  &__title {
-    font-family: Montserrat;
-    @include adaptive-font(56,32);
-    font-weight: 700;
-    line-height: 124.182%;
-    text-transform: uppercase;
-    color: #665f5f;
-    text-align: center;
-    margin-bottom: 37px;
-  }
   &__cards {
     margin: 0 auto 40px auto;
     display: flex;

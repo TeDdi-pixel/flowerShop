@@ -1,6 +1,6 @@
 import React from "react";
 import cart from "../../assets/icons/cart.svg";
-import HeaderIconSearch from "../../shared/headerIcon/HeaderIconSearch";
+import HeaderIconSearch from "../headerIconSearch/HeaderIconSearch";
 
 const HeaderRight = ({ moneyCount }) => {
   return (

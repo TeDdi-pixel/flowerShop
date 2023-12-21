@@ -2,12 +2,13 @@ import React from "react";
 import ProductCardBlock from "../../entities/productCardBlock/ProductCardBlock";
 import ShowMoreBtn from "../../shared/mainBtn/MainBtn";
 import MainBtn from "../../shared/mainBtn/MainBtn";
+import MainTitle from "../../shared/mainTitle/MainTitle";
 
 const TopRated = () => {
   return (
     <div className="top-rated">
-      <h2 className="top-rated__title">Top Rated</h2>
-      <ProductCardBlock />
+      <MainTitle title={"Top rated"} />
+      <ProductCardBlock />  
       <MainBtn
         text={"Show more"}
         bgColor={"#665F5F"}
