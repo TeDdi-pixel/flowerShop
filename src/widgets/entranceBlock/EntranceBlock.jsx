@@ -1,9 +1,10 @@
 import React from "react";
 import MainBtn from "../../shared/mainBtn/MainBtn";
+import backgroundImg from '../../assets/img/backgroundImg.jpg';
 
 const EntranceBlock = () => {
   return (
-    <div className="entrance-block">
+    <div className="entrance-block" style={{backgroundImage: `url(${backgroundImg})`}}>
       <h1 className="entrance-block__title">
         Choose flowers <br />
         for any occasion
