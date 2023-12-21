@@ -3,6 +3,11 @@
   border-radius: 5px;
   box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25),
     -1px -1px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: scale ease 0.4s, box-shadow ease 0.4s;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 6px 6px 30px rgba(44, 44, 44, 0.4);
+  }
   &__img {
     object-fit: cover;
     width: 289px;
@@ -37,16 +42,43 @@
     color: #665f5f;
   }
   &__button {
-    font-size: 12px;
-    font-family: Montserrat;
-    font-weight: 700;
-    line-height: 124.182%;
-    padding: 9px 14px;
+    position: relative;
+    padding: 9px 13px;
     filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.25));
     background-color: #665f5f;
     border-radius: 6px;
-    color: white;
     cursor: pointer;
+    overflow: hidden;
+    z-index: 0;
+    transition: background-color ease 0.2s, box-shadow ease 0.4s;
+    &-text {
+      position: relative;
+      font-size: 12px;
+      font-family: Montserrat;
+      font-weight: 700;
+      line-height: 124.182%;
+      color: white;
+      z-index: 2;
+    }
+    span {
+      display: block;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background-color: #FFD1D7;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      border-radius: 50%;
+      transition: scale ease-in-out 0.3s;
+    }
+    &:hover{
+      background-color: transparent;
+      box-shadow : 1px 1px 4px rgba(0, 0, 0, 0.25);
+      span {
+        scale:240;
+      }
+    }
   }
 
   @media screen and (max-width: 700px) {
@@ -55,7 +87,7 @@
       width: 210px;
     }
     &__info-wrapper {
-      gap: 12px;
+      gap: 3px;
     }
     &__info {
       max-width: 105px;
@@ -82,7 +114,7 @@
     }
     &__info-wrapper {
       padding: 10px 10px 9px 10px;
-      gap: 12px;
+      gap: 0px;
     }
     &__info {
       max-width: 138px;

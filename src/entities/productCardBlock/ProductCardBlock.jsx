@@ -1,18 +1,20 @@
 import React from "react";
 import ProductCard from "../../shared/productCard/ProductCard";
-import { topRatedData } from "../../shared/productCard/config/topRatedData";
+import useCollections from "../../hooks/useCollections";
 
 const ProductCardBlock = () => {
+  const { collectionsData } = useCollections("products", "productsImg");
+
   return (
     <div className="top-rated__cards">
-      {topRatedData.map((item, index) => {
+      {collectionsData.map((card) => {
         return (
           <ProductCard
-            key={index}
-            img={item.img}
-            text={item.text}
-            title={item.title}
-            price={item.price}
+            key={card.id}
+            img={card.imageUrl}
+            title={card.title}
+            price={card.price}
+            text={card.text}
           />
         );
       })}

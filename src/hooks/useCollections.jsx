@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { storage, db } from "../services/firebase-config";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 
-const useCollections = (folder) => {
+const useCollections = (collectionName,folder) => {
   const [urls, setUrls] = useState([]);
   const [collectionsData, setCollectionsData] = useState([]);
 
-  const collectionRef = collection(db, "collections");
+  const collectionRef = collection(db, collectionName);
   const getCollectionList = async () => {
     try {
       const data = await getDocs(collectionRef);

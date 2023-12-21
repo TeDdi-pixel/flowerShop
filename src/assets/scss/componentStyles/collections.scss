@@ -25,11 +25,10 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    transition: scale ease 0.3s, border-radius ease 0.3s, box-shadow ease 0.3s,
+    transition: scale ease 0.15s, border-radius ease 0.15s, box-shadow ease 0.15s,
       opacity ease 0.3s;
     &:hover {
       scale: 1.15;
-      border-radius: 50px;
       box-shadow: 6px 6px 30px rgba(44, 44, 44, 0.4);
       opacity: 1;
     }
@@ -61,7 +60,6 @@
       height: 156px;
       &:hover {
         scale: 1.15;
-        border-radius: 20px;
         box-shadow: 6px 6px 30px rgba(44, 44, 44, 0.4);
         opacity: 1;
       }
