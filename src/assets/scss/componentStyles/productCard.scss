@@ -65,18 +65,25 @@
       position: absolute;
       width: 1px;
       height: 1px;
-      background-color: #FFD1D7;
+      background-color: #ffd1d7;
       top: 0;
       right: 0;
       z-index: 1;
       border-radius: 50%;
       transition: scale ease-in-out 0.3s;
     }
-    &:hover{
+    &_soledOut {
+      background-color: #ffd1d7;
+      padding: 9px 13px;
+      border-radius: 6px;
+      cursor: pointer;
+      filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.25));
+    }
+    &:hover {
       background-color: transparent;
-      box-shadow : 1px 1px 4px rgba(0, 0, 0, 0.25);
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
       span {
-        scale:240;
+        scale: 240;
       }
     }
   }

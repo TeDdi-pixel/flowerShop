@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCard from "../../shared/productCard/ProductCard";
+import ProductCard from "./ProductCard";
 import useCollections from "../../hooks/useCollections";
 
 const ProductCardBlock = () => {
