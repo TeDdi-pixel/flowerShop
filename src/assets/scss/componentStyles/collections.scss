@@ -25,12 +25,21 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    transition: scale ease 0.15s, border-radius ease 0.15s, box-shadow ease 0.15s,
-      opacity ease 0.3s;
+    transition: scale ease 0.15s, border-radius ease 0.15s,
+    box-shadow ease 0.15s, opacity ease 0.3s;
+    aspect-ratio: 1;
+    outline: 175.5px solid rgba(55, 55, 55, 0.6);
+    outline-offset: -175.5px;
+    cursor: pointer;
+    transition: 0.3s;
+
     &:hover {
-      scale: 1.15;
-      box-shadow: 6px 6px 30px rgba(44, 44, 44, 0.4);
+      outline: 8px solid #ffd1d7;
+      outline-offset: 14px;
+      scale: 1.05;
+      box-shadow: 6px 6px 30px rgba(67, 67, 67, 0.4);
       opacity: 1;
+      z-index: 1;
     }
   }
   &-item__title {
