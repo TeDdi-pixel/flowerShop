@@ -5,6 +5,7 @@ import TopRated from "../../widgets/topRated/TopRated";
 import EntranceBlock from "../../widgets/entranceBlock/EntranceBlock";
 import DeliveryOptionsBlock from "../../shared/deliveryOption/DeliveryOptionsBlock";
 import Collections from "../../widgets/collections/Collections";
+import ChooseUs from "../../widgets/chooseUs/ChooseUs";
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
         <DeliveryOptionsBlock />
         <TopRated />
         <Collections />
+        <ChooseUs />
       </main>
       <Footer />
     </>
