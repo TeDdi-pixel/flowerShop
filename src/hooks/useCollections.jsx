@@ -12,7 +12,6 @@ const useCollections = (collectionName,folder) => {
     try {
       const data = await getDocs(collectionRef);
       const docIds = data.docs.map((doc) => doc.id);
-
       for (let i = 0; i < urls.length; i++) {
         const docRef = doc(collectionRef, docIds[i]);
 

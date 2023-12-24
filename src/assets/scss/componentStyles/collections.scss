@@ -65,7 +65,10 @@
     }
   }
   @media screen and (max-width: 584px) {
-    padding: 0 15px;
+    padding: 0 15px;  
+  }
+  @media screen and (max-width: 525px) {
+    margin-bottom: 50px;
   }
   @media screen and (max-width: 460px) {
     &__wrapper{
@@ -81,12 +84,4 @@
       }
     }
   }
-
-  // @media screen and (max-width: 375px) {
-  //   &__item {
-  //     width: 156px;
-  //     height: 156px;
-  //     outline: 78px solid rgba(55, 55, 55, 0.6);
-  //   }
-  // }
 }
