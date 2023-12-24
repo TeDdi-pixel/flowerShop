@@ -8,6 +8,7 @@ import Collections from "../../widgets/collections/Collections";
 import ChooseUs from "../../widgets/chooseUs/ChooseUs";
 import SubscribeToEmails from "../../widgets/subscribeToEmails/SubscribeToEmails";
 import FAQ from "../../widgets/FAQ/FAQ";
+import AddressBlock from "../../widgets/AddressSection/AddressSection";
 
 const HomePage = () => {
   return (
@@ -21,6 +22,7 @@ const HomePage = () => {
         <ChooseUs />
         <SubscribeToEmails />
         <FAQ />
+        <AddressBlock />
       </main>
       <Footer />
     </>
