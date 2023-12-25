@@ -1,11 +1,12 @@
 import React from "react";
 import DefaultInput from "../../shared/inputs/default/DefaultInput";
 import { LuSearch } from "react-icons/lu";
+import PageTitle from "../../shared/pageTitle/PageTitle";
 
 const Search = () => {
   return (
     <div className="search">
-      <h3 className="search__title">Search</h3>
+      <PageTitle title={'Search'}/>
       <DefaultInput
         text={"Search our store"}
         type={"text"}

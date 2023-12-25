@@ -6,22 +6,12 @@
   padding: 70px 25px 145px 25px;
   gap: 11px;
   margin-bottom: 90px;
-
-  &__title {
-    color: #665f5f;
-    text-align: center;
-    font-family: Montserrat;
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 124.182%;
-    text-transform: uppercase;
-  }
   &__icon {
     stroke: #665f5f;
   }
   @media screen and (max-width: 525px) {
-    &__title{
-        display: none;
+    &__title {
+      display: none;
     }
     margin-bottom: 74px;
     padding: 57px 40px;

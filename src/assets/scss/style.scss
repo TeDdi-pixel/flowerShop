@@ -64,6 +64,16 @@
   margin-bottom: 40px;
 }
 
+.page-title {
+  color: #665f5f;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 124.182%;
+  text-transform: uppercase;
+}
+
 .additional-title {
   color: #665f5f;
   text-align: center;
@@ -119,22 +129,26 @@
   &__text {
     color: #665f5f;
     font-family: Montserrat;
-    @include adaptive-font(20,16);
+    @include adaptive-font(20, 16);
     font-style: normal;
     font-weight: 400;
     line-height: 124.182%;
   }
 }
+
 @media screen and (max-width: 1060px) {
   .current-path {
     padding-left: 39px;
   }
 }
 @media screen and (max-width: 525px) {
+  .page-title{
+    display: none;
+  }
   .default-input {
     padding-left: 22px;
-  } 
-  .current-path{
+  }
+  .current-path {
     margin-bottom: 40px;
   }
 }
