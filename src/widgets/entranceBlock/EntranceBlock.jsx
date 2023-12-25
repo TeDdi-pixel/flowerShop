@@ -14,7 +14,7 @@ const EntranceBlock = () => {
         <br />
         and fresh flower delivery in <span>Los Angeles</span>.
       </h4>
-      <MainBtn text={"View now"} fontColor={"#665F5F"} bgColor={"white"} />
+      <MainBtn text={"View now"} fontColor={"#665F5F"} bgColor={"white"} link={'/Home/AboutUs'}/>
     </div>
   );
 };
