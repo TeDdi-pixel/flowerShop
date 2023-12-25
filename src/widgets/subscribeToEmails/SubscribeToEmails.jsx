@@ -12,7 +12,7 @@ const SubscribeToEmails = () => {
       </p>
       <DefaultInput
         text={"E-mail"}
-        icon={<IoIosArrowForward height={"2px"} width={"2px"} />}
+        icon={<IoIosArrowForward height={"2px"} width={"2px"}/>}
         type={"email"}
       />
     </div>

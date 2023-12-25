@@ -9,11 +9,11 @@ import ChooseUs from "../../widgets/chooseUs/ChooseUs";
 import SubscribeToEmails from "../../widgets/subscribeToEmails/SubscribeToEmails";
 import FAQ from "../../widgets/FAQ/FAQ";
 import AddressBlock from "../../widgets/AddressSection/AddressSection";
+import DefaultLayout from "../../layouts/default/DefaultLayout";
 
 const HomePage = () => {
   return (
-    <>
-      <Header />
+    <DefaultLayout>
       <main>
         <EntranceBlock />
         <DeliveryOptionsBlock />
@@ -24,8 +24,7 @@ const HomePage = () => {
         <FAQ />
         <AddressBlock />
       </main>
-      <Footer />
-    </>
+    </DefaultLayout>
   );
 };
 

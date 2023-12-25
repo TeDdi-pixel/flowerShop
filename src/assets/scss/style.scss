@@ -14,9 +14,9 @@
 @import "./componentStyles/collections.scss";
 @import "./componentStyles/chooseUs.scss";
 @import "./componentStyles/subscribeToEmails.scss";
-@import './componentStyles/FAQ.scss';
-@import './componentStyles/address.scss';
-
+@import "./componentStyles/FAQ.scss";
+@import "./componentStyles/address.scss";
+@import "./componentStyles/search.scss";
 
 .loading-spinner {
   position: absolute;
@@ -50,7 +50,6 @@
     scale: 1.1;
     box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
   }
-  
 }
 
 .main-title {
@@ -84,7 +83,7 @@
   width: 100%;
   border-radius: 5px;
   background-color: #fff;
-  transition: scale ease 0.3s,box-shadow ease 0.3s;
+  transition: scale ease 0.3s, box-shadow ease 0.3s;
   input {
     width: 100%;
     font-family: Montserrat;
@@ -110,10 +109,36 @@
     box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
   }
 }
-
-@media screen and (max-width: 525px) {
-  .default-input{
-    padding-left: 22px;
+.current-path {
+  max-width: 1030px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 11px;
+  &__text {
+    color: #665f5f;
+    font-family: Montserrat;
+    @include adaptive-font(20,16);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 124.182%;
   }
-
+}
+@media screen and (max-width: 1060px) {
+  .current-path {
+    padding-left: 39px;
+  }
+}
+@media screen and (max-width: 525px) {
+  .default-input {
+    padding-left: 22px;
+  } 
+  .current-path{
+    margin-bottom: 40px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .current-path {
+    padding-left: 16px;
+  }
 }

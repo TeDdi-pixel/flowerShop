@@ -9,6 +9,8 @@
   background-size:cover;
   background-position: center;
   background-attachment: fixed;
+  position: relative;
+  z-index: 1;
 
   &__title {
     text-align: center;
