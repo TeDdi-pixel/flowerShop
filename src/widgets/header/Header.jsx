@@ -8,30 +8,14 @@ import BurgerMenu from "../burgerMenu/BurgerMenu.jsx";
 const Header = () => {
   const [moneyCount, setMoneyCount] = useState(40.25);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const checkScroll = () => {
-    setIsScrolled(window.scrollY >= 100);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", checkScroll);
-    return () => {
-      window.removeEventListener("scroll", checkScroll);
-    };
-  }, []);
 
   const handleBurgerMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
   return (
-    <header className={isScrolled ? "header header_scrolled" : "header"}>
+    <header className="header header_scrolled">
       <div className="header__container">
-        <nav
-          className={
-            isScrolled ? "header__nav header__nav_scrolled" : "header__nav"
-          }
-        >
+        <nav className="header__nav header__nav_scrolled">
           <div className="header__left">
             <HeaderIconMenu onClick={handleBurgerMenu} />
           </div>

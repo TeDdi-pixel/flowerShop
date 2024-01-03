@@ -20,9 +20,9 @@
     align-items: center;
     height: 100px;
     transition: height 0.5s ease;
-    &_scrolled {
-      height: 76px;
-    }
+    // &_scrolled {
+    //   height: 76px;
+    // }
   }
   &__logo {
     margin-top: -16px;
