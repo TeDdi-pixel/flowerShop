@@ -10,7 +10,7 @@ const AboutUsPage = () => {
   return (
     <DefaultLayout>
       <Path />
-      <PageTitle title={"About us"} />
+      <PageTitle title={"About us"} marginBottom={'32px'}/>
       <AboutUsBlock />
       <BlogsBlock />
       <SubscribeToEmails />
