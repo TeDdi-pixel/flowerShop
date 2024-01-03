@@ -55,9 +55,6 @@ const useCollections = (collectionName, folder) => {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(collectionsData);
-  }, [collectionsData]);
   return { collectionsData };
 };
 

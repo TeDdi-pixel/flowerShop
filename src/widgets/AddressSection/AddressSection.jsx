@@ -1,5 +1,5 @@
 import React from "react";
-import backgroundImg from "../../assets/img/backgroundImg.jpg";
+import backgroundImg from "../../assets/img/backgroundImg.webp";
 import AddressBlock from "../../entities/addressBlock/addressBlock";
 
 const AddressSection = ({ marginBottom }) => {

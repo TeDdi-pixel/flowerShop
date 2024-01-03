@@ -1,6 +1,6 @@
 import React from "react";
 import MainBtn from "../../shared/mainBtn/MainBtn";
-import backgroundImg from '../../assets/img/backgroundImg.jpg';
+import backgroundImg from '../../assets/img/backgroundImg.webp';
 
 const EntranceBlock = () => {
   return (

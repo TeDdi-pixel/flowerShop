@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import { db } from "../services/firebase-config";
 
 const useData = (collectionName) => {
-    const [data, setData] = useState([]);
-    const collectionRef = collection(db, collectionName);
-  
-    useEffect(() => {
+  const [data, setData] = useState([]);
+  const collectionRef = collection(db, collectionName);
+  const cachedData = localStorage.getItem(collectionName);
+  useEffect(() => {
+    if (cachedData) {
+      setData(JSON.parse(cachedData));
+    } else {
       const getData = async () => {
         try {
           const querySnapshot = await getDocs(collectionRef);
@@ -14,16 +17,18 @@ const useData = (collectionName) => {
             ...doc.data(),
             id: doc.id,
           }));
+
           setData(filteredData);
+          localStorage.setItem(collectionName, JSON.stringify(filteredData));
         } catch (error) {
           console.log(error);
         }
       };
       getData();
-    }, []);
-  
-    return { data };
-  };
-  
+    }
+  }, []);
+
+  return { data };
+};
 
 export default useData;
