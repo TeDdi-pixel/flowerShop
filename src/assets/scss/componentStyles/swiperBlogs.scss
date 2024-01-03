@@ -1,0 +1,30 @@
+html:root {
+    --swiper-navigation-size: 25px;
+  }
+  
+  .swiper{
+        max-width: 988px;
+  }
+  .swiper-wrapper{
+      padding-top: 30px;
+      padding-bottom: 10px;
+  }
+  .swiper-slide{
+      max-width: 289px;
+  }
+  .swiper-button-next:after,
+  .swiper-rtl .swiper-button-prev:after {
+    color: #665f5f;
+  }
+  .swiper-button-prev:after,
+  .swiper-rtl .swiper-button-next:after {
+    color: #665f5f;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-color: white;
+    padding: 22px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25),
+      -1px -1px 4px 0px rgba(0, 0, 0, 0.25);
+  }

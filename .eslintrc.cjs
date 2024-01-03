@@ -15,9 +15,10 @@ module.exports = {
     "react/prop-types": "off",
     "no-unused-vars": "off",
     'react/jsx-key': 'off',
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    'react-refresh/only-export-components': 'off',
+    // 'react-refresh/only-export-components': [
+    //   'warn',
+    //   { allowConstantExport: true },
+    // ],
   },
 }

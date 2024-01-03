@@ -14,9 +14,7 @@ const usePath = () => {
       window.removeEventListener("popstate", handleLocationChange);
     };
   });
-  useEffect(() => {
-    console.log(currentPath);
-  }, [currentPath]);
+
   return { currentPath };
 };
 

@@ -31,7 +31,7 @@ const useCollections = (collectionName,folder) => {
   };
   useEffect(() => {
     getCollectionList();
-  }, []);
+  }, [urls]);
   useEffect(() => {
     listAll(ref(storage, `${folder}`))
       .then((res) => {

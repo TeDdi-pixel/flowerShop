@@ -10,6 +10,7 @@ import SubscribeToEmails from "../../widgets/subscribeToEmails/SubscribeToEmails
 import FAQ from "../../widgets/FAQ/FAQ";
 import AddressBlock from "../../widgets/AddressSection/AddressSection";
 import DefaultLayout from "../../layouts/default/DefaultLayout";
+import BlogsBlock from "../../widgets/blogs/Blogsblock";
 
 const HomePage = () => {
   return (
@@ -22,6 +23,7 @@ const HomePage = () => {
         <ChooseUs />
         <SubscribeToEmails />
         <FAQ />
+        <BlogsBlock/>
         <AddressBlock />
       </main>
     </DefaultLayout>
