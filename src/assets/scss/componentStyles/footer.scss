@@ -41,6 +41,10 @@
       a {
         color: #665f5f;
       }
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
   }
   &__socials {
@@ -94,7 +98,8 @@
       &:nth-child(1) {
         padding-top: 0;
       }
-      &:nth-child(1),&:nth-child(2){
+      &:nth-child(1),
+      &:nth-child(2) {
         border-top: none;
       }
       &:nth-child(4) {

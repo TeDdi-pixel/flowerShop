@@ -4,6 +4,11 @@
   box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
   position: relative;
   z-index: 2;
+  transition: position 0.5s ease, top ease 0.5s;
+  &_scrolled {
+    position: sticky;
+    top: 0;
+  }
   &__container {
     max-width: 1030px;
     width: 100%;
@@ -14,6 +19,10 @@
     justify-content: space-between;
     align-items: center;
     height: 100px;
+    transition: height 0.5s ease;
+    &_scrolled {
+      height: 76px;
+    }
   }
   &__logo {
     margin-top: -16px;
@@ -87,7 +96,7 @@
     }
   }
   &__left {
-    width: 131px;
+    width: 157.41px;
   }
   &__right {
     display: flex;
@@ -147,7 +156,7 @@
     }
   }
   @media screen and (max-width: 761px) {
-    &__left{
+    &__left {
       width: auto;
     }
   }
@@ -178,7 +187,7 @@
 
   @media screen and (max-width: 375px) {
     padding: 31.5px 18px 23px 16px;
-    &__cart-block{
+    &__cart-block {
       padding: 0;
       width: 45px;
       height: 45px;
@@ -186,7 +195,7 @@
       justify-content: center;
       align-items: center;
     }
-    &__money{
+    &__money {
       display: none;
     }
   }
