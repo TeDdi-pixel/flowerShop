@@ -15,4 +15,9 @@ export default defineConfig({
       exclude: [/\.(br)$ /, /\.(gz)$/],
     }),
   ],
+  optimizeDeps: {
+    force: true,
+    include: ['react', 'react-dom', 'react-hook-form', 'react-icons', 'react-player', 'react-router-dom'],
+    exclude: ['firebase'],
+  },
 });
