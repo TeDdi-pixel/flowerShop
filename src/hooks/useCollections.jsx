@@ -10,7 +10,7 @@ const useCollections = (collectionName, folder) => {
   const collectionRef = collection(db, collectionName);
   const getCollectionList = async () => {
     const cachedData = localStorage.getItem(collectionName);
-    
+    localStorage.clear();
     if (cachedData) {
       setCollectionsData(JSON.parse(cachedData));
       return;
