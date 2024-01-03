@@ -1,5 +1,5 @@
 import React from "react";
-import aboutUsBG from "../../assets/img/aboutUsBG.jpg";
+import aboutUsBG from "../../assets/img/aboutUsBG.webp";
 
 const AboutUsBlock = () => {
   return (
