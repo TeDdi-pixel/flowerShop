@@ -20,6 +20,8 @@
 @import './componentStyles/blogs.scss';
 @import './componentStyles/swiperBlogs.scss';
 @import './componentStyles/aboutUs.scss';
+@import './componentStyles/player.scss';
+@import './componentStyles/writeToUs.scss';
 
 .loading-spinner {
   position: absolute;
@@ -73,7 +75,7 @@
   color: #665f5f;
   text-align: center;
   font-family: Montserrat;
-  font-size: 40px;
+  @include adaptive-font(40,24);
   font-weight: 700;
   line-height: 124.182%;
   text-transform: uppercase;

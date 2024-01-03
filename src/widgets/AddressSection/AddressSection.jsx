@@ -1,13 +1,19 @@
-import React from 'react';
-import backgroundImg from '../../assets/img/backgroundImg.jpg';
-import AddressBlock from '../../entities/addressBlock/addressBlock';
+import React from "react";
+import backgroundImg from "../../assets/img/backgroundImg.jpg";
+import AddressBlock from "../../entities/addressBlock/addressBlock";
 
-const AddressSection = () => {
-    return (
-        <div className='address' style={{backgroundImage: `url(${backgroundImg})`}}>
-            <AddressBlock/>
-        </div>
-    );
-}
+const AddressSection = ({ marginBottom }) => {
+  return (
+    <div
+      className="address"
+      style={{
+        backgroundImage: `url(${backgroundImg})`,
+        marginBottom: marginBottom,
+      }}
+    >
+      <AddressBlock />
+    </div>
+  );
+};
 
 export default AddressSection;

@@ -3,12 +3,18 @@ import { useEffect, useState } from "react";
 import { storage, db } from "../services/firebase-config";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 
-const useCollections = (collectionName,folder) => {
+const useCollections = (collectionName, folder) => {
   const [urls, setUrls] = useState([]);
   const [collectionsData, setCollectionsData] = useState([]);
 
   const collectionRef = collection(db, collectionName);
   const getCollectionList = async () => {
+    const cachedData = localStorage.getItem(collectionName);
+    if (cachedData) {
+      setCollectionsData(JSON.parse(cachedData));
+      return;
+    }
+
     try {
       const data = await getDocs(collectionRef);
       const docIds = data.docs.map((doc) => doc.id);
@@ -25,13 +31,17 @@ const useCollections = (collectionName,folder) => {
         id: doc.id,
       }));
       setCollectionsData(newFilteredData);
+
+      localStorage.setItem(collectionName, JSON.stringify(newFilteredData));
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getCollectionList();
   }, [urls]);
+
   useEffect(() => {
     listAll(ref(storage, `${folder}`))
       .then((res) => {
@@ -45,7 +55,11 @@ const useCollections = (collectionName,folder) => {
       });
   }, []);
 
+  useEffect(() => {
+    console.log(collectionsData);
+  }, [collectionsData]);
   return { collectionsData };
 };
+
 
 export default useCollections;

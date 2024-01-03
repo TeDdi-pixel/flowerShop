@@ -7,8 +7,11 @@ import ProductCardButton from "../../shared/productCard/ui/ProductCardButton";
 const ProductCard = ({ img, title, price, text }) => {
   const [soledOut, setSoledOut] = useState(false);
   useEffect(() => {
-    setSoledOut(text.toLowerCase() === "sold out");
+    if (text) {
+      setSoledOut(text.toLowerCase() === "sold out");
+    }
   }, [text]);
+  
   return (
     <div className="product-card">
       <ProductCardImg img={img} alt="flowers" />
