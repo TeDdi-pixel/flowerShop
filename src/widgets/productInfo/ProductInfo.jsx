@@ -42,7 +42,7 @@ const ProductInfo = () => {
                       <span className="product-info__shiping product-info__shiping_underline">
                         Shipping
                       </span>
-                      calculated at checkout
+                      &nbsp; calculated at checkout
                     </div>
                     <ProductSlideSize />
                     <div className="product-info__manage">
