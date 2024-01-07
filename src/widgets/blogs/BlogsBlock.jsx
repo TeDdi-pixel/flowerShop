@@ -18,7 +18,7 @@ const BlogsBlock = () => {
       <Swiper
         modules={[Navigation, A11y]}
         spaceBetween={55}
-        slidesPerView={slidesPerView}
+        slidesPerView={3}
         navigation
       >
         {collectionsData.map((item) => {

@@ -9,11 +9,13 @@ import AddressBlock from "../../widgets/AddressSection/AddressSection";
 import DefaultLayout from "../../layouts/default/DefaultLayout";
 import CollectionsBlock from "../../widgets/collectionsBlock/CollectionsBlock";
 import BlogsBlock from '../../widgets/blogs/BlogsBlock';
+import ProductInfo from "../../widgets/productInfo/ProductInfo";
 
 const HomePage = () => {
   return (
     <DefaultLayout>
       <main>
+      <ProductInfo/>
         <EntranceBlock />
         <DeliveryOptionsBlock />
         <TopRated />
