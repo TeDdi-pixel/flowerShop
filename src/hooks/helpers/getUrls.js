@@ -8,6 +8,6 @@ export const getUrls = async (folder, setUrls) => {
       setUrls(urls);
     })
     .catch((error) => {
-      console.error(`Error listing all items: ${error}`);
+      console.error(`Error listing all items in folder ${folder}: ${error}`);
     });
 };

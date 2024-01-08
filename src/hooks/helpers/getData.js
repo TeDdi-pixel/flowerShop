@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import { collection, doc, getDocs, updateDoc, writeBatch } from "firebase/firestore";
 import { db } from "../../services/firebase-config";
 
 export const getData = async (collectionName, urls, setCollectionsData) => {
@@ -10,12 +10,14 @@ export const getData = async (collectionName, urls, setCollectionsData) => {
     try {
       const data = await getDocs(collectionRef);
       const docIds = data.docs.map((doc) => doc.id);
+      const batch = writeBatch(db);
       for (let i = 0; i < urls.length; i++) {
         const docRef = doc(collectionRef, docIds[i]);
-        await updateDoc(docRef, {
+        batch.update(docRef, {
           imageUrl: urls[i],
         });
       }
+      await batch.commit();
       const newData = await getDocs(collectionRef);
       const newFilteredData = newData.docs.map((doc) => ({
         ...doc.data(),

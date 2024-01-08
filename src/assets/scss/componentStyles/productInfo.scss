@@ -168,14 +168,14 @@
     }
     &:hover {
       span {
-        scale: 210;
+        scale: 250;
       }
       color: white;
     }
     &_selected {
       transition: scale ease-in-out 0.3s;
       span {
-        scale: 210;
+        scale: 250;
       }
     }
     &-text {
