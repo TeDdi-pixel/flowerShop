@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import ProductCard from "./ProductCard";
 import useCollections from "../../hooks/useCollections";
 
 const ProductCardBlock = () => {
-  const { collectionsData } = useCollections("products", "productsImg");
+  const { collectionsData } = useCollections(
+    "products",
+    "productsImg"
+  );
   return (
     <div className="top-rated__cards">
       {collectionsData.map((card) => {

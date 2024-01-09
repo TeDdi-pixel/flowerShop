@@ -1,36 +1,40 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "../../features/slider/Slider";
 import useCollections from "../../hooks/useCollections";
 import ProductSlideTitle from "../../shared/productSlide/ui/ProductSlideTitle";
 import ProductSlideImg from "../../shared/productSlide/ui/ProductSlideImg";
 import ProductSlidePrice from "../../shared/productSlide/ui/ProductSlidePrice";
-import { DataContext } from "../../context/Context";
 import SliderSlide from "../../features/slider/SliderSlide";
 import SliderBtnMain from "../../shared/sliderBtnMain/SliderBntMain";
 import ProductSlideQuantity from "../../entities/productSlide/ProductSlideQuantity";
 import Exit from "../../shared/exit/Exit";
 import ProductSlideSize from "../../entities/productSlide/ProductSlideSize";
+import { useDispatch, useSelector } from "react-redux";
+import { handleShowMore } from "../../slices/showMoreSlice";
+import useData from "../../hooks/useData";
 
 const ProductInfo = () => {
   const { collectionsData } = useCollections("products", "productsImg");
-  const context = useContext(DataContext);
+  const { data } = useData("products");
+  const showMore = useSelector((state) => state.showMore.value);
+  const selectedItem = useSelector((state) => state.showMore.selectedItem);
+  const dispatch = useDispatch();
+
   const [soledOutStatuses, setSoledOutStatuses] = useState([]);
   useEffect(() => {
     setSoledOutStatuses(
-      collectionsData.map((item) => item.text.toLowerCase() === "sold out")
+      data.map((item) => item.text.toLowerCase() === "sold out")
     );
   }, [collectionsData]);
 
   return (
     <div
-      className={
-        context.showMore ? "product-info product-info_open" : "product-info"
-      }
+      className={showMore ? "product-info product-info_open" : "product-info"}
     >
       <div className="product-info__wrapper">
-        <Exit onClick={context.handleShowMore} />
+        <Exit onClick={() => dispatch(handleShowMore())} />
         <div className="product-info__slider">
-          <Slider selectedItem={context.selectedItem}>
+          <Slider selectedItem={selectedItem}>
             {collectionsData.map((item, index) => {
               return (
                 <SliderSlide key={item.id}>

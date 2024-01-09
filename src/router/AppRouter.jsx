@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import spinner from "../assets/img/spinner.svg";
 import { routes } from "./config/routes";

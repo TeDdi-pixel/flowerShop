@@ -9,7 +9,7 @@ const useData = (collectionName) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const querySnapshot = await getDocs(collectionRef); // Используем getDocs для начального запроса
+        const querySnapshot = await getDocs(collectionRef);
         const filteredData = querySnapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
