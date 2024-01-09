@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsSliderOpened } from "../../store/slices/productInfoSlice";
 
 const Slider = ({ children, selectedItem }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [startX, setStartX] = useState(0);
+  const isSliderOpened = useSelector((state) => state.productInfo.isSliderOpened);
+  const dispatch = useDispatch();
 
   const handleSwipeStart = (event) => {
     setStartX(event.touches[0].clientX);
@@ -22,10 +26,13 @@ const Slider = ({ children, selectedItem }) => {
 
   const switchSlide = (direction) => {
     const nextSlideIndex =
-      direction === "prev" ? currentSlide - 1 : currentSlide + 1;
-    setCurrentSlide(nextSlideIndex % children.length);
+      direction === "prev"
+        ? (currentSlide - 1 + children.length) % children.length
+        : (currentSlide + 1) % children.length;
+    setCurrentSlide(nextSlideIndex);
     setIsTransitioning(true);
   };
+  
 
   useEffect(() => {
     if (isTransitioning) {
@@ -39,6 +46,7 @@ const Slider = ({ children, selectedItem }) => {
   useEffect(() => {
     if (selectedItem) {
       setCurrentSlide(Number(selectedItem.split("_")[0]));
+      setTimeout(() => dispatch(setIsSliderOpened()), 500);
     }
   }, [selectedItem]);
   return (
@@ -57,7 +65,10 @@ const Slider = ({ children, selectedItem }) => {
       >
         <div
           className="slider__wrapper"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          style={{
+            transform: `translateX(-${currentSlide * 100}%)`,
+            transition: isSliderOpened ? `transform 0.5s ease-in-out` : "",
+          }}
         >
           {children}
         </div>

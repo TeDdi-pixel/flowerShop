@@ -1,38 +1,47 @@
-import React, { useEffect, useState } from "react";
-import Slider from "../../features/slider/Slider";
-import useCollections from "../../hooks/useCollections";
+import React, { useEffect } from "react";
 import ProductSlideTitle from "../../shared/productSlide/ui/ProductSlideTitle";
 import ProductSlideImg from "../../shared/productSlide/ui/ProductSlideImg";
 import ProductSlidePrice from "../../shared/productSlide/ui/ProductSlidePrice";
 import SliderSlide from "../../features/slider/SliderSlide";
 import SliderBtnMain from "../../shared/sliderBtnMain/SliderBntMain";
-import ProductSlideQuantity from "../../entities/productSlide/ProductSlideQuantity";
 import Exit from "../../shared/exit/Exit";
-import ProductSlideSize from "../../entities/productSlide/ProductSlideSize";
+import Slider from "../../features/slider/Slider";
 import { useDispatch, useSelector } from "react-redux";
-import { handleShowMore } from "../../slices/showMoreSlice";
+import useCollections from "../../hooks/useCollections";
 import useData from "../../hooks/useData";
+import Quantity from "../../entities/productSlide/Quantity";
+import Sizes from "../../entities/productSlide/Sizes";
+import Shiping from "../../shared/shiping/Shiping";
+import {
+  handleShowMore,
+  setIsSliderOpened,
+  setSoledOutStatuses,
+} from "../../store/slices/productInfoSlice";
+import PickAddress from "../../shared/pickAddress/PickAddress";
 
 const ProductInfo = () => {
   const { collectionsData } = useCollections("products", "productsImg");
   const { data } = useData("products");
-  const showMore = useSelector((state) => state.showMore.value);
-  const selectedItem = useSelector((state) => state.showMore.selectedItem);
+  const showMore = useSelector((state) => state.productInfo.showMore);
+  const selectedItem = useSelector((state) => state.productInfo.selectedItem);
+  const soledOutStatuses = useSelector(
+    (stete) => stete.productInfo.soledOutStatuses
+  );
   const dispatch = useDispatch();
+  const handleExit = () => {
+    dispatch(setIsSliderOpened());
+    dispatch(handleShowMore());
+  };
 
-  const [soledOutStatuses, setSoledOutStatuses] = useState([]);
   useEffect(() => {
-    setSoledOutStatuses(
-      data.map((item) => item.text.toLowerCase() === "sold out")
-    );
-  }, [collectionsData]);
-
+    dispatch(setSoledOutStatuses(data));
+  }, [data]);
   return (
     <div
       className={showMore ? "product-info product-info_open" : "product-info"}
     >
       <div className="product-info__wrapper">
-        <Exit onClick={() => dispatch(handleShowMore())} />
+        <Exit onClick={handleExit} />
         <div className="product-info__slider">
           <Slider selectedItem={selectedItem}>
             {collectionsData.map((item, index) => {
@@ -42,24 +51,16 @@ const ProductInfo = () => {
                   <div className="product-info__data-wrapper">
                     <ProductSlideTitle title={item.title} />
                     <ProductSlidePrice price={item.price} />
-                    <div className="product-info__shiping">
-                      <span className="product-info__shiping product-info__shiping_underline">
-                        Shipping
-                      </span>
-                      &nbsp; calculated at checkout
-                    </div>
-                    <ProductSlideSize />
+                    <Shiping />
+                    <Sizes sizes={item.size} />
                     <div className="product-info__manage">
-                      <ProductSlideQuantity />
+                      <Quantity />
                       <SliderBtnMain
                         text={item.text}
                         status={soledOutStatuses[index]}
                       />
                     </div>
-                    <div className="product-info__pick-address">
-                      Pickup available at <span>Hollywood blvd</span>. Usually
-                      ready in tomorrow
-                    </div>
+                    <PickAddress />
                   </div>
                 </SliderSlide>
               );

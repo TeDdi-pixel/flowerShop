@@ -8,7 +8,6 @@
   backdrop-filter: blur(5px);
   transition: right ease 0.3s, background-color ease 0.3s;
   &_open {
-
     background-color: hsla(0, 0%, 25%, 0.5);
     right: 0;
   }
@@ -19,14 +18,16 @@
     background-color: white;
     max-width: 728px;
     width: 100%;
-
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
   }
 
   &__slider {
     max-width: 538px;
     width: 100%;
-    margin: 0 auto;
     display: flex;
+    align-items: center;
   }
   &__image {
     margin-bottom: 23px;
@@ -137,6 +138,9 @@
     flex-wrap: wrap;
     column-gap: 14.5px;
     row-gap: 10px;
+    &_flex-start {
+      justify-content: flex-start;
+    }
   }
   &__size {
     position: relative;
@@ -153,7 +157,9 @@
     text-align: center;
     cursor: pointer;
     overflow: hidden;
-    transition: background-color ease-in-out 0.3s, color ease-in-out 0.1s;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
+    transition: background-color ease-in-out 0.3s, color ease-in-out 0.1s,
+      box-shadow ease 0.3s;
     span {
       display: block;
       position: absolute;
@@ -167,6 +173,7 @@
       transition: scale ease-in-out 0.3s;
     }
     &:hover {
+      // box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
       span {
         scale: 250;
       }
@@ -187,15 +194,15 @@
       }
     }
   }
-  @media screen  and (max-width:560px){
+  @media screen and (max-width: 560px) {
     &__image {
       border-top-right-radius: 0;
       border-top-left-radius: 0;
     }
-    &__data-wrapper{
+    &__data-wrapper {
       padding: 12px 16px 25px 25px;
     }
-    &__size{
+    &__size {
       max-width: 77px;
     }
   }

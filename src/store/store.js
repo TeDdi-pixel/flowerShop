@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterSlice from "../slices/counterSlice";
-import showMoreSlice from "../slices/showMoreSlice";
+import quantitySlice from "./slices/quantitySlice";
+import productInfoSlice from "./slices/productInfoSlice";
 
 export default configureStore({
   reducer: {
-    counter: counterSlice,
-    showMore: showMoreSlice,
+    quantity: quantitySlice,
+    productInfo: productInfoSlice,
   },
 });

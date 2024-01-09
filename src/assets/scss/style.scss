@@ -26,6 +26,14 @@
 @import "./componentStyles/slider.scss";
 @import "./componentStyles/productInfo.scss";
 
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
 .loading-spinner {
   position: absolute;
   width: 150px;
@@ -34,13 +42,6 @@
   transform: translate(-50%, -50%);
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  overflow-x: hidden;
-}
 
 .button_main {
   width: 236.18px;
@@ -198,8 +199,8 @@
 
 .exit {
   position: absolute;
-  top: 6px;
-  right: 13px;
+  top: 20px;
+  right: 20px;
   font-size: 30px;
   z-index: 999;
   cursor: pointer;
@@ -211,7 +212,7 @@
   }
 }
 @media screen and (max-width: 525px) {
-  .slider-btn_main{
+  .slider-btn_main {
     width: 205px;
     font-size: 17px;
   }

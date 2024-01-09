@@ -15,9 +15,7 @@ const FAQItem = ({ question, answer }) => {
       <div className="FAQ__question-wrapper">
         <Question question={question} />
         <IoIosArrowDown
-          className={
-            active ? "FAQ__question-arrow FAQ__question-arrow_active" : "FAQ__question-arrow"
-          }
+          className={`"FAQ__question-arrow" ${active ? "FAQ__question-arrow_active" : ""}`}
         />
       </div>
       <Answer answer={answer} active={active} />
