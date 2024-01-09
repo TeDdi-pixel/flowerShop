@@ -173,7 +173,6 @@
       transition: scale ease-in-out 0.3s;
     }
     &:hover {
-      // box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
       span {
         scale: 250;
       }
@@ -195,6 +194,10 @@
     }
   }
   @media screen and (max-width: 560px) {
+    &_open{
+      background-color: transparent;
+      backdrop-filter: blur(0);
+    }
     &__image {
       border-top-right-radius: 0;
       border-top-left-radius: 0;
