@@ -26,19 +26,13 @@
   gap: 20px;
   align-items: center;
   &__title {
-    font-family: Montserrat;
     @include adaptive-font(24, 16);
-    font-weight: 700;
-    line-height: 124.182%;
-    color: #665f5f;
+    @include default-font(16px, 700);
     display: flex;
   }
   &__description {
-    color: #665f5f;
-    font-family: Montserrat;
     @include adaptive-font(16, 12);
-    font-weight: 400;
-    line-height: 124.182%;
+    @include default-font()
   }
 
   @media screen and (max-width: 418px) {

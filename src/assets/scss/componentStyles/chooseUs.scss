@@ -22,18 +22,10 @@
     margin-bottom: 10px;
   }
   &__title {
-    color: #665f5f;
-    font-family: Montserrat;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 124.182%;
+    @include default-font(24px, 700);
   }
   &__text {
-    color: #665f5f;
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 124.182%;
+    @include default-font(16px);
   }
   @media screen and (max-width: 999px) {
     &__wrapper {

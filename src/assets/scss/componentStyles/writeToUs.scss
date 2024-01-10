@@ -19,11 +19,7 @@
     margin-bottom: 20px;
   }
   &__text {
-    color: #cacaca;
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 124.182%;
+    @include default-font(16px, 400, left, 124.182%, #cacaca);
     &::placeholder {
       color: #cacaca;
     }

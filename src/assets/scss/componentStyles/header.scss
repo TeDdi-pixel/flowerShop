@@ -118,10 +118,7 @@
     }
   }
   &__money {
-    font-family: "Montserrat";
-    font-size: 12px;
-    font-weight: 700;
-    color: #665f5f;
+    @include default-font(12px, 700);
   }
   &__cart-alert-sign {
     position: absolute;

@@ -7,7 +7,9 @@ const Slider = ({ children, selectedItem }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [startX, setStartX] = useState(0);
-  const isSliderOpened = useSelector((state) => state.productInfo.isSliderOpened);
+  const isSliderOpened = useSelector(
+    (state) => state.productInfo.isSliderOpened
+  );
   const dispatch = useDispatch();
 
   const handleSwipeStart = (event) => {
@@ -32,7 +34,6 @@ const Slider = ({ children, selectedItem }) => {
     setCurrentSlide(nextSlideIndex);
     setIsTransitioning(true);
   };
-  
 
   useEffect(() => {
     if (isTransitioning) {
@@ -46,7 +47,7 @@ const Slider = ({ children, selectedItem }) => {
   useEffect(() => {
     if (selectedItem) {
       setCurrentSlide(Number(selectedItem.split("_")[0]));
-      setTimeout(() => dispatch(setIsSliderOpened()), 500);
+      setTimeout(() => dispatch(setIsSliderOpened()), 700);
     }
   }, [selectedItem]);
   return (

@@ -7,11 +7,7 @@
   margin-top: 103px;
   &__title {
     @include adaptive-font(40, 24);
-    color: #665f5f;
-    text-align: center;
-    font-family: Montserrat;
-    font-weight: 700;
-    line-height: 124.182%;
+    @include default-font(24px, 700, center);
     text-transform: uppercase;
     margin-bottom: 40px;
   }
@@ -36,19 +32,15 @@
     margin-bottom: 7px;
   }
   &__question {
-    color: #665f5f;
-    font-family: Montserrat;
-    @include adaptive-font(32,16);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 200%;
+    @include adaptive-font(32, 16);
+    @include default-font(16px, 400, left, 200%);
   }
   &__question-arrow {
     height: 26px;
     width: 36px;
     transform: rotate(0deg);
     transition: transform ease 0.3s;
-    color: #665F5F;
+    color: #665f5f;
     &_active {
       font-size: 20px;
       transform: rotate(180deg);
@@ -59,13 +51,9 @@
     transition: opacity 0.6s ease, transform 0.6s ease;
     opacity: 0;
     transform: translateY(-20px);
-    color: #665f5f;
-    font-weight: 400;
-    font-family: Montserrat;
-    line-height: 124.182%;
-    @include adaptive-font(20,14);
+    @include default-font();
+    @include adaptive-font(20, 14);
     height: 0;
-    
     overflow: hidden;
     max-height: 0;
     &_active {
@@ -75,7 +63,7 @@
       transform: translateY(0);
     }
   }
-  @media screen and (max-width:525px) {
+  @media screen and (max-width: 525px) {
     margin-bottom: 50px;
   }
 }

@@ -28,11 +28,10 @@
     background-color: white;
     width: 41px;
     height: 41px;
-    font-size: 25px;
+    @include default-font(25px);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #665f5f;
     border-radius: 5px;
     z-index: 10;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);

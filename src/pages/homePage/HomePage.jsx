@@ -14,18 +14,16 @@ import ProductInfoBlock from "../../widgets/productInfoBlock/ProductInfoBlock";
 const HomePage = () => {
   return (
     <DefaultLayout>
-      <main>
-        <ProductInfoBlock />
-        <EntranceBlock />
-        <DeliveryOptionsBlock />
-        <TopRated />
-        <CollectionsBlock />
-        <ChooseUs />
-        <SubscribeToEmails />
-        <FAQ />
-        <BlogsBlock />
-        <AddressBlock />
-      </main>
+      <ProductInfoBlock />
+      <EntranceBlock />
+      <DeliveryOptionsBlock />
+      <TopRated />
+      <CollectionsBlock />
+      <ChooseUs />
+      <SubscribeToEmails />
+      <FAQ />
+      <BlogsBlock />
+      <AddressBlock />
     </DefaultLayout>
   );
 };

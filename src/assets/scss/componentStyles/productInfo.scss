@@ -45,39 +45,22 @@
   }
 
   &__title {
-    color: #665f5f;
-    font-family: Montserrat;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 124.182%;
+    @include default-font(24px);
     margin-bottom: 20px;
   }
   &__price {
-    color: #665f5f;
-    font-family: Montserrat;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 124.182%;
+    @include default-font(24px,700);
     margin-bottom: 5px;
   }
   &__shiping {
-    color: #665f5f;
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 124.182%;
+    @include default-font(16px);
     margin-bottom: 20px;
     &_underline {
       text-decoration-line: underline;
     }
   }
   &__pick-address {
-    color: #665f5f;
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 124.182%;
+    @include default-font(16px);
     span {
       font-weight: 700;
     }
@@ -89,11 +72,7 @@
   }
   &__quantity {
     max-width: 90px;
-    color: #665f5f;
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 124.182%;
+    @include default-font(16px);
     &-title {
       margin-bottom: 10px;
     }
@@ -109,12 +88,8 @@
     }
   }
   &__button {
-    color: #665f5f;
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 124.182%;
     width: 100%;
+    @include default-font(16px,700);
     background-color: transparent;
     padding: 0 10px;
   }
@@ -124,11 +99,7 @@
     margin-bottom: 35px;
   }
   &__size-title {
-    color: #665f5f;
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 124.182%;
+    @include default-font(16px);
   }
   &__size-wrapper {
     max-width: 300px;
@@ -144,11 +115,7 @@
   }
   &__size {
     position: relative;
-    color: #665f5f;
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 124.182%;
+    @include default-font(12px);
     border-radius: 10px;
     border: 1px solid #665f5f;
     max-width: 90px;

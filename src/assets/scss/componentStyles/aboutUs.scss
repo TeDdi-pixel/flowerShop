@@ -6,11 +6,8 @@
   }
   &__text {
     margin: 52px auto;
-    color: #665f5f;
-    font-family: Montserrat;
     @include adaptive-font(24, 14);
-    font-weight: 400;
-    line-height: 200%;
+    @include default-font(14px, 400, left, 200%);
     max-width: 1092px;
     padding: 0 25px;
     text-indent: 20px;

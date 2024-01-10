@@ -29,17 +29,10 @@
     gap: 5px;
   }
   &__title {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 124.182%;
+    @include default-font(12px);
   }
   &__price {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 124.182%;
-    color: #665f5f;
+    @include default-font(12px, 700);
   }
   &__button {
     position: relative;
@@ -53,11 +46,7 @@
     transition: background-color ease 0.2s, box-shadow ease 0.4s;
     &-text {
       position: relative;
-      font-size: 12px;
-      font-family: Montserrat;
-      font-weight: 700;
-      line-height: 124.182%;
-      color: white;
+      @include default-font(12px, 700, left, 124.182%, white);
       z-index: 2;
     }
     span {
