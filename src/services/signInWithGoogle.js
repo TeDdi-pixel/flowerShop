@@ -5,9 +5,9 @@ import Cookies from "js-cookie";
 
 const signInWithGoogle = async (cookiesEnabled) => {
   const provider = new GoogleAuthProvider();
-  const uid = auth.currentUser.uid;
   try {
     const result = await signInWithPopup(auth, provider);
+    const uid = auth.currentUser.uid;
     localStorage.setItem("user", JSON.stringify(result));
     await setUserCart(uid, { name: "name" });
     if (cookiesEnabled) {
