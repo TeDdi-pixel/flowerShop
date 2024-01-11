@@ -8,8 +8,10 @@ import {
 } from "../../store/slices/cookiesSlice";
 import Exit from "../../shared/exit/Exit";
 import { setUserCookies } from "../../services/setUserCookies";
+import useWindowResize from "../../hooks/useWindowResize";
 
 const CookiesMessage = () => {
+  const { isFullWidth } = useWindowResize(465);
   const cookiesEnabled = useSelector((state) => state.cookies.cookiesEnabled);
   const cookiesMessage = useSelector((state) => state.cookies.cookiesMessage);
   const userData = useSelector((state) => state.user.userLocalStorageData);
@@ -22,8 +24,8 @@ const CookiesMessage = () => {
       <CookiesBtn enableCookies={() => dispatch(enableCookies())} />
       <Exit
         onClick={() => dispatch(closeCookiesMessage())}
-        top={"25px"}
-        right={"25px"}
+        top={isFullWidth ? "10px" : "25px"}
+        right={isFullWidth ? "10px" : "25px"}
         color={"white"}
       />
     </div>

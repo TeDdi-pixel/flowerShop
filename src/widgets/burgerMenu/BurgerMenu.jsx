@@ -12,6 +12,14 @@ const BurgerMenu = ({ isMenuOpen, onClick }) => {
   const userIsSignIn = useSelector((state) => state.user.userIsSignIn);
   const cookiesEnabled = useSelector((state) => state.cookies.cookiesEnabled);
   const dispatch = useDispatch();
+  const onLogOut = () => {
+    dispatch(logOutUser());
+    onClick();
+  };
+  const onLogIn = () => {
+    signInWithGoogle(cookiesEnabled);
+    onClick();
+  };
   return (
     <div
       className={isMenuOpen ? "burger-menu burger-menu_open" : "burger-menu"}
@@ -23,18 +31,12 @@ const BurgerMenu = ({ isMenuOpen, onClick }) => {
             return <BurgerLink key={index} path={link.path} name={link.name} />;
           })}
           {userData && userData.user ? (
-            <Link to='/'
-              className="burger-menu__logOut"
-              onClick={() => dispatch(logOutUser())}
-            >
+            <Link to="/" className="burger-menu__logOut" onClick={onLogOut}>
               LogOut
             </Link>
           ) : (
             !userIsSignIn && (
-              <Link to='/'
-                className="burger-menu__signIn"
-                onClick={() => signInWithGoogle(cookiesEnabled)}
-              >
+              <Link to="/" className="burger-menu__signIn" onClick={onLogIn}>
                 SignIn
               </Link>
             )
