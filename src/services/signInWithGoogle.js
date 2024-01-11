@@ -9,7 +9,8 @@ const signInWithGoogle = async (cookiesEnabled) => {
     const result = await signInWithPopup(auth, provider);
     const uid = auth.currentUser.uid;
     localStorage.setItem("user", JSON.stringify(result));
-    await setUserCart(uid, { name: "name" });
+    console.log(result);
+    await setUserCart(uid, {});
     if (cookiesEnabled) {
       Cookies.set("user", JSON.stringify(result), { expires: 7 });
     }
