@@ -7,9 +7,24 @@
       @include default-font(24px, 400, center);
       margin-bottom: 35px;
     }
+    &-cookies-wrapper{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 26px;
+    }
     &-cookies {
       @include default-font(24px, 400, center);
-      margin-bottom: 26px;
+    }
+    &-cookies-btn{
+      @include default-font(24px, 400, center,124%,white);
+      background-color: #665f5f;
+      border-radius: 5px;
+      padding: 15px 30px;
+      transition: background-color ease 0.2s;
+      &:hover{
+        background-color:#ffd1d7;
+      }
     }
   }
   &__shopping-btn {

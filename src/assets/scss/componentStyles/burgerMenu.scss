@@ -20,6 +20,13 @@
     width: 400px;
     background-color: white;
     height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+  }
+  &__links {
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -27,14 +34,18 @@
     align-items: center;
     gap: 5px;
 
-    a {
+    a,
+    div {
+      cursor: pointer;
       @include adaptive-font(23, 16);
       @include default-font(16px, 400, left, 200%);
       border-radius: 5px;
       transition: padding ease 0.3s, background-color ease 0.3s, color ease 0.3s;
+
       &:hover {
         padding: 15px 46px;
         color: white;
+
         &:first-child {
           background-color: #d23988;
         }
@@ -50,10 +61,18 @@
         &:nth-child(5) {
           background-color: #d2b48c;
         }
-        &:last-child {
+        &:nth-child(6) {
           background-color: #85a461;
         }
+        &:last-child {
+          background-color: rgb(224, 108, 104);
+        }
       }
+    }
+    &__signIn{
+      @include adaptive-font(23, 16);
+      @include default-font(16px, 400, left, 200%);
+      cursor: pointer;
     }
   }
 }

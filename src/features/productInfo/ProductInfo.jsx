@@ -41,7 +41,7 @@ const ProductInfo = () => {
       className={showMore ? "product-info product-info_open" : "product-info"}
     >
       <div className="product-info__wrapper">
-        <Exit onClick={handleExit} />
+        <Exit onClick={handleExit} color={"#665f5f"} />
         <div className="product-info__slider">
           <Slider selectedItem={selectedItem}>
             {collectionsData.map((item, index) => {
