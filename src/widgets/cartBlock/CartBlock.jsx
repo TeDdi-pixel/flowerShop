@@ -16,7 +16,6 @@ const CartBlock = () => {
     if (cartData.length > 0) {
       dispatch(setCart());
     }
-    console.log(emptyCart);
   }, [cartData]);
   return (
     <div className="cart">
