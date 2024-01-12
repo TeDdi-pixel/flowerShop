@@ -24,6 +24,7 @@ export const userSlice = createSlice({
       state.userData = {};
       state.userLocalStorageData = {};
       state.userIsSignIn = false;
+      Cookies.set("totalPrice", JSON.stringify(state.totalPrice));
     },
   },
 });

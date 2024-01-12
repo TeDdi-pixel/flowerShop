@@ -7,7 +7,7 @@ import SliderBtnMain from "../../../shared/sliderBtnMain/SliderBntMain";
 import useWindowResize from "../../../hooks/useWindowResize";
 import ProductBorder from "../../../shared/cart/ui/ProductBorder";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, setTotalPrice } from "../../../store/slices/cartSlice";
+import { setTotalPrice } from "../../../store/slices/cartSlice";
 import Cookies from "js-cookie";
 
 const Total = () => {
