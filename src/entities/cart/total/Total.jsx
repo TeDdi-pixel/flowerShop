@@ -18,7 +18,7 @@ const Total = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const savedTotalPrice = JSON.parse(Cookies.get('totalPrice'));
+    const savedTotalPrice = Cookies.get("totalPrice");
     if (savedTotalPrice) {
       dispatch(setTotalPrice(JSON.parse(savedTotalPrice)));
     }

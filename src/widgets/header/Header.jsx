@@ -1,30 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import logo from "../../assets/icons/logo.svg";
 import HeaderRight from "../../entities/headerRight/HeaderRight";
 import HeaderIconMenu from "../../shared/headerIconMenu/HeaderIconMenu.jsx";
 import { Link } from "react-router-dom";
 import BurgerMenu from "../burgerMenu/BurgerMenu.jsx";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  calculateTotalPrice,
-  setTotalPrice,
-} from "../../store/slices/cartSlice.js";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  // const moneyCount = useSelector((state) => state.cart.moneyCount);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const userIsSignIn = useSelector((state) => state.user.userIsSignIn);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
-  const cartData = useSelector((state) => state.cart.cartData);
-  const dispatch = useDispatch();
 
   const handleBurgerMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
-  useEffect(() => {
-    const newTotalPrice = calculateTotalPrice(cartData);
-    dispatch(setTotalPrice(newTotalPrice));
-  }, [cartData]);
   return (
     <header className="header header_scrolled">
       <div className="header__container">
