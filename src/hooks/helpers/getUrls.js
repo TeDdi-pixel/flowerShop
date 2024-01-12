@@ -1,4 +1,4 @@
-import { storage } from "../../services/firebase-config";
+import { storage } from "../../services/firebase/firebase-config";
 import { getDownloadURL, listAll, ref } from "firebase/storage";
 
 export const getUrls = async (folder, setUrls) => {

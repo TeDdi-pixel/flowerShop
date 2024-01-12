@@ -4,16 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import CookiesMessage from "../../../shared/cart/cookiesMassage/CookiesMessage";
 import ShoppingBtn from "../../../shared/cart/shoppingBtn/ShoppingBtn";
 import { enableCookies } from "../../../store/slices/cookiesSlice";
-import Cookies from "js-cookie";
 import CookiesBtn from "../../../shared/cookiesText/CookiesBtn";
+import { setUserCookies } from "../../../services/setters/setUserCookies";
 
 const EmptyCart = () => {
   const cookiesEnabled = useSelector((state) => state.cookies.cookiesEnabled);
   const userData = useSelector((state) => state.user.userLocalStorageData);
-  const dispatch = useDispatch();
-  cookiesEnabled && userData.user
-    ? Cookies.set("user", JSON.stringify(userData.user.uid))
-    : false;
+  const dispatch = useDispatch(); 
+  setUserCookies(cookiesEnabled,userData);
 
   return (
     <div className="cart__empty">

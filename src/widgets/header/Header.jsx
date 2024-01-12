@@ -9,7 +9,8 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const moneyCount = useSelector((state) => state.cart.moneyCount);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const userIsSignIn = useSelector((state) => state.user.userIsSignIn);
+  console.log(userIsSignIn);
   const handleBurgerMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
@@ -17,7 +18,9 @@ const Header = () => {
     <header className="header header_scrolled">
       <div className="header__container">
         <nav className="header__nav header__nav_scrolled">
-          <div className="header__left">
+          <div
+            className={userIsSignIn ? " header__left-signIn" : " header__left"}
+          >
             <HeaderIconMenu onClick={handleBurgerMenu} />
           </div>
           <Link to="/">

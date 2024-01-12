@@ -3,12 +3,12 @@ import Cookies from "js-cookie";
 
 const userCookie = Cookies.get("user");
 const userLocalStorage = localStorage.getItem("user");
-const photoURL = JSON.parse(localStorage.getItem("user"))?.user?.photoURL;
+let userLocalStorageData = userLocalStorage ? JSON.parse(userLocalStorage) : {};
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    userIsSignIn: false,
-    photoURL: userLocalStorage ? photoURL : false,
+    userIsSignIn: userLocalStorageData && 'user' in userLocalStorageData ? true : false,
+
     userData: userCookie
       ? JSON.parse(userCookie)
       : localStorage.getItem("user")
@@ -18,11 +18,6 @@ export const userSlice = createSlice({
     userLocalStorageData: userLocalStorage ? JSON.parse(userLocalStorage) : {},
   },
   reducers: {
-    setUserData: (state, actions) => {
-        state.userData = actions.payload;
-        state.userIsSignIn = true;
-      },
-    
     logOutUser: (state) => {
       localStorage.setItem("user", JSON.stringify({}));
       Cookies.set("user", JSON.stringify({}), { expires: 7 });

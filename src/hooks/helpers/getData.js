@@ -1,5 +1,5 @@
 import { collection, doc, getDocs, writeBatch } from "firebase/firestore";
-import { db } from "../../services/firebase-config";
+import { db } from "../../services/firebase/firebase-config";
 
 export const getData = async (collectionName, urls, setCollectionsData) => {
   const collectionRef = collection(db, collectionName);

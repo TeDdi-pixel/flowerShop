@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 
-export const setUserCookies = (cookiesEnabled, userData) => {
+export const setUserCookies = async (cookiesEnabled, userData) => {
   if (cookiesEnabled && userData && userData.user && userData.user.uid) {
     Cookies.set("user", JSON.stringify(userData.user.uid), { expires: 7 });
   } else if (cookiesEnabled) {

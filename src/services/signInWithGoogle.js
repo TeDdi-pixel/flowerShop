@@ -1,20 +1,18 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "./firebase-config";
-import { setUserCart } from "./setUserCart";
-import Cookies from "js-cookie";
+import { auth } from "./firebase/firebase-config";
+import { setUserCart } from "./setters/setUserCart";
+import { setUserLocalStorage } from "./setters/setUserLocalStorage";
+import { setUserCookies } from "./setters/setUserCookies";
 
 const signInWithGoogle = async (cookiesEnabled) => {
   const provider = new GoogleAuthProvider();
   try {
     const result = await signInWithPopup(auth, provider);
     const uid = auth.currentUser.uid;
-    localStorage.setItem("user", JSON.stringify(result));
-    console.log(result);
+    setUserLocalStorage(result);
     await setUserCart(uid, {});
-    if (cookiesEnabled) {
-      Cookies.set("user", JSON.stringify(result), { expires: 7 });
-    }
-    location.reload()
+    await setUserCookies(cookiesEnabled, uid);
+    location.reload();
   } catch (error) {
     const errorMessage = error.message;
     alert("errorMessage:" + errorMessage);

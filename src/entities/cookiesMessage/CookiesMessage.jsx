@@ -7,7 +7,7 @@ import {
   enableCookies,
 } from "../../store/slices/cookiesSlice";
 import Exit from "../../shared/exit/Exit";
-import { setUserCookies } from "../../services/setUserCookies";
+import { setUserCookies } from "../../services/setters/setUserCookies";
 import useWindowResize from "../../hooks/useWindowResize";
 
 const CookiesMessage = () => {

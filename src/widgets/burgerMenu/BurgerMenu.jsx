@@ -8,10 +8,10 @@ import { signInWithGoogle } from "../../services/signInWithGoogle";
 import { Link } from "react-router-dom";
 
 const BurgerMenu = ({ isMenuOpen, onClick }) => {
-  const userData = useSelector((state) => state.user.userLocalStorageData);
   const userIsSignIn = useSelector((state) => state.user.userIsSignIn);
   const cookiesEnabled = useSelector((state) => state.cookies.cookiesEnabled);
   const dispatch = useDispatch();
+
   const onLogOut = () => {
     dispatch(logOutUser());
     onClick();
@@ -30,7 +30,7 @@ const BurgerMenu = ({ isMenuOpen, onClick }) => {
           {burgerLinks.map((link, index) => {
             return <BurgerLink key={index} path={link.path} name={link.name} />;
           })}
-          {userData && userData.user ? (
+          {userIsSignIn ? (
             <Link to="/" className="burger-menu__logOut" onClick={onLogOut}>
               LogOut
             </Link>
