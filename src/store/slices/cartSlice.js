@@ -15,7 +15,9 @@ export const cartSlice = createSlice({
   },
   reducers: {
     setCart: (state) => {
+      console.log(state.emptyCart);
       state.emptyCart = false;
+      console.log(state.emptyCart);
     },
     setMoneyCount: (state, actions) => {
       state.moneyCount += actions.payload;
@@ -28,12 +30,14 @@ export const cartSlice = createSlice({
     },
     totalRemove: (state, actions) => {
       if (state.totalPrice > 0) state.totalPrice -= actions.payload;
+      if (state.totalPrice == 0) state.emptyCart = true;
     },
     addToCart: (state, actions) => {
       state.cartData.push(actions.payload);
       state.totalPrice = calculateTotalPrice(state.cartData);
       Cookies.set("cart", JSON.stringify(state.cartData));
       Cookies.set("totalPrice", JSON.stringify(state.totalPrice));
+      state.emptyCart = false;
     },
     removeFromCart: (state, actions) => {
       const index = state.cartData.findIndex(
@@ -44,6 +48,7 @@ export const cartSlice = createSlice({
         state.totalPrice = calculateTotalPrice(state.cartData);
         Cookies.set("cart", JSON.stringify(state.cartData));
         Cookies.set("totalPrice", JSON.stringify(state.totalPrice));
+        state.emptyCart = state.cartData.length === 0;
       }
     },
   },
