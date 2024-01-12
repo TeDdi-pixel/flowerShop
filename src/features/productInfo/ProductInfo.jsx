@@ -53,8 +53,8 @@ const ProductInfo = () => {
                     <ProductSlidePrice price={item.price} />
                     <Shiping />
                     <Sizes sizes={item.size} />
-                    <div className="product-info__manage">
-                      <Quantity />
+                    <div className="product-info__manage" style={{marginBottom: "30px"}}>
+                      <Quantity title={"Quantity"} titleMargin={'10px'} height={'30px'} maxWidth={'90px'}/>
                       <SliderBtnMain
                         text={item.text}
                         status={soledOutStatuses[index]}

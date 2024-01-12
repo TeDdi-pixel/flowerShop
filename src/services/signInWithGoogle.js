@@ -4,13 +4,13 @@ import { setUserCart } from "./setters/setUserCart";
 import { setUserLocalStorage } from "./setters/setUserLocalStorage";
 import { setUserCookies } from "./setters/setUserCookies";
 
-const signInWithGoogle = async (cookiesEnabled) => {
+const signInWithGoogle = async (cookiesEnabled,cartData) => {
   const provider = new GoogleAuthProvider();
   try {
     const result = await signInWithPopup(auth, provider);
     const uid = auth.currentUser.uid;
     setUserLocalStorage(result);
-    await setUserCart(uid, {});
+    await setUserCart(uid, cartData);
     await setUserCookies(cookiesEnabled, uid);
     location.reload();
   } catch (error) {

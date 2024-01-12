@@ -73,18 +73,20 @@
   &__quantity {
     max-width: 90px;
     @include default-font(16px);
-    &-title {
-      margin-bottom: 10px;
-    }
+ 
     &-block {
       display: flex;
       height: 30px;
+      max-width: 90px;
       width: 100%;
       align-items: center;
       justify-content: center;
       border-radius: 5px;
       border: 1px solid #665f5f;
       padding: 0 20px;
+      &-text{
+        @include default-font(16px);
+      }
     }
   }
   &__button {
@@ -174,6 +176,14 @@
     }
     &__size {
       max-width: 77px;
+    }
+
+    &__quantity{
+      max-width: 66px;
+      &-block{
+        max-width: 66px;
+        height: 25px;
+      }
     }
   }
 }

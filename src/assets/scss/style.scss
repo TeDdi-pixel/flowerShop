@@ -222,6 +222,9 @@
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   &__text {
     @include adaptive-font(20, 16);
     @include default-font(16px, 400);

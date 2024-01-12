@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import ProductQuantityBnt from "../../shared/productSlide/ui/ProductQuantityBnt";
-import { useDispatch, useSelector } from "react-redux";
-import { add, remove } from "../../store/slices/quantitySlice";
 
-const Quantity = () => {
-  const quantity = useSelector((state) => state.quantity.value);
-  const dispatch = useDispatch();
+const Quantity = ({ title, titleMargin, height, maxWidth }) => {
+  const [quantity, setQuantity] = useState(1);
+  const minus = () => {
+    if (quantity > 0) setQuantity((prev) => (prev -= 1));
+  };
+  const plus = () => {
+    setQuantity((prev) => (prev += 1));
+  };
+
   return (
-    <div className="product-info__quantity">
-      <h4 className="product-info__quantity-title">Quantity</h4>
-      <div className="product-info__quantity-block">
-        <ProductQuantityBnt onClick={() => dispatch(remove())} text={"-"} />
-        <span>{quantity}</span>
-        <ProductQuantityBnt onClick={() => dispatch(add())} text={"+"} />
+    <div className="product-info__quantity" style={{ maxWidth: maxWidth }}>
+      <h4
+        className="product-info__quantity-title"
+        style={{ marginBottom: titleMargin }}
+      >
+        {title}
+      </h4>
+      <div className="product-info__quantity-block" style={{ height: height }}>
+        <ProductQuantityBnt onClick={minus} text={"-"} />
+        <span className="product-info__quantity-block-text">{quantity}</span>
+        <ProductQuantityBnt onClick={plus} text={"+"} />
       </div>
     </div>
   );
