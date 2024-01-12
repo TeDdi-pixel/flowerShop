@@ -30,13 +30,21 @@ const BurgerMenu = ({ isMenuOpen, onClick }) => {
           {burgerLinks.map((link, index) => {
             return <BurgerLink key={index} path={link.path} name={link.name} />;
           })}
+        </div>
+        <div
+          className={
+            userIsSignIn
+              ? "burger-menu_logOut"
+              : "burger-menu_signIn"
+          }
+        >
           {userIsSignIn ? (
-            <Link to="/" className="burger-menu__logOut" onClick={onLogOut}>
+            <Link to="/" onClick={onLogOut}>
               LogOut
             </Link>
           ) : (
             !userIsSignIn && (
-              <Link to="/" className="burger-menu__signIn" onClick={onLogIn}>
+              <Link to="/" onClick={onLogIn}>
                 SignIn
               </Link>
             )

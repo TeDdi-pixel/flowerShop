@@ -47,32 +47,63 @@
         color: white;
 
         &:first-child {
-          background-color: #d23988;
+          background-color: #cf88b0;
         }
         &:nth-child(2) {
-          background-color: #d17ca0;
+          background-color: #dfb6c7;
         }
         &:nth-child(3) {
-          background-color: #f0b7d0;
+          background-color: #a2c19e;
         }
         &:nth-child(4) {
-          background-color: #f4e8f0;
+          background-color: #669c61;
         }
         &:nth-child(5) {
-          background-color: #d2b48c;
-        }
-        &:nth-child(6) {
-          background-color: #85a461;
+          background-color: #a1d062;
         }
         &:last-child {
-          background-color: rgb(224, 108, 104);
+          background-color: #d1dd8c;
         }
       }
     }
-    &__signIn{
-      @include adaptive-font(23, 16);
-      @include default-font(16px, 400, left, 200%);
-      cursor: pointer;
+  }
+
+  &_logOut {
+    @include adaptive-font(23, 16);
+    @include default-font(16px, 400, left, 200%);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: padding ease 0.3s, background-color ease 0.3s;
+    a {
+      color: #d23939;
+      transition: color ease 0.3s;
+    }
+    &:hover {
+      padding: 15px 46px;
+      background-color: #d23939;
+      a {
+        color: white;
+      }
+    }
+  }
+  &_signIn {
+    transition: padding ease 0.3s, background-color ease 0.3s;
+    border-radius: 5px;
+    @include adaptive-font(23, 16);
+    @include default-font(16px, 400, left, 200%);
+    cursor: pointer;
+    a {
+      color: #7cc578;
+      transition: color ease 0.3s;
+    }
+    &:hover {
+      padding: 15px 46px;
+      background-color: #d23939;
+      a {
+        color: white;
+      }
+      padding: 15px 46px;
+      background-color: #7cc578;
     }
   }
 }
