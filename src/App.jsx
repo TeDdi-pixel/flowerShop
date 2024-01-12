@@ -6,7 +6,7 @@ const App = () => {
   return (
     <>
       <AppRouter />
-      <SpeedInsights />
+      {/* <SpeedInsights /> */}
     </>
   );
 };
