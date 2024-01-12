@@ -5,7 +5,6 @@ export const getData = async (collectionName, urls, setCollectionsData) => {
   const collectionRef = collection(db, collectionName);
   const cachedData = localStorage.getItem(collectionName);
   if (cachedData) {
-    localStorage.clear()
     setCollectionsData(JSON.parse(cachedData));
   } else {
     try {
