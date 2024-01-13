@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 
 const usePath = () => {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname.substring(1));
+  const getPath = () => {
+    const path = window.location.pathname;
+    return path === '/' ? path : path.substring(1);
+  };
+
+  const [currentPath, setCurrentPath] = useState(getPath());
 
   useEffect(() => {
     const handleLocationChange = () => {
-      setCurrentPath(window.location.pathname.substring(1));
+      setCurrentPath(getPath());
     };
 
     window.addEventListener("popstate", handleLocationChange);
@@ -17,5 +22,6 @@ const usePath = () => {
 
   return { currentPath };
 };
+
 
 export default usePath;

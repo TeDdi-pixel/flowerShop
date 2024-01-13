@@ -8,10 +8,14 @@ const Path = () => {
   const emptyCart = useSelector((state) => state.cart.emptyCart);
 
   return (
-    <div className="current-path">
-      <div className="current-path__text">{currentPath}</div>
-      {!emptyCart ? <ShopingButtonUnderlined /> : null}
-    </div>
+    <>
+      {currentPath !== "/" && (
+        <div className="current-path">
+          <div className="current-path__text">{currentPath}</div>
+          {!emptyCart ? <ShopingButtonUnderlined /> : null}
+        </div>
+      )}
+    </>
   );
 };
 

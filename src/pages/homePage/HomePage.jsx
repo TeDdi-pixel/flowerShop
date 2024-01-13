@@ -10,12 +10,10 @@ import DefaultLayout from "../../layouts/default/DefaultLayout";
 import CollectionsBlock from "../../widgets/collectionsBlock/CollectionsBlock";
 import BlogsBlock from "../../widgets/blogs/BlogsBlock";
 import ProductInfoBlock from "../../widgets/productInfoBlock/ProductInfoBlock";
-import CookiesMessage from "../../entities/cookiesMessage/CookiesMessage";
 
 const HomePage = () => {
   return (
     <DefaultLayout>
-      <CookiesMessage/>
       <ProductInfoBlock />
       <EntranceBlock />
       <DeliveryOptionsBlock />
