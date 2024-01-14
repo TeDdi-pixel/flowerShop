@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProductInCart from "../../../entities/cart/productInCart/ProductInCart";
-import useData from "../../../hooks/useData";
 import ProductBorder from "../../../shared/cart/ui/ProductBorder";
 import { useSelector } from "react-redux";
+import useCart from "../../../hooks/useCart";
 
 const Products = () => {
-  const uid = useSelector((state) => state.user.useData);
-  const { data } = useData("userCarts", uid);
+  const uid = useSelector((state) => state.user.userData);
+  const { data } = uid ? useCart("userCarts", uid) : { data: null };
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <div className="cart__products-wrapper">
       <ProductBorder />
       {data &&
-        data[0]?.cartData.map((product) => {
+        data.cartData.map((product) => {
           return (
             <ProductInCart
               key={product.id}
@@ -20,6 +23,7 @@ const Products = () => {
               img={product.img}
               title={product.title}
               price={product.price}
+              initialQuantity={product.quantity}
             />
           );
         })}

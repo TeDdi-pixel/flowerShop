@@ -4,8 +4,8 @@ import EmptyCart from "../../entities/cart/emptyCart/EmptyCart";
 import Products from "../../features/cart/products/Products";
 import ProductKeys from "../../entities/cart/productKeys/ProductKeys";
 import WriteToUs from "../../entities/cart/writeToUs/WriteToUs";
-import Total from "../../entities/cart/total/Total";
 import { setCart } from "../../store/slices/cartSlice";
+import TotalPrice from "../../entities/cart/total/TotalPrice";
 
 const CartBlock = () => {
   const emptyCart = useSelector((state) => state.cart.emptyCart);
@@ -27,7 +27,7 @@ const CartBlock = () => {
           <Products />
           <div className="cart__end-block">
             <WriteToUs />
-            <Total />
+            <TotalPrice />
           </div>
         </>
       )}

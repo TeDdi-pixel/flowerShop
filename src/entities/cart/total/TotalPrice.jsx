@@ -10,13 +10,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setTotalPrice } from "../../../store/slices/cartSlice";
 import Cookies from "js-cookie";
 
-const Total = () => {
+const TotalPrice = () => {
   const { isFullWidth } = useWindowResize(695);
   const { data } = useData("products");
   const product = data[0];
   const totalPrice = useSelector((state) => state.cart.totalPrice);
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     const savedTotalPrice = Cookies.get("totalPrice");
     if (savedTotalPrice) {
@@ -48,4 +48,4 @@ const Total = () => {
   );
 };
 
-export default Total;
+export default TotalPrice;

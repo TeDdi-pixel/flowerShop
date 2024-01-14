@@ -4,20 +4,23 @@ import BurgerLink from "../../shared/burgerLink/BurgerLink";
 import Exit from "../../shared/exit/Exit";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutUser } from "../../store/slices/userSlice";
-import { signInWithGoogle } from "../../services/signInWithGoogle";
 import { Link } from "react-router-dom";
+import { setTotalPrice } from "../../store/slices/cartSlice";
+import { signInWithGoogle } from "../../services/signInWithGoogle";
 
 const BurgerMenu = ({ isMenuOpen, onClick }) => {
   const userIsSignIn = useSelector((state) => state.user.userIsSignIn);
+  const userCart = useSelector((state) => state.cart.userCart);
   const cookiesEnabled = useSelector((state) => state.cookies.cookiesEnabled);
   const dispatch = useDispatch();
 
   const onLogOut = () => {
     dispatch(logOutUser());
     onClick();
+    dispatch(setTotalPrice(0));
   };
   const onLogIn = () => {
-    signInWithGoogle(cookiesEnabled);
+    signInWithGoogle(dispatch, cookiesEnabled, userCart);
     onClick();
   };
   return (
@@ -32,11 +35,7 @@ const BurgerMenu = ({ isMenuOpen, onClick }) => {
           })}
         </div>
         <div
-          className={
-            userIsSignIn
-              ? "burger-menu_logOut"
-              : "burger-menu_signIn"
-          }
+          className={userIsSignIn ? "burger-menu_logOut" : "burger-menu_signIn"}
         >
           {userIsSignIn ? (
             <Link to="/" onClick={onLogOut}>

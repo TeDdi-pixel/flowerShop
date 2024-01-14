@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductImg from "../../../shared/cart/ui/ProductImg";
 import SizeTitle from "../../../shared/productSlide/sizeUi/SizeTitle";
 import ProductTitle from "../../../shared/cart/ui/ProductTitle";
@@ -8,33 +8,72 @@ import TrashCan from "../../../shared/cart/ui/TrashCan";
 import ProductQuantityBnt from "../../../shared/productSlide/ui/ProductQuantityBnt";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  calculateTotalPrice,
   removeFromCart,
+  setTotalPrice,
   totalAdd,
   totalRemove,
+  updateCart,
 } from "../../../store/slices/cartSlice";
 import { removeProductFromCart } from "../../../services/removeProductFromCart";
+import { setUserCart } from "../../../services/setters/setUserCart";
+import useCart from "../../../hooks/useCart";
+import Cookies from "js-cookie";
 
-const ProductInCart = ({ img, title, price, id }) => {
-  const [quantity, setQuantity] = useState(1);
+const ProductInCart = ({ img, title, price, id, initialQuantity }) => {
+  const [quantity, setQuantity] = useState(initialQuantity);
+  const [productTotalPrice, setproductTotalPrice] = useState(
+    price * initialQuantity
+  );
+  const totalPrice = useSelector((state) => state.cart.totalPrice);
   const { isFullWidth } = useWindowResize(695);
-  const [productTotalPrice, setproductTotalPrice] = useState(price);
   const dispatch = useDispatch();
   const uid = useSelector((state) => state.user.userData);
+  const { data } = uid ? useCart("userCarts", uid) : null;
 
-  const minus = () => {
-    if (quantity > 0) {
-      setQuantity((prev) => (prev -= 1));
+  const setCookies = (updatedCartData) => {
+    console.log("u", updatedCartData);
+    Cookies.set("cart", JSON.stringify(updatedCartData));
+    Cookies.set("totalPrice", JSON.stringify(totalPrice));
+    localStorage.setItem("userCarts", JSON.stringify(updatedCartData));
+    console.log("userCarts", JSON.parse(localStorage.getItem("userCarts")));
+    console.log("cookie", JSON.parse(Cookies.get("cart")));
+  };
+
+  console.log(data);
+  useEffect(() => {
+    if (data) {
+      const updatedCartData = data.cartData.map((item) => {
+        if (item.id === id && quantity > 1) {
+          return { ...item, quantity: quantity };
+        } else {
+          return item;
+        }
+      });
+      dispatch(updateCart(updatedCartData));
+      setUserCart(uid, updatedCartData);
+      setCookies(updatedCartData);
+      dispatch(setTotalPrice(calculateTotalPrice(updatedCartData)));
+    }
+  }, [quantity]);
+
+  const minus = async () => {
+    if (quantity > 1) {
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
       dispatch(totalRemove(price));
       setproductTotalPrice((prev) => (prev -= price));
     }
   };
-  const plus = () => {
-    setQuantity((prev) => (prev += 1));
+  const plus = async () => {
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
     dispatch(totalAdd(price));
     setproductTotalPrice((prev) => (prev += price));
   };
 
   const handleRemoveFromCart = () => {
+    dispatch(totalRemove(price * quantity));
     dispatch(removeFromCart({ id }));
     removeProductFromCart(uid, id);
   };

@@ -27,20 +27,35 @@ const ProductCard = ({ img, title, price, text, id }) => {
   };
 
   const handleAddToCart = async () => {
-    if (Object.keys(userLocalStorageData).length > 0 && cookiesEnabled && uid) {
-      dispatch(addToCart({ img, title, price, text, id }));
-      if (cartData) {
-        await setUserCart(uid, cartData);
+    if (text === "Add to cart") {
+      if (
+        Object.keys(userLocalStorageData).length > 0 &&
+        cookiesEnabled &&
+        uid
+      ) {
+        dispatch(addToCart({ id, img, title, price, text }));
+        if (cartData) {
+          localStorage.setItem("cartData", JSON.stringify(cartData));
+          await setUserCart(uid, cartData);
+        }
+      } else {
+        alert("To add products into the cart, you need to login firstly");
       }
-    } else {
-      alert("To add products into the cart, you need to login firstly");
-    }
+    } else return;
   };
 
   useEffect(() => {
-    if (Object.keys(userLocalStorageData).length > 0 && cartData && uid) {
+    
+    if (
+      Object.keys(userLocalStorageData).length > 0 &&
+      cartData.length > 0 &&
+      uid
+    ) {
+      setUserCart(uid, cartData);
+    } else {
       setUserCart(uid, cartData);
     }
+    console.log(cartData);
   }, [cartData, uid]);
 
   useEffect(() => {

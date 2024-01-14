@@ -2,22 +2,54 @@ import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
 export const calculateTotalPrice = (cartData) => {
-  return cartData.reduce((total, product) => total + product.price, 0);
+  return cartData.reduce(
+    (total, product) => total + product.price * product.quantity,
+    0
+  );
 };
+
+const cookiesCart = Cookies.get("cart");
+const userCarts = localStorage.getItem("userCarts");
+let cart = [];
+let totalPrice = 0;
+if (cookiesCart) {
+  try {
+    cart = JSON.parse(cookiesCart);
+    console.log(cart);
+    totalPrice = calculateTotalPrice(cart);
+  } catch (error) {
+    console.error("Invalid cart data:", cookiesCart);
+    cart = [];
+    totalPrice = 0;
+  }
+}
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    emptyCart: true,
+    emptyCart: Object.keys(userCarts).length > 0 ? false : true,
     moneyCount: 0,
-    cartData: [],
-    totalPrice: 0,
+    cartData: Array.isArray(cart) ? cart : [],
+    totalPrice: totalPrice,
   },
   reducers: {
+    initializeCart: (state) => {
+      if (
+        userCarts !== null &&
+        userCarts !== undefined &&
+        Object.keys(userCarts).length > 0
+      ) {
+        const parsedUserCarts = JSON.parse(userCarts);
+        Cookies.set("cart", JSON.stringify(parsedUserCarts.cartData));
+        state.cartData = parsedUserCarts.cartData;
+      }
+    },
+    updateCart: (state,action) =>{
+      state.cartData = action.payload;
+    },
+
     setCart: (state) => {
-      console.log(state.emptyCart);
       state.emptyCart = false;
-      console.log(state.emptyCart);
     },
     setMoneyCount: (state, actions) => {
       state.moneyCount += actions.payload;
@@ -33,22 +65,31 @@ export const cartSlice = createSlice({
       if (state.totalPrice == 0) state.emptyCart = true;
     },
     addToCart: (state, actions) => {
-      state.cartData.push(actions.payload);
+      const product = actions.payload;
+      const existingProduct = state.cartData.find(
+        (item) => item.id === product.id
+      );
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        state.cartData.push({ ...product, quantity: 1 });
+      }
       state.totalPrice = calculateTotalPrice(state.cartData);
       Cookies.set("cart", JSON.stringify(state.cartData));
       Cookies.set("totalPrice", JSON.stringify(state.totalPrice));
       state.emptyCart = false;
     },
     removeFromCart: (state, actions) => {
-      const index = state.cartData.findIndex(
-        (item) => item.id === actions.payload.id
+      state.cartData = state.cartData.filter(
+        (item) => item.id !== actions.payload.id
       );
-      if (index !== -1) {
-        state.cartData.splice(index, 1);
-        state.totalPrice = calculateTotalPrice(state.cartData);
-        Cookies.set("cart", JSON.stringify(state.cartData));
+      state.totalPrice = calculateTotalPrice(state.cartData);
+      Cookies.set("cart", JSON.stringify(state.cartData));
+      Cookies.set("totalPrice", JSON.stringify(state.totalPrice));
+      state.emptyCart = state.cartData.length === 0;
+      if (state.cartData.length === 0) {
+        Cookies.set("cart", JSON.stringify([]));
         Cookies.set("totalPrice", JSON.stringify(state.totalPrice));
-        state.emptyCart = state.cartData.length === 0;
       }
     },
   },
@@ -64,6 +105,9 @@ export const {
   addToCart,
   removeFromCart,
   setTotalPrice,
+  initializeCart,
+  updateCart,
+  
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

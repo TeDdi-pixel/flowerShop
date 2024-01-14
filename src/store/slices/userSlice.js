@@ -4,10 +4,12 @@ import Cookies from "js-cookie";
 const userCookie = Cookies.get("user");
 const userLocalStorage = localStorage.getItem("user");
 let userLocalStorageData = userLocalStorage ? JSON.parse(userLocalStorage) : {};
+
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    userIsSignIn: userLocalStorageData && 'user' in userLocalStorageData ? true : false,
+    userIsSignIn:
+      userLocalStorageData && "user" in userLocalStorageData ? true : false,
 
     userData: userCookie
       ? JSON.parse(userCookie)
@@ -18,13 +20,18 @@ export const userSlice = createSlice({
     userLocalStorageData: userLocalStorage ? JSON.parse(userLocalStorage) : {},
   },
   reducers: {
+    setUserData: (state, action) => {
+      state.userData = action.payload;
+    },
     logOutUser: (state) => {
       localStorage.setItem("user", JSON.stringify({}));
       Cookies.set("user", JSON.stringify({}), { expires: 7 });
+      Cookies.set("totalPrice", JSON.stringify(0));
+      Cookies.set("cart", JSON.stringify({}));
       state.userData = {};
       state.userLocalStorageData = {};
       state.userIsSignIn = false;
-      Cookies.set("totalPrice", JSON.stringify(0));
+      localStorage.setItem('userCarts', JSON.stringify({}));
     },
   },
 });

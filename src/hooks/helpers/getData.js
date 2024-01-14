@@ -1,5 +1,6 @@
 import { collection, doc, getDocs, writeBatch } from "firebase/firestore";
 import { db } from "../../services/firebase/firebase-config";
+import { getFilteredData } from "./getFilteredData";
 
 export const getData = async (collectionName, urls, setCollectionsData) => {
   const collectionRef = collection(db, collectionName);
@@ -18,13 +19,9 @@ export const getData = async (collectionName, urls, setCollectionsData) => {
         });
       }
       await batch.commit();
-      const newData = await getDocs(collectionRef);
-      const newFilteredData = newData.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setCollectionsData(newFilteredData);
-      localStorage.setItem(collectionName, JSON.stringify(newFilteredData));
+      const filteredData = await getFilteredData(collectionRef);
+      setCollectionsData(filteredData);
+      localStorage.setItem(collectionName, JSON.stringify(filteredData));
     } catch (error) {
       console.log(error);
     }
