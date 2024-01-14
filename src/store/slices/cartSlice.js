@@ -27,7 +27,7 @@ if (cookiesCart) {
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    emptyCart: Object.keys(userCarts).length > 0 ? false : true,
+    emptyCart: !!(cookiesCart.length > 0),
     moneyCount: 0,
     cartData: Array.isArray(cart) ? cart : [],
     totalPrice: totalPrice,
@@ -107,7 +107,7 @@ export const {
   setTotalPrice,
   initializeCart,
   updateCart,
-  
+
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
