@@ -45,10 +45,10 @@ const ProductCard = ({ img, title, price, text, id }) => {
   };
 
   useEffect(() => {
-    
     if (
       Object.keys(userLocalStorageData).length > 0 &&
       cartData.length > 0 &&
+      cartData !== undefined &&
       uid
     ) {
       setUserCart(uid, cartData);
