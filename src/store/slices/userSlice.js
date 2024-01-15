@@ -25,13 +25,13 @@ export const userSlice = createSlice({
     },
     logOutUser: (state) => {
       localStorage.setItem("user", JSON.stringify({}));
-      Cookies.set("user", JSON.stringify({}), { expires: 7 });
-      Cookies.set("totalPrice", JSON.stringify(0));
-      Cookies.set("cart", JSON.stringify({}));
+      Cookies.remove("user");
+      Cookies.remove("totalPrice");
+      Cookies.remove("cart");
       state.userData = {};
       state.userLocalStorageData = {};
       state.userIsSignIn = false;
-      localStorage.setItem('userCarts', JSON.stringify({}));
+      localStorage.removeItem('userCarts');
     },
   },
 });

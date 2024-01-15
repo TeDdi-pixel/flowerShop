@@ -10,6 +10,7 @@ import {
 } from "../../store/slices/productInfoSlice";
 import { addToCart } from "../../store/slices/cartSlice";
 import { setUserCart } from "../../services/setters/setUserCart";
+import Cookies from "js-cookie";
 
 const ProductCard = ({ img, title, price, text, id }) => {
   const [soledOut, setSoledOut] = useState(false);
@@ -35,25 +36,28 @@ const ProductCard = ({ img, title, price, text, id }) => {
       ) {
         dispatch(addToCart({ id, img, title, price, text }));
         if (cartData) {
-          localStorage.setItem("cartData", JSON.stringify(cartData));
           await setUserCart(uid, cartData);
+          localStorage.setItem("userCarts", JSON.stringify(cartData));
+          Cookies.set('cart',JSON.stringify(cartData));
         }
-      } else {
+      } else if(!userLocalStorageData){
         alert("To add products into the cart, you need to login firstly");
+      }else{
+        alert("You need to allow cookies to add products");
       }
+
     } else return;
   };
 
   useEffect(() => {
     if (
-      Object.keys(userLocalStorageData).length > 0 &&
+      Object.keys(userLocalStorageData).length > 0&&
       cartData.length > 0 &&
       uid
     ) {
+
       setUserCart(uid, cartData);
-    } else {
-      setUserCart(uid, cartData);
-    }
+    } 
   }, [cartData, uid]);
 
   useEffect(() => {

@@ -10,7 +10,7 @@ const GoogleLogin = () => {
   const cookiesEnabled = useSelector((state) => state.cookies.cookiesEnabled);
   const userData = useSelector((state) => state.user.userLocalStorageData);
   const dispatch = useDispatch();
-  const { data } = uid ? useCart("userCarts", uid) : null;
+  const { data } =  useCart("userCarts", uid)
 
   const signIn = useCallback(async () => {
     await signInWithGoogle(dispatch,cookiesEnabled, data);

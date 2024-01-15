@@ -9,9 +9,10 @@ export const calculateTotalPrice = (cartData) => {
 };
 
 const cookiesCart = Cookies.get("cart");
-const userCarts = localStorage.getItem("userCarts");
+
 let cart = [];
 let totalPrice = 0;
+console.log("cookiesCart:", cookiesCart); 
 if (cookiesCart) {
   try {
     cart = JSON.parse(cookiesCart);
@@ -22,28 +23,28 @@ if (cookiesCart) {
     totalPrice = 0;
   }
 }
-
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    emptyCart: true,
+    emptyCart: cart && cart.length > 0 ? false : true,
     moneyCount: 0,
-    cartData: Array.isArray(cart) ? cart : [],
+    cartData: cart && Array.isArray(cart) ? cart : [],
     totalPrice: totalPrice,
   },
   reducers: {
-    initializeCart: (state) => {
+    initializeCart: (state,actions) => {
+      const cartData = actions.payload;
       if (
-        userCarts !== null &&
-        userCarts !== undefined &&
-        Object.keys(userCarts).length > 0
+        cartData !== null &&
+        cartData !== undefined &&
+        Array.isArray(cartData) &&
+        cartData.length > 0
       ) {
-        const parsedUserCarts = JSON.parse(userCarts);
-        Cookies.set("cart", JSON.stringify(parsedUserCarts.cartData));
-        state.cartData = parsedUserCarts.cartData;
+        Cookies.set("cart", JSON.stringify(cartData));
+        state.cartData = cartData;
       }
     },
-    updateCart: (state,action) =>{
+    updateCart: (state, action) => {
       state.cartData = action.payload;
     },
 
@@ -106,7 +107,6 @@ export const {
   setTotalPrice,
   initializeCart,
   updateCart,
-
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

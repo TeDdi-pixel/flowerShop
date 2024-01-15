@@ -1,22 +1,30 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "./firebase/firebase-config";
 import { setUserCart } from "./setters/setUserCart";
-import { setUserCookies } from "./setters/setUserCookies";
 import { initializeCart } from "../store/slices/cartSlice";
+import Cookies from "js-cookie";
 
 export const signInWithGoogle = async (dispatch, cookiesEnabled, cartData) => {
   const provider = new GoogleAuthProvider();
   try {
     const result = await signInWithPopup(auth, provider);
     const uid = auth.currentUser.uid;
+    console.log(result);
     if (result !== undefined) {
       localStorage.setItem("user", JSON.stringify(result));
     }
-    if (Array.isArray(cartData) ) {
+    console.log(cartData);
+    if (cartData && Array.isArray(cartData)) {
       await setUserCart(uid, cartData);
+      dispatch(initializeCart({ payload: cartData }));
     }
-    await setUserCookies(cookiesEnabled, uid);
-    dispatch(initializeCart(cartData));
+    if (cookiesEnabled && uid) {
+      Cookies.set("user", JSON.stringify(uid), { expires: 7 });
+    } else if (cookiesEnabled && cartData) {
+      Cookies.set("user", JSON.stringify(uid), { expires: 7 });
+    } else {
+      console.warn("Unable to set cookies due to missing or invalid data");
+    }
 
     location.reload();
   } catch (error) {

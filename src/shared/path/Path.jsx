@@ -9,7 +9,7 @@ const Path = () => {
 
   return (
     <>
-      {currentPath !== "/" && (
+      {currentPath !== "/" && currentPath !== "/Home/Cart"&&(
         <div className="current-path">
           <div className="current-path__text">{currentPath}</div>
           {!emptyCart ? <ShopingButtonUnderlined /> : null}
