@@ -48,14 +48,12 @@ const ProductCard = ({ img, title, price, text, id }) => {
     if (
       Object.keys(userLocalStorageData).length > 0 &&
       cartData.length > 0 &&
-      cartData !== undefined &&
       uid
     ) {
       setUserCart(uid, cartData);
     } else {
       setUserCart(uid, cartData);
     }
-    console.log(cartData);
   }, [cartData, uid]);
 
   useEffect(() => {

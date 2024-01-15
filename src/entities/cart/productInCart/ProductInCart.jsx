@@ -32,19 +32,16 @@ const ProductInCart = ({ img, title, price, id, initialQuantity }) => {
   const { data } = uid ? useCart("userCarts", uid) : null;
 
   const setCookies = (updatedCartData) => {
-    console.log("u", updatedCartData);
     Cookies.set("cart", JSON.stringify(updatedCartData));
     Cookies.set("totalPrice", JSON.stringify(totalPrice));
     localStorage.setItem("userCarts", JSON.stringify(updatedCartData));
-    console.log("userCarts", JSON.parse(localStorage.getItem("userCarts")));
-    console.log("cookie", JSON.parse(Cookies.get("cart")));
   };
 
   console.log(data);
   useEffect(() => {
     if (data) {
       const updatedCartData = data.cartData.map((item) => {
-        if (item.id === id && quantity > 1) {
+        if (item.id === id && quantity > 0) {
           return { ...item, quantity: quantity };
         } else {
           return item;

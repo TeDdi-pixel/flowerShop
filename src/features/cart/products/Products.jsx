@@ -7,9 +7,6 @@ import useCart from "../../../hooks/useCart";
 const Products = () => {
   const uid = useSelector((state) => state.user.userData);
   const { data } = uid ? useCart("userCarts", uid) : { data: null };
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   return (
     <div className="cart__products-wrapper">

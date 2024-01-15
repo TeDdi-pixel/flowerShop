@@ -15,7 +15,6 @@ let totalPrice = 0;
 if (cookiesCart) {
   try {
     cart = JSON.parse(cookiesCart);
-    console.log(cart);
     totalPrice = calculateTotalPrice(cart);
   } catch (error) {
     console.error("Invalid cart data:", cookiesCart);
@@ -27,7 +26,7 @@ if (cookiesCart) {
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    emptyCart: !!(cookiesCart.length > 0),
+    emptyCart: true,
     moneyCount: 0,
     cartData: Array.isArray(cart) ? cart : [],
     totalPrice: totalPrice,
