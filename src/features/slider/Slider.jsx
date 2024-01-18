@@ -47,7 +47,7 @@ const Slider = ({ children, selectedItem }) => {
   useEffect(() => {
     if (selectedItem) {
       setCurrentSlide(Number(selectedItem.split("_")[0]));
-      setTimeout(() => dispatch(setIsSliderOpened()), 700);
+      setTimeout(() => dispatch(setIsSliderOpened()), 1000);
     }
   }, [selectedItem]);
   return (

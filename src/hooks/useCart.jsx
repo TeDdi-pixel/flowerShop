@@ -1,32 +1,42 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../services/firebase/firebase-config";
+import Cookies from "js-cookie";
+import { calculateTotalPrice } from "../helpers/calculateTotalPrice";
+import { saveToCookies } from "../helpers/browserActions";
 
-const useCart = (collectionName, uid) => {
-  const [data, setData] = useState(null);
-
-  let docRef = doc(db, collectionName, uid.toString());
+const useCart = (collectionName, uid, cookiesEnabled) => {
+  const [cartData, setCartData] = useState(
+    JSON.parse(Cookies.get("cart") || null)
+  );
 
   useEffect(() => {
-  const unsubscribe = onSnapshot(docRef, (docSnapshot) => {
-    let data = docSnapshot.data();
-    if (data && typeof data.cartData === "string") {
-      data.cartData = JSON.parse(data.cartData);
+    if (!collectionName || !uid) {
+      console.error("Invalid collectionName or uid");
+      return;
     }
-    if (data) {
-      setData({
-        ...data,
-        id: docSnapshot.id,
-      });
-      localStorage.setItem(collectionName, JSON.stringify(data));
-    }
-  });
+    let docRef = doc(db, collectionName, uid.toString());
 
-  return () => unsubscribe();
-}, []);
+    const unsubscribe = onSnapshot(docRef, (docSnapshot) => {
+      const newData = docSnapshot.exists() ? docSnapshot.data().cartData : null;
 
+      if (JSON.stringify(newData) !== JSON.stringify(cartData)) {
+        setCartData(newData);
 
-  return { data };
+        if (newData && cookiesEnabled) {
+          try {
+            saveToCookies("totalPrice", calculateTotalPrice(newData));
+            saveToCookies("cart", newData);
+          } catch (error) {
+            console.error("Failed to set item in localStorage:", error);
+          }
+        }
+      }
+    });
+    return () => unsubscribe();
+  }, [collectionName, uid, cookiesEnabled]);
+
+  return { cartData };
 };
 
 export default useCart;

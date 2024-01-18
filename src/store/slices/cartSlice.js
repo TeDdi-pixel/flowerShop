@@ -1,61 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
+import { calculateTotalPrice } from "../../helpers/calculateTotalPrice";
+import { getFromCookies, saveToCookies } from "../../helpers/browserActions";
 
-export const calculateTotalPrice = (cartData) => {
-  return cartData.reduce(
-    (total, product) => total + product.price * product.quantity,
-    0
-  );
-};
+let cart = getFromCookies("cart") || [];
 
-const cookiesCart = Cookies.get("cart");
-
-let cart = [];
-let totalPrice = 0;
-console.log("cookiesCart:", cookiesCart); 
-if (cookiesCart) {
-  try {
-    cart = JSON.parse(cookiesCart);
-    totalPrice = calculateTotalPrice(cart);
-  } catch (error) {
-    console.error("Invalid cart data:", cookiesCart);
-    cart = [];
-    totalPrice = 0;
-  }
-}
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    emptyCart: cart && cart.length > 0 ? false : true,
+    emptyCart: cart.length === 0,
     moneyCount: 0,
-    cartData: cart && Array.isArray(cart) ? cart : [],
-    totalPrice: totalPrice,
+    cartData: cart,
+    totalPrice: cart.length > 0 ? calculateTotalPrice(cart) : 0,
   },
   reducers: {
-    initializeCart: (state,actions) => {
-      const cartData = actions.payload;
-      if (
-        cartData !== null &&
-        cartData !== undefined &&
-        Array.isArray(cartData) &&
-        cartData.length > 0
-      ) {
-        Cookies.set("cart", JSON.stringify(cartData));
+    initializeCart: (state, actions) => {
+      const cartData = actions.cartData;
+      if (cartData) {
+        saveToCookies("cart", cartData);
         state.cartData = cartData;
+      } else if (actions.cookiesEnabled) {
+        state.cartData = [];
       }
     },
     updateCart: (state, action) => {
       state.cartData = action.payload;
     },
 
-    setCart: (state) => {
-      state.emptyCart = false;
+    setEmptyCart: (state, action) => {
+      state.emptyCart = action.payload;
     },
     setMoneyCount: (state, actions) => {
       state.moneyCount += actions.payload;
     },
     setTotalPrice: (state, action) => {
       state.totalPrice = action.payload;
+      const totalPrice = state.totalPrice;
+      if (totalPrice && Cookies.get("totalPrice"))
+        Cookies.set("totalPrice", JSON.stringify(totalPrice));
     },
     totalAdd: (state, actions) => {
       state.totalPrice += actions.payload;
@@ -75,8 +57,8 @@ export const cartSlice = createSlice({
         state.cartData.push({ ...product, quantity: 1 });
       }
       state.totalPrice = calculateTotalPrice(state.cartData);
-      Cookies.set("cart", JSON.stringify(state.cartData));
-      Cookies.set("totalPrice", JSON.stringify(state.totalPrice));
+      saveToCookies("cart", state.cartData);
+      saveToCookies("totalPrice", state.totalPrice);
       state.emptyCart = false;
     },
     removeFromCart: (state, actions) => {
@@ -84,19 +66,19 @@ export const cartSlice = createSlice({
         (item) => item.id !== actions.payload.id
       );
       state.totalPrice = calculateTotalPrice(state.cartData);
-      Cookies.set("cart", JSON.stringify(state.cartData));
-      Cookies.set("totalPrice", JSON.stringify(state.totalPrice));
+      saveToCookies("cart", state.cartData);
+      saveToCookies("totalPrice", state.totalPrice);
       state.emptyCart = state.cartData.length === 0;
       if (state.cartData.length === 0) {
-        Cookies.set("cart", JSON.stringify([]));
-        Cookies.set("totalPrice", JSON.stringify(state.totalPrice));
+        saveToCookies("cart", []);
+        saveToCookies("totalPrice", state.totalPrice);
       }
     },
   },
 });
 
 export const {
-  setCart,
+  setEmptyCart,
   setMoneyCount,
   addCartItem,
   removeCartItem,

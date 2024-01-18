@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/icons/logo.svg";
 import HeaderRight from "../../entities/headerRight/HeaderRight";
 import HeaderIconMenu from "../../shared/headerIconMenu/HeaderIconMenu.jsx";
@@ -7,14 +7,12 @@ import BurgerMenu from "../burgerMenu/BurgerMenu.jsx";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const userIsSignIn = useSelector((state) => state.user.userIsSignIn);
-  const totalPrice = useSelector((state) => state.cart.totalPrice);
-
   const handleBurgerMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
+
   return (
     <header className="header header_scrolled">
       <div className="header__container">
@@ -27,7 +25,7 @@ const Header = () => {
           <Link to="/">
             <img src={logo} alt="logo" className="header__logo" />
           </Link>
-          <HeaderRight moneyCount={totalPrice} />
+          <HeaderRight />
         </nav>
       </div>
       <BurgerMenu isMenuOpen={isMenuOpen} onClick={handleBurgerMenu} />

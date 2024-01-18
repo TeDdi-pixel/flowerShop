@@ -5,10 +5,8 @@ import ProductTitle from "../../../shared/cart/ui/ProductTitle";
 import ProductPrice from "../../../shared/cart/ui/ProductPrice";
 import useWindowResize from "../../../hooks/useWindowResize";
 import TrashCan from "../../../shared/cart/ui/TrashCan";
-import ProductQuantityBnt from "../../../shared/productSlide/ui/ProductQuantityBnt";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  calculateTotalPrice,
   removeFromCart,
   setTotalPrice,
   totalAdd,
@@ -19,6 +17,9 @@ import { removeProductFromCart } from "../../../services/removeProductFromCart";
 import { setUserCart } from "../../../services/setters/setUserCart";
 import useCart from "../../../hooks/useCart";
 import Cookies from "js-cookie";
+import { calculateTotalPrice } from "../../../helpers/calculateTotalPrice";
+import ProductQuantityBnt from "../../../shared/productSlide/ui/ProductQuantityBnt";
+import { saveToCookies } from "../../../helpers/browserActions";
 
 const ProductInCart = ({ img, title, price, id, initialQuantity }) => {
   const [quantity, setQuantity] = useState(initialQuantity);
@@ -29,18 +30,16 @@ const ProductInCart = ({ img, title, price, id, initialQuantity }) => {
   const { isFullWidth } = useWindowResize(695);
   const dispatch = useDispatch();
   const uid = useSelector((state) => state.user.userData);
-  const { data } = uid ? useCart("userCarts", uid) : null;
+  const { cartData } = uid ? useCart("userCarts", uid) : null;
 
   const setCookies = (updatedCartData) => {
-    Cookies.set("cart", JSON.stringify(updatedCartData));
-    Cookies.set("totalPrice", JSON.stringify(totalPrice));
-    localStorage.setItem("userCarts", JSON.stringify(updatedCartData));
+    saveToCookies("cart", updatedCartData);
+    saveToCookies("totalPrice", totalPrice);
   };
 
-  console.log(data);
   useEffect(() => {
-    if (data) {
-      const updatedCartData = data.cartData.map((item) => {
+    if (cartData) {
+      const updatedCartData = cartData.map((item) => {
         if (item.id === id && quantity > 0) {
           return { ...item, quantity: quantity };
         } else {

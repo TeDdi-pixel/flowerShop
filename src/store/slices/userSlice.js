@@ -1,41 +1,52 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
-
-const userCookie = Cookies.get("user");
-const userLocalStorage = localStorage.getItem("user");
-let userLocalStorageData = userLocalStorage ? JSON.parse(userLocalStorage) : {};
+import {
+  getFromCookies,
+  getFromLocalStorage,
+  saveToCookies,
+  saveToLocalStorage,
+} from "../../helpers/browserActions";
 
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    userIsSignIn:
-      userLocalStorageData && "user" in userLocalStorageData ? true : false,
-
-    userData: userCookie
-      ? JSON.parse(userCookie)
-      : localStorage.getItem("user")
-      ? JSON.parse(localStorage.getItem("user"))
-      : {},
-
-    userLocalStorageData: userLocalStorage ? JSON.parse(userLocalStorage) : {},
+    userIsSignIn: getFromLocalStorage("user") ? true : false,
+    userData: getFromCookies("user") || getFromLocalStorage("user")?.user?.uid,
+    storageUserData: getFromLocalStorage("user"),
   },
   reducers: {
     setUserData: (state, action) => {
-      state.userData = action.payload;
+      if (action.payload) {
+        state.userData = action.payload;
+        state.storageUserData = getFromLocalStorage("user");
+        if (state.storageUserData) saveToCookies("user", action.payload);
+      }
+    },
+    setUserIsSignedIn: (state, action) => {
+      if (action.payload) state.userIsSignIn = action.payload;
+      else state.userIsSignIn = false;
+    },
+    setStorageUserData: (state, action) => {
+      state.storageUserData = action.payload;
+      saveToLocalStorage("user", action.payload);
     },
     logOutUser: (state) => {
-      localStorage.setItem("user", JSON.stringify({}));
-      Cookies.remove("user");
-      Cookies.remove("totalPrice");
+      state.userData = null;
+      localStorage.removeItem("user");
+      const user = getFromCookies("user");
+      if (user) saveToCookies("user", {});
+      else Cookies.remove("user");
       Cookies.remove("cart");
-      state.userData = {};
-      state.userLocalStorageData = {};
-      state.userIsSignIn = false;
-      localStorage.removeItem('userCarts');
+      Cookies.remove("totalPrice");
     },
   },
 });
 
-export const { setUserData, logOutUser } = userSlice.actions;
+export const {
+  setStorageUserData,
+  setUserData,
+  logOutUser,
+  setUserIsSignedIn,
+} = userSlice.actions;
 
 export default userSlice.reducer;

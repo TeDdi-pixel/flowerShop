@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
-import { getData } from "./helpers/getData";
-import { getUrls } from "./helpers/getUrls";
+import { getData } from "../helpers/hooks/getData";
+import { getUrls } from "../helpers/hooks/getUrls";
 
 const useCollections = (collectionName, folder) => {
   const [urls, setUrls] = useState([]);

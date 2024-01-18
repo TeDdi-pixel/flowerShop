@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCardBlock from "../../entities/productCardBlock/ProductCardBlock";
+import ProductCardBlock from "../../features/topRated/ProductCardBlock";
 import MainBtn from "../../shared/mainBtn/MainBtn";
 import MainTitle from "../../shared/mainTitle/MainTitle";
 import useWindowResize from "../../hooks/useWindowResize";

@@ -1,7 +1,7 @@
 import { collection, doc, onSnapshot, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../services/firebase/firebase-config";
-import { getFilteredData } from "./helpers/getFilteredData";
+import { getFilteredData } from "../helpers/hooks/getFilteredData";
 
 const useData = (collectionName, uid) => {
   const [data, setData] = useState([]);

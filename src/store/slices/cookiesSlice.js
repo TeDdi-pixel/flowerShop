@@ -1,26 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Cookies from "js-cookie";
+import { getFromCookies, saveToCookies } from "../../helpers/browserActions";
 
 export const cookiesSlice = createSlice({
   name: "cookies",
   initialState: {
-    cookiesEnabled: !!Cookies.get("user"),
+    cookiesEnabled: !!getFromCookies("user"),
     cookiesMessage: true,
   },
   reducers: {
-    enableCookies: (state,actions) => {
+    enableCookies: (state) => {
       state.cookiesEnabled = true;
-      Cookies.set('cart',JSON.stringify(actions.payload))
-      // Cookies.set('totalPrice',JSON.stringify(actions.payload))
+      saveToCookies("cart", []);
+      const user = getFromCookies("user");
+      if (user) saveToCookies("user", user);
+      else if (state.cookiesEnabled) saveToCookies("user", {});
     },
-
     closeCookiesMessage: (state) => {
       state.cookiesMessage = false;
     },
   },
 });
 
-export const { enableCookies, closeCookiesMessage } =
-  cookiesSlice.actions;
+export const { enableCookies, closeCookiesMessage } = cookiesSlice.actions;
 
 export default cookiesSlice.reducer;

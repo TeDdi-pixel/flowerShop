@@ -18,6 +18,7 @@ import {
   setSoledOutStatuses,
 } from "../../store/slices/productInfoSlice";
 import PickAddress from "../../shared/pickAddress/PickAddress";
+import { useAddToCart } from "../../hooks/useAddToCart";
 
 const ProductInfo = () => {
   const { collectionsData } = useCollections("products", "productsImg");
@@ -27,6 +28,8 @@ const ProductInfo = () => {
   const soledOutStatuses = useSelector(
     (stete) => stete.productInfo.soledOutStatuses
   );
+  const handleAddToCart = useAddToCart();
+
   const dispatch = useDispatch();
   const handleExit = () => {
     dispatch(setIsSliderOpened());
@@ -53,11 +56,20 @@ const ProductInfo = () => {
                     <ProductSlidePrice price={item.price} />
                     <Shiping />
                     <Sizes sizes={item.size} />
-                    <div className="product-info__manage" style={{marginBottom: "30px"}}>
-                      <Quantity title={"Quantity"} titleMargin={'10px'} height={'30px'} maxWidth={'90px'}/>
+                    <div
+                      className="product-info__manage"
+                      style={{ marginBottom: "30px" }}
+                    >
+                      <Quantity
+                        title={"Quantity"}
+                        titleMargin={"10px"}
+                        height={"30px"}
+                        maxWidth={"90px"}
+                      />
                       <SliderBtnMain
                         text={item.text}
                         status={soledOutStatuses[index]}
+                        onClick={() => handleAddToCart(item)}
                       />
                     </div>
                     <PickAddress />

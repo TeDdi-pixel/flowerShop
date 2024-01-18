@@ -3,62 +3,18 @@ import ProductCardTitle from "../../shared/productCard/ui/ProductCardTitle";
 import ProductCardPrice from "../../shared/productCard/ui/ProductCardPrice";
 import ProductCardImg from "../../shared/productCard/ui/ProductCardImg";
 import ProductCardButton from "../../shared/productCard/ui/ProductCardButton";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  handleShowMore,
-  setSelectedItem,
-} from "../../store/slices/productInfoSlice";
-import { addToCart } from "../../store/slices/cartSlice";
-import { setUserCart } from "../../services/setters/setUserCart";
-import Cookies from "js-cookie";
+import { useSelector } from "react-redux";
 
-const ProductCard = ({ img, title, price, text, id }) => {
+const ProductCard = ({
+  img,
+  title,
+  price,
+  text,
+  productInfoOpen,
+  handleAddToCart,
+}) => {
   const [soledOut, setSoledOut] = useState(false);
-  const cookiesEnabled = useSelector((state) => state.cookies.cookiesEnabled);
-  const uid = useSelector((state) => state.user.userData);
-  const userLocalStorageData = useSelector(
-    (state) => state.user.userLocalStorageData
-  );
   const cartData = useSelector((state) => state.cart.cartData);
-  const dispatch = useDispatch();
-
-  const productInfoOpen = () => {
-    dispatch(setSelectedItem(id));
-    dispatch(handleShowMore());
-  };
-
-  const handleAddToCart = async () => {
-    if (text === "Add to cart") {
-      if (
-        Object.keys(userLocalStorageData).length > 0 &&
-        cookiesEnabled &&
-        uid
-      ) {
-        dispatch(addToCart({ id, img, title, price, text }));
-        if (cartData) {
-          await setUserCart(uid, cartData);
-          localStorage.setItem("userCarts", JSON.stringify(cartData));
-          Cookies.set('cart',JSON.stringify(cartData));
-        }
-      } else if(!userLocalStorageData){
-        alert("To add products into the cart, you need to login firstly");
-      }else{
-        alert("You need to allow cookies to add products");
-      }
-
-    } else return;
-  };
-
-  useEffect(() => {
-    if (
-      Object.keys(userLocalStorageData).length > 0&&
-      cartData.length > 0 &&
-      uid
-    ) {
-
-      setUserCart(uid, cartData);
-    } 
-  }, [cartData, uid]);
 
   useEffect(() => {
     if (text) {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ProductPrice from "../../../shared/cart/ui/ProductPrice";
 import useData from "../../../hooks/useData";
 import ProductKey from "../../../shared/cart/productKey/ProductKey";
@@ -6,23 +6,14 @@ import Shiping from "../../../shared/cart/ui/Shiping";
 import SliderBtnMain from "../../../shared/sliderBtnMain/SliderBntMain";
 import useWindowResize from "../../../hooks/useWindowResize";
 import ProductBorder from "../../../shared/cart/ui/ProductBorder";
-import { useDispatch, useSelector } from "react-redux";
-import { setTotalPrice } from "../../../store/slices/cartSlice";
-import Cookies from "js-cookie";
+import { useSelector } from "react-redux";
 
 const TotalPrice = () => {
   const { isFullWidth } = useWindowResize(695);
   const { data } = useData("products");
   const product = data[0];
   const totalPrice = useSelector((state) => state.cart.totalPrice);
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    const savedTotalPrice = Cookies.get("totalPrice");
-    if (savedTotalPrice) {
-      dispatch(setTotalPrice(JSON.parse(savedTotalPrice)));
-    }
-  }, []);
+
   return (
     product && (
       <div className="cart__total">
