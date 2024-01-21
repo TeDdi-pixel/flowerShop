@@ -16,7 +16,6 @@ import {
 import { removeProductFromCart } from "../../../services/removeProductFromCart";
 import { setUserCart } from "../../../services/setters/setUserCart";
 import useCart from "../../../hooks/useCart";
-import Cookies from "js-cookie";
 import { calculateTotalPrice } from "../../../helpers/calculateTotalPrice";
 import ProductQuantityBnt from "../../../shared/productSlide/ui/ProductQuantityBnt";
 import { saveToCookies } from "../../../helpers/browserActions";

@@ -1,4 +1,5 @@
 .product-card {
+  position: relative;
   max-width: 289px;
   border-radius: 5px;
   box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25),
@@ -6,6 +7,33 @@
   transition: scale ease 0.4s, box-shadow ease 0.4s;
   &:hover {
     box-shadow: 6px 6px 30px rgba(44, 44, 44, 0.4);
+  }
+  &__message {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    opacity: 0;
+    transition: all ease 0.3s;
+    z-index: -50;
+    @include default-font(16px,500);
+    svg {
+      font-size: 20px;
+      path {
+        fill: rgb(74, 157, 74);
+      }
+    }
+    &_open {
+      z-index: 50;
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
   }
   &__img {
     object-fit: cover;

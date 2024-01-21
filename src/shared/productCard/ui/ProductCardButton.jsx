@@ -6,7 +6,9 @@ const ProductCardButton = ({ text, status, addToCart }) => {
       className={
         status ? "product-card__button_soledOut" : "product-card__button"
       }
-      onClick={addToCart}
+      onClick={() => {
+        addToCart();
+      }}
     >
       <div className="product-card__button-text">{text}</div>
       <span></span>

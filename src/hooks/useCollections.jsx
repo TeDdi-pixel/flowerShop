@@ -20,8 +20,7 @@ const useCollections = (collectionName, folder) => {
     if (urls.length > 0) {
       getDataCallback();
     }
-  }, [collectionName,urls, getDataCallback]);
-
+  }, [collectionName, urls, getDataCallback]);
   return { collectionsData };
 };
 

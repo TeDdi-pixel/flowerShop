@@ -1,10 +1,10 @@
 import React from "react";
-import cart from "../../assets/icons/cart.svg";
 import HeaderIconSearch from "../../shared/headerIconSearch/HeaderIconSearch";
 import useWindowResize from "../../hooks/useWindowResize";
 import { Link } from "react-router-dom";
 import GoogleLogin from "../../features/header/googleLogin/GoogleLogin";
 import { useSelector } from "react-redux";
+import { RiShoppingCartLine } from "react-icons/ri";
 
 const HeaderRight = () => {
   const { isFullWidth } = useWindowResize(525);
@@ -15,7 +15,9 @@ const HeaderRight = () => {
       <GoogleLogin />
       <HeaderIconSearch />
       <Link to="/Home/Cart" className="header__cart-block">
-        <img src={cart} alt="cart" style={{ width: "16px" }} />
+        <RiShoppingCartLine
+          style={{ height: "16px", width: "16px", color: "#665f5f" }}
+        />
         {isFullWidth ? null : (
           <div className="header__money">{`${totalPrice}$`}</div>
         )}

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ProductCard from "../../entities/productCardBlock/ProductCard";
+import ProductCard from "../../entities/productCard/ProductCard";
 import useCollections from "../../hooks/useCollections";
 import { setUserCart } from "../../services/setters/setUserCart";
 import {
