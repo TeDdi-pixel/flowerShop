@@ -4,7 +4,7 @@
   height: 100%;
   right: -100%;
   top: 0;
-  z-index: 1000;
+  z-index: 999;
   backdrop-filter: blur(5px);
   transition: right ease 0.3s, background-color ease 0.3s;
   &_open {

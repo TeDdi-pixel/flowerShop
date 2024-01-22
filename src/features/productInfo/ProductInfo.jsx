@@ -24,30 +24,18 @@ import ProductCardMessage from "../../shared/productCard/ui/ProductCardMessage";
 const ProductInfo = () => {
   const { collectionsData } = useCollections("products", "productsImg");
   const { data } = useData("products");
-  const [isAddedMessage, setIsAddedMessage] = useState(false);
-  const [delay, setDelay] = useState(true);
   const showMore = useSelector((state) => state.productInfo.showMore);
   const selectedItem = useSelector((state) => state.productInfo.selectedItem);
   const soledOutStatuses = useSelector(
     (stete) => stete.productInfo.soledOutStatuses
   );
-  const handleAddToCart = useAddToCart();
+  const cookiesError = useSelector((state) => state.cookies.cookiesError);
+  const { handleAddToCart, addedProducts } = useAddToCart();
 
   const dispatch = useDispatch();
   const handleExit = () => {
     dispatch(setIsSliderOpened());
     dispatch(handleShowMore());
-  };
-  const addToCart = (item) => {
-    if (item.text === "Add to cart" && delay) {
-      setIsAddedMessage(true);
-      handleAddToCart(item);
-      setDelay(false);
-      setTimeout(() => {
-        setIsAddedMessage(false);
-        setDelay(true);
-      }, 2000);
-    }
   };
 
   useEffect(() => {
@@ -65,12 +53,14 @@ const ProductInfo = () => {
               return (
                 <SliderSlide key={item.id}>
                   <ProductSlideImg image={item.imageUrl} />
-                  <ProductCardMessage
-                    isAddedMessage={isAddedMessage}
-                    width={"195px"}
-                    height={"70px"}
-                    top={"50%"}
-                  />
+                  {!cookiesError && addedProducts[item.id] ? (
+                    <ProductCardMessage
+                      isAddedMessage={addedProducts[item.id]}
+                      width={"175px"}
+                      height={"50px"}
+                      top={"40%"}
+                    />
+                  ) : null}
                   <div className="product-info__data-wrapper">
                     <ProductSlideTitle title={item.title} />
                     <ProductSlidePrice price={item.price} />
@@ -89,7 +79,7 @@ const ProductInfo = () => {
                       <SliderBtnMain
                         text={item.text}
                         status={soledOutStatuses[index]}
-                        onClick={() => addToCart(item)}
+                        onClick={() => handleAddToCart(item)}
                       />
                     </div>
                     <PickAddress />

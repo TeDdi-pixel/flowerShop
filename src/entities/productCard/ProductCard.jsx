@@ -8,28 +8,18 @@ import ProductCardMessage from "../../shared/productCard/ui/ProductCardMessage";
 
 const ProductCard = ({
   img,
+  id,
   title,
   price,
   text,
   productInfoOpen,
   handleAddToCart,
+  addedProducts,
 }) => {
   const [soledOut, setSoledOut] = useState(false);
-  const [isAddedMessage, setIsAddedMessage] = useState(false);
-  const [delay, setDelay] = useState(true);
   const cartData = useSelector((state) => state.cart.cartData);
-
-  const addToCart = () => {
-    if (text === "Add to cart" && delay) {
-      setIsAddedMessage(true);
-      handleAddToCart();
-      setDelay(false);
-      setTimeout(() => {
-        setIsAddedMessage(false);
-        setDelay(true);
-      }, 2000);
-    }
-  };
+  const cookiesError = useSelector((state) => state.cookies.cookiesError);
+  
   useEffect(() => {
     if (text) {
       setSoledOut(text.toLowerCase() === "sold out");
@@ -38,12 +28,14 @@ const ProductCard = ({
 
   return (
     <div className="product-card">
+      {!cookiesError && addedProducts[id] ? (
       <ProductCardMessage
-        isAddedMessage={isAddedMessage}
+        isAddedMessage={addedProducts[id]}
         width={"175px"}
         height={"50px"}
         top={"40%"}
       />
+    ) : null}
       <ProductCardImg img={img} alt="flowers" onClick={productInfoOpen} />
       <div className="product-card__info-wrapper">
         <div className="product-card__info">
@@ -53,7 +45,7 @@ const ProductCard = ({
         <ProductCardButton
           text={text}
           status={soledOut}
-          addToCart={addToCart}
+          addToCart={handleAddToCart}
         />
       </div>
     </div>

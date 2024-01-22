@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../store/slices/cartSlice";
 import { setUserCart } from "../services/setters/setUserCart";
 import { saveToCookies } from "../helpers/browserActions";
+import { setError, setErrorMessage } from "../store/slices/cookiesSlice";
+import { useState } from "react";
 
 export const useAddToCart = () => {
   const cookiesEnabled = useSelector((state) => state.cookies.cookiesEnabled);
@@ -9,20 +11,29 @@ export const useAddToCart = () => {
   const storageUserData = useSelector((state) => state.user.storageUserData);
   const cartData = useSelector((state) => state.cart.cartData);
   const dispatch = useDispatch();
+  const [addedProducts, setAddedProducts] = useState({});
 
   const handleAddToCart = async (product) => {
-    if (uid && cookiesEnabled && storageUserData?.user?.uid) {
-      dispatch(addToCart(product));
-      if (cartData) {
-        setUserCart(uid, cartData);
-        saveToCookies("cart", cartData);
+    if (!addedProducts[product.id]) {
+      if (uid && cookiesEnabled && storageUserData?.user?.uid) {
+        dispatch(addToCart(product));
+        if (cartData) {
+          setUserCart(uid, cartData);
+          saveToCookies("cart", cartData);
+          setAddedProducts({ ...addedProducts, [product.id]: true });
+          setTimeout(() => {
+            setAddedProducts({ ...addedProducts, [product.id]: false });
+          }, 2000);
+        }
+      } else if (!cookiesEnabled) {
+        dispatch(setError(true));
+        dispatch(setErrorMessage("Cookies: No enabled cookies found"));
+      } else if (!uid || !storageUserData?.user?.uid) {
+        dispatch(setError(true));
+        dispatch(setErrorMessage("Cookies: No signed in user found"));
       }
-    } else if (!uid || !storageUserData?.user?.uid) {
-      alert("To add products into the cart, you need to login firstly");
-    } else if (!cookiesEnabled) {
-      alert("You need to allow cookies to add products");
     }
   };
 
-  return handleAddToCart;
+  return { handleAddToCart, addedProducts };
 };

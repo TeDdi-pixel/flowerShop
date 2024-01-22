@@ -3,7 +3,7 @@ import logo from "../../assets/icons/logo.svg";
 import HeaderRight from "../../entities/headerRight/HeaderRight";
 import HeaderIconMenu from "../../shared/headerIconMenu/HeaderIconMenu.jsx";
 import { Link } from "react-router-dom";
-import BurgerMenu from "../burgerMenu/BurgerMenu.jsx";
+import BurgerMenu from "../../entities/burgerMenu/BurgerMenu.jsx";
 import { useSelector } from "react-redux";
 
 const Header = () => {

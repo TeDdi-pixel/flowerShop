@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import ProductCard from "../../entities/productCard/ProductCard";
 import useCollections from "../../hooks/useCollections";
 import { setUserCart } from "../../services/setters/setUserCart";
 import {
@@ -8,6 +7,7 @@ import {
 } from "../../store/slices/productInfoSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useAddToCart } from "../../hooks/useAddToCart";
+import ProductCard from "../../entities/ProductCard/ProductCard";
 
 const ProductCardBlock = () => {
   const { collectionsData } = useCollections("products", "productsImg");
@@ -16,7 +16,7 @@ const ProductCardBlock = () => {
   const storageUserData = useSelector((state) => state.user.storageUserData);
   const cartData = useSelector((state) => state.cart.cartData);
   const dispatch = useDispatch();
-  const handleAddToCart = useAddToCart();
+  const { handleAddToCart, addedProducts } = useAddToCart();
 
   const productInfoOpen = (id) => {
     dispatch(setSelectedItem(id));
@@ -39,6 +39,7 @@ const ProductCardBlock = () => {
           title={card.title}
           price={card.price}
           text={card.text}
+          addedProducts={addedProducts}
           productInfoOpen={() => productInfoOpen(card.id)}
           handleAddToCart={() => handleAddToCart(card)}
           soledOut={card.text.toLowerCase() === "sold out"}

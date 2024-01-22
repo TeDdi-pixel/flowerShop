@@ -1,14 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CookiesText from "../../shared/cookiesText/CookiesText";
-import CookiesBtn from "../../shared/cookiesText/CookiesBtn";
+import CookiesText from "../../../shared/cookiesText/CookiesText";
+import CookiesBtn from "../../../shared/cookiesText/CookiesBtn";
 import {
   closeCookiesMessage,
   enableCookies,
-} from "../../store/slices/cookiesSlice";
-import Exit from "../../shared/exit/Exit";
-import useWindowResize from "../../hooks/useWindowResize";
-import { setUserData } from "../../store/slices/userSlice";
+} from "../../../store/slices/cookiesSlice";
+import Exit from "../../../shared/exit/Exit";
+import useWindowResize from "../../../hooks/useWindowResize";
+import { setUserData } from "../../../store/slices/userSlice";
 
 const CookiesMessage = () => {
   const { isFullWidth } = useWindowResize(465);
