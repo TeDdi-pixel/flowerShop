@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import useCollections from "../../hooks/useCollections";
-import { setUserCart } from "../../services/setters/setUserCart";
 import {
   handleShowMore,
   setSelectedItem,
@@ -8,6 +7,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useAddToCart } from "../../hooks/useAddToCart";
 import ProductCard from "../../entities/ProductCard/ProductCard";
+import { setUserCart } from "../../services/setters/setUserCart";
 
 const ProductCardBlock = () => {
   const { collectionsData } = useCollections("products", "productsImg");

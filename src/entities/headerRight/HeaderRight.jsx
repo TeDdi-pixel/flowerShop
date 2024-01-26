@@ -9,12 +9,16 @@ import { RiShoppingCartLine } from "react-icons/ri";
 const HeaderRight = () => {
   const { isFullWidth } = useWindowResize(525);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
-
+  const userIsSignIn = useSelector((state) => state.user.userIsSignIn);
   return (
     <div className="header__right">
       <GoogleLogin />
       <HeaderIconSearch />
-      <Link to="/Home/Cart" className="header__cart-block">
+      <Link
+        to="/Home/Cart"
+        className="header__cart-block"
+        style={{ width: userIsSignIn ? "96.5px" : "" }}
+      >
         <RiShoppingCartLine
           style={{ height: "16px", width: "16px", color: "#665f5f" }}
         />

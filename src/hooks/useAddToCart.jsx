@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../store/slices/cartSlice";
-import { setUserCart } from "../services/setters/setUserCart";
 import { saveToCookies } from "../helpers/browserActions";
 import { setError, setErrorMessage } from "../store/slices/cookiesSlice";
 import { useState } from "react";
+import { setUserCart } from "../services/setters/setUserCart";
 
 export const useAddToCart = () => {
   const cookiesEnabled = useSelector((state) => state.cookies.cookiesEnabled);

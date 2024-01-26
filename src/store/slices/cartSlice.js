@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 import { calculateTotalPrice } from "../../helpers/calculateTotalPrice";
 import { getFromCookies, saveToCookies } from "../../helpers/browserActions";
@@ -12,6 +12,7 @@ export const cartSlice = createSlice({
     moneyCount: 0,
     cartData: cart,
     totalPrice: cart.length > 0 ? calculateTotalPrice(cart) : 0,
+    error: null,
   },
   reducers: {
     initializeCart: (state, actions) => {
@@ -48,28 +49,28 @@ export const cartSlice = createSlice({
     },
     addToCart: (state, actions) => {
       const product = actions.payload;
-      const existingProduct = state.cartData.find(
-        (item) => item.id === product.id
-      );
+      const cartData = state.cartData;
+      const existingProduct = cartData.find((item) => item.id === product.id);
       if (existingProduct) {
         existingProduct.quantity += 1;
       } else {
-        state.cartData.push({ ...product, quantity: 1 });
+        cartData.push({ ...product, quantity: 1 });
       }
-      state.totalPrice = calculateTotalPrice(state.cartData);
-      saveToCookies("cart", state.cartData);
+      state.totalPrice = calculateTotalPrice(cartData);
+      saveToCookies("cart", cartData);
       saveToCookies("totalPrice", state.totalPrice);
       state.emptyCart = false;
     },
     removeFromCart: (state, actions) => {
-      state.cartData = state.cartData.filter(
+      const cartData = state.cartData;
+      state.cartData = cartData.filter(
         (item) => item.id !== actions.payload.id
       );
-      state.totalPrice = calculateTotalPrice(state.cartData);
-      saveToCookies("cart", state.cartData);
+      state.totalPrice = calculateTotalPrice(cartData);
+      saveToCookies("cart", cartData);
       saveToCookies("totalPrice", state.totalPrice);
-      state.emptyCart = state.cartData.length === 0;
-      if (state.cartData.length === 0) {
+      state.emptyCart = cartData.length === 0;
+      if (cartData.length === 0) {
         saveToCookies("cart", []);
         saveToCookies("totalPrice", state.totalPrice);
       }
