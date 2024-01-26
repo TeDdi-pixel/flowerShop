@@ -6,11 +6,9 @@ import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from "swiper/react";
 import BlogItem from "../../shared/blogs/BlogItem";
 import useCollections from "../../hooks/useCollections";
-import useWindowResize from "../../hooks/useWindowResize";
 
 const BlogsBlock = () => {
   const { collectionsData } = useCollections("blogs", "blogsImg");
-  const { slidesPerView } = useWindowResize();
   return (
     <div className="blogs">
       <AditionalTitle title={"Our blogs"} />

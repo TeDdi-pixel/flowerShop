@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 import { calculateTotalPrice } from "../../helpers/calculateTotalPrice";
 import { getFromCookies, saveToCookies } from "../../helpers/browserActions";
@@ -9,7 +9,6 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState: {
     emptyCart: cart.length === 0,
-    moneyCount: 0,
     cartData: cart,
     totalPrice: cart.length > 0 ? calculateTotalPrice(cart) : 0,
     error: null,
@@ -30,9 +29,6 @@ export const cartSlice = createSlice({
 
     setEmptyCart: (state, action) => {
       state.emptyCart = action.payload;
-    },
-    setMoneyCount: (state, actions) => {
-      state.moneyCount += actions.payload;
     },
     setTotalPrice: (state, action) => {
       state.totalPrice = action.payload;
@@ -80,7 +76,6 @@ export const cartSlice = createSlice({
 
 export const {
   setEmptyCart,
-  setMoneyCount,
   addCartItem,
   removeCartItem,
   totalAdd,
