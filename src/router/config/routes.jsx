@@ -8,18 +8,18 @@ const ContactsPage = lazy(() =>
 const AboutUsPage = lazy(() => import("../../pages/aboutUsPage/AboutUsPage"));
 const CatalogPage = lazy(() => import("../../pages/catalogPage/CatalogPage"));
 const ProductPage = lazy(() => import("../../pages/productPage/ProductPage"));
-const ShopingCart = lazy(() => import("../../pages/cartPage/ShopingCart"));
+const ShoppingCart = lazy(() => import("../../pages/cartPage/ShoppingCart"));
 const CollectionsPage = lazy(() =>
   import("../../pages/collectionsPage/CollectionsPage")
 );
 
 export const routes = [
-  { path: "/", element: <HomePage /> },
-  { path: "Home/Search", element: <SearchPage /> },
-  { path: "Home/Contacts", element: <ContactsPage /> },
-  { path: "Home/AboutUs", element: <AboutUsPage /> },
-  { path: "Home/Catalog", element: <CatalogPage /> },
-  { path: "Home/Product", element: <ProductPage /> },
-  { path: "Home/Cart", element: <ShopingCart /> },
-  { path: "Home/Collections", element: <CollectionsPage /> },
+  { id: 0, path: "/", element: <HomePage /> },
+  { id: 1, path: "Home/Search", element: <SearchPage /> },
+  { id: 2, path: "Home/Contacts", element: <ContactsPage /> },
+  { id: 3, path: "Home/AboutUs", element: <AboutUsPage /> },
+  { id: 4, path: "Home/Catalog", element: <CatalogPage /> },
+  { id: 5, path: "Home/Product", element: <ProductPage /> },
+  { id: 6, path: "Home/Cart", element: <ShoppingCart /> },
+  { id: 7, path: "Home/Collections", element: <CollectionsPage /> },
 ];
