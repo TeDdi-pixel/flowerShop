@@ -6,8 +6,8 @@ import {
 } from "../../store/slices/productInfoSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useAddToCart } from "../../hooks/useAddToCart";
-import ProductCard from "../../entities/ProductCard/ProductCard";
 import { setUserCart } from "../../services/setters/setUserCart";
+import ProductCard from "../../entities/productCard/ProductCard";
 
 const ProductCardBlock = () => {
   const { collectionsData } = useCollections("products", "productsImg");
