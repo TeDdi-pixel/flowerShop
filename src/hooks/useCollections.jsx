@@ -22,6 +22,7 @@ const useCollections = (collectionName, folder) => {
     }
   }, [collectionName, urls, getDataCallback]);
   return { collectionsData };
+  
 };
 
 export default useCollections;

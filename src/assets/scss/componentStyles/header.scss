@@ -65,8 +65,9 @@
     width: 45px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
     transition: path ease 0.3s, scale ease 0.3s, width 0.3s ease;
-    font-family: Montserrat;
+    font-family: Montserrat,sans-serif;
     color: #665f5f;
+
     svg {
       path {
         transition: all ease 0.3s;
