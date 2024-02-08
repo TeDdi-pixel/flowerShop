@@ -10,7 +10,7 @@ import {
 export const userSlice = createSlice({
   name: "user",
   initialState: {
-    userIsSignIn: getFromLocalStorage("user") ? true : false,
+    userIsSignIn: getFromLocalStorage("user"),
     userData: getFromCookies("user") || getFromLocalStorage("user")?.user?.uid,
     storageUserData: getFromLocalStorage("user"),
   },

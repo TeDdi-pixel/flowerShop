@@ -43,6 +43,7 @@
       padding: 0;
       background-color: transparent;
       @include default-font(24px, 400);
+      @include adaptive-font(24,16);
       cursor: pointer;
       &:hover {
         text-decoration: underline;

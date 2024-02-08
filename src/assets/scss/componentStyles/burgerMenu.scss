@@ -19,12 +19,12 @@
     position: relative;
     width: 400px;
     background-color: white;
-    height: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 5px;
+    height: 75%;
   }
   &__links {
     border-radius: 5px;

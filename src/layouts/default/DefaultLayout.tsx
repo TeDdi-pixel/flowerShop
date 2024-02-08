@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 import Header from "../../widgets/header/Header";
 import Footer from "../../widgets/footer/Footer";
 import CookiesMessage from "../../entities/cookies/cookiesMessage/CookiesMessage";
@@ -7,7 +7,7 @@ import CookiesError from "../../entities/cookies/cookiesError/CookiesError";
 import { useDispatch, useSelector } from "react-redux";
 import { setError } from "../../store/slices/cookiesSlice";
 
-const DefaultLayout = ({ children }) => {
+const DefaultLayout = ({ children }: { children: ReactNode }) => {
   const cookiesErrorMessage = useSelector(
     (state) => state.cookies.cookiesErrorMessage
   );

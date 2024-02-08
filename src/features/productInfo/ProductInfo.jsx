@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ProductSlideTitle from "../../shared/productSlide/ui/ProductSlideTitle";
 import ProductSlideImg from "../../shared/productSlide/ui/ProductSlideImg";
 import ProductSlidePrice from "../../shared/productSlide/ui/ProductSlidePrice";

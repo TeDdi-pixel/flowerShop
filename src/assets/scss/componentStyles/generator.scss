@@ -1,0 +1,184 @@
+.generator {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 1129px;
+  width: 100%;
+  margin: 0 auto 90px auto;
+  padding: 30px 25px 10px 25px;
+  &__title {
+    @include default-font(24px, 600, center);
+    @include adaptive-font(24, 18);
+    margin-bottom: 25px;
+  }
+  &__input {
+    display: flex;
+    max-width: 500px;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 40px;
+    label {
+      max-width: 250px;
+      width: 100%;
+      @include default-font(20px);
+      @include adaptive-font(20, 14);
+    }
+  }
+  &__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 512px;
+    width: 100%;
+    height: 512px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 40px;
+    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
+    position: relative;
+
+    &-placeholder {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      &-text {
+        @include default-font(18px, 400, center);
+      }
+      &-warning {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        @include default-font(12px, 400, center);
+        padding: 0 25px;
+        svg {
+          color: #fe8d59;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+    &-regenerate-btn {
+      background-color: transparent;
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 5;
+      svg {
+        transition: transform ease 0.7s, scale ease 0.3s;
+        width: 30px;
+        height: 30px;
+        path {
+          color: #665f5f;
+        }
+      }
+      &:hover {
+        svg {
+          transform: rotate(360deg);
+          scale: 1.2;
+        }
+      }
+    }
+  }
+  &__flowers {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+    &-prompt {
+      position: relative;
+      background-color: transparent;
+      max-width: 200px;
+      height: 200px;
+      border-radius: 10px;
+      width: 100%;
+      padding: 10px;
+      @include default-font(12px);
+      text-align: center;
+      overflow: hidden;
+      transition: background-color ease 0.3s, color ease 0.3s, scale ease 0.3s,
+        box-shadow ease 0.3s, max-width ease 0.7s;
+
+      &-text {
+        position: relative;
+        z-index: 1;
+        @include default-font(18px);
+        color: white;
+      }
+      img {
+        position: absolute;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform ease 0.7s, filter ease 0.3s;
+        filter: blur(5px);
+      }
+      color: white;
+      &_active {
+        background-color: #ffd1d7;
+        box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
+        img {
+          transform: translate(-50%, -50%) scale(1.5);
+          filter: blur(0);
+        }
+      }
+      &:hover {
+        box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
+        background-color: #665f5f;
+        img {
+          filter: blur(0);
+          transform: translate(-50%, -50%) scale(1.5);
+        }
+        .generator__flower-link {
+          svg {
+            width: 20px;
+            height: 20px;
+            background-color: transparent;
+            stroke: white;
+          }
+        }
+      }
+    }
+  }
+  &__flower-link {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 5;
+    svg {
+      transition: stroke ease 0.3s;
+      stroke: transparent;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &__presets {
+    max-width: 725px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.131);
+    border-radius: 5px;
+    padding: 30px 15px;
+    margin-bottom: 50px;
+  }
+  @media screen and (max-width:460px) {
+    padding: 20px 15px 10px 15px;
+    &__flowers-prompt{
+      max-width: 345px;
+      height: 300px;
+    }
+  }
+}

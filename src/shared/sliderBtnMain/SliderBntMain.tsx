@@ -1,6 +1,6 @@
-import React from "react";
+import { TypeProps } from "./types/types";
 
-const SliderBtnMain = ({ text, status, marginRight,onClick }) => {
+const SliderBtnMain = ({ text, status, marginRight, onClick }: TypeProps) => {
   return (
     <button
       className={

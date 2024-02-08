@@ -26,6 +26,7 @@
 @import "./componentStyles/slider.scss";
 @import "./componentStyles/productInfo.scss";
 @import "./componentStyles/cart.scss";
+@import "./componentStyles/generator.scss";
 
 #root {
   display: flex;
@@ -224,6 +225,10 @@
     @include adaptive-font(16, 12);
     @include default-font(12px);
     opacity: 0.5;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
   }
   svg {
     width: 30.374px;

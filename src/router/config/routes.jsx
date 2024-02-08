@@ -12,6 +12,7 @@ const ShoppingCart = lazy(() => import("../../pages/cartPage/ShoppingCart"));
 const CollectionsPage = lazy(() =>
   import("../../pages/collectionsPage/CollectionsPage")
 );
+const Generator = lazy(() => import("../../pages/generator/Generator"));
 
 export const routes = [
   { id: 0, path: "/", element: <HomePage /> },
@@ -22,4 +23,5 @@ export const routes = [
   { id: 5, path: "Home/Product", element: <ProductPage /> },
   { id: 6, path: "Home/Cart", element: <ShoppingCart /> },
   { id: 7, path: "Home/Collections", element: <CollectionsPage /> },
+  { id: 8, path: "Home/Generator", element: <Generator /> },
 ];
