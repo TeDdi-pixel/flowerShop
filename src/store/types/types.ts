@@ -6,5 +6,6 @@ export type TypeGenerator = {
     prompt: string;
     generatedImage: string;
     genLoading: boolean;
+    presetPrompt: number | null;
   };
 };

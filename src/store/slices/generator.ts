@@ -9,6 +9,7 @@ export const generatorSlice = createSlice({
     prompt: "",
     generatedImage: "" as string | string[],
     genLoading: false,
+    presetPrompt: null as number | null,
   },
   reducers: {
     setFlower: (state, action: PayloadAction<string>) => {
@@ -29,6 +30,9 @@ export const generatorSlice = createSlice({
     setGenLoading: (state, action: PayloadAction<boolean>) => {
       state.genLoading = action.payload;
     },
+    setPresetPrompt: (state, action: PayloadAction<number | null>) => {
+      state.presetPrompt = action.payload;
+    },
   },
 });
 
@@ -39,6 +43,7 @@ export const {
   setPrompt,
   setGeneratedImage,
   setGenLoading,
+  setPresetPrompt,
 } = generatorSlice.actions;
 
 export default generatorSlice.reducer;

@@ -41,7 +41,6 @@ const Generator = () => {
 
   const generateBouquet = async () => {
     dispatch(setGenLoading(true));
-
     axios
       .request(options)
       .then((response) => {
