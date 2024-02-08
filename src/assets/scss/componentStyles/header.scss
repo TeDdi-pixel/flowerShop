@@ -225,9 +225,13 @@
     }
   }
   //Phone
-
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 460px) {
     padding: 31.5px 18px 23px 16px;
+    &__right{
+      gap: 7px;
+    }
+  }
+  @media screen and (max-width: 375px) {
     &__cart-block {
       padding: 0;
       width: 45px;

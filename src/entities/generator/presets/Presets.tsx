@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { TypePreset } from "../types/types";
 import { presets } from "./config/presets";
-import { setPrompt } from "../../../store/slices/generator";
+import {
+  setFlowersCount,
+  setPrompt,
+  setSelectedFlower,
+} from "../../../store/slices/generator";
 import ProductCardButton from "../../../shared/productCard/ui/ProductCardButton";
 
 const Presets = () => {
@@ -12,6 +16,8 @@ const Presets = () => {
   const handlePreset = (prompt: string, id: number) => {
     dispatch(setPrompt(prompt));
     setActiveButton(id);
+    dispatch(setSelectedFlower(null));
+    dispatch(setFlowersCount(""));
   };
 
   return (
