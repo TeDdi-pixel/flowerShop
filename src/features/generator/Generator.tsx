@@ -11,6 +11,7 @@ import Presets from "../../entities/generator/presets/Presets";
 import { setPrompt } from "../../store/slices/generator";
 import { generateBouquet } from "../../store/asyncThunks/generateBouquet";
 import { ThunkDispatch } from "redux-thunk";
+import { scrollTo } from "../../helpers/scrollTo";
 
 const Generator = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -20,6 +21,7 @@ const Generator = () => {
 
   const handleGenerateBouquet = () => {
     dispatch(generateBouquet()); // изменить значения в ThunkDispatch
+    scrollTo(75);
   };
 
   useEffect(() => {
