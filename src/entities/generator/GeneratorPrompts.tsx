@@ -1,10 +1,11 @@
 import { flowers } from "../../features/generator/config/flowers";
 import { TypeFlower } from "../../features/generator/types/types";
 import { useDispatch, useSelector } from "react-redux";
-import { TypeGenerator } from "../../store/types/types";
+import { RootState } from "../../store/types/types";
 import {
   setFlower,
   setPresetPrompt,
+  setPrompt,
   setSelectedFlower,
 } from "../../store/slices/generator";
 import { Link } from "react-router-dom";
@@ -13,14 +14,13 @@ import { TbExternalLink } from "react-icons/tb";
 const GeneratorPrompts = () => {
   const dispatch = useDispatch();
 
-  const { selectedFlower } = useSelector(
-    (state: TypeGenerator) => state.generator
-  );
+  const { selectedFlower } = useSelector((state: RootState) => state.generator);
 
   const handlePrompt = (promptValue: string, id: number) => {
     dispatch(setFlower(promptValue));
     dispatch(setSelectedFlower(id));
     dispatch(setPresetPrompt(null));
+    dispatch(setPrompt(""));
   };
 
   return (

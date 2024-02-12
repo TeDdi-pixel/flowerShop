@@ -1,10 +1,10 @@
 import { TypeFlowerImageProps } from "./types/types";
 import { IoMdRefreshCircle } from "react-icons/io";
 import { useSelector } from "react-redux";
-import { TypeGenerator } from "../../store/types/types";
+import { RootState } from "../../store/types/types";
 
 const FlowerImage = ({ image, onClick }: TypeFlowerImageProps) => {
-  const { genLoading } = useSelector((state: TypeGenerator) => state.generator);
+  const { genLoading } = useSelector((state: RootState) => state.generator);
   return (
     <div className="generator__img">
       <img src={image} alt="Flower" />

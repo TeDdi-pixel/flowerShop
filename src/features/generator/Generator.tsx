@@ -3,58 +3,23 @@ import SliderBtnMain from "../../shared/sliderBtnMain/SliderBntMain";
 import FlowerImgPlaceholder from "../../shared/generator/FlowerImgPlaceholder";
 import FlowerImage from "../../shared/generator/FlowerImage";
 import spinner from "../../assets/img/spinner.svg";
-import axios from "axios";
 import GeneratorPrompts from "../../entities/generator/GeneratorPrompts";
 import { useDispatch, useSelector } from "react-redux";
-import { TypeGenerator } from "../../store/types/types";
+import { RootState } from "../../store/types/types";
 import GeneratorMainInput from "../../entities/generator/GeneratorMainInput";
 import Presets from "../../entities/generator/presets/Presets";
-import {
-  setGenLoading,
-  setGeneratedImage,
-  setPrompt,
-} from "../../store/slices/generator";
+import { setPrompt } from "../../store/slices/generator";
+import { generateBouquet } from "../../store/asyncThunks/generateBouquet";
+import { ThunkDispatch } from "redux-thunk";
 
 const Generator = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const { flower, flowersCount, prompt, generatedImage, genLoading } =
-    useSelector((state: TypeGenerator) => state.generator);
+    useSelector((state: RootState) => state.generator);
 
-  const options = {
-    method: "POST",
-    url: "https://api.edenai.run/v2/image/generation",
-    headers: {
-      authorization: `Bearer ${import.meta.env.VITE_EDEN_API_KEY}`,
-    },
-    data: {
-      providers: "replicate",
-      text: `${
-        prompt != ""
-          ? prompt
-          : `draw me a realistic image of bouquet of ${flowersCount} ${flower} on the pink to white gradient behind on the background`
-      }`,
-      resolution: "512x512",
-      fallback_providers: "",
-    },
-  };
-
-  const generateBouquet = async () => {
-    dispatch(setGenLoading(true));
-    axios
-      .request(options)
-      .then((response) => {
-        dispatch(
-          setGeneratedImage(response.data.replicate.items[0].image_resource_url)
-        );
-        dispatch(setGenLoading(false));
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-        dispatch(setGenLoading(false));
-        dispatch(setPrompt(""));
-      });
+  const handleGenerateBouquet = () => {
+    dispatch(generateBouquet()); // изменить значения в ThunkDispatch
   };
 
   useEffect(() => {
@@ -68,15 +33,16 @@ const Generator = () => {
       {generatedImage ? (
         <FlowerImage
           image={genLoading ? spinner : generatedImage}
-          onClick={generateBouquet}
+          onClick={handleGenerateBouquet}
         />
       ) : (
         <FlowerImgPlaceholder />
       )}
+
       <GeneratorMainInput />
       <GeneratorPrompts />
       <Presets />
-      <SliderBtnMain onClick={generateBouquet} text={"Generate"} />
+      <SliderBtnMain onClick={handleGenerateBouquet} text={"Generate"} />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { generateBouquet } from "../asyncThunks/generateBouquet";
 
 export const generatorSlice = createSlice({
   name: "generator",
@@ -34,6 +35,22 @@ export const generatorSlice = createSlice({
       state.presetPrompt = action.payload;
     },
   },
+  extraReducers: (builder) =>
+    builder
+      .addCase(generateBouquet.pending, (state) => {
+        state.genLoading = true;
+      })
+      .addCase(
+        generateBouquet.fulfilled,
+        (state, action: PayloadAction<string>) => {
+          state.generatedImage = action.payload;
+          state.genLoading = false;
+        }
+      )
+      .addCase(generateBouquet.rejected, (state) => {
+        state.prompt = "";
+        state.genLoading = false;
+      }),
 });
 
 export const {

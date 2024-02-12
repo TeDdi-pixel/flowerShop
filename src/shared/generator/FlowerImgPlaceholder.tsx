@@ -1,10 +1,10 @@
 import spinner from "../../assets/img/spinner.svg";
 import { MdError } from "react-icons/md";
-import { TypeGenerator } from "../../store/types/types";
+import { RootState, TypeGenerator } from "../../store/types/types";
 import { useSelector } from "react-redux";
 
 const FlowerImgPlaceholder = () => {
-  const { genLoading } = useSelector((state: TypeGenerator) => state.generator);
+  const { genLoading } = useSelector((state: RootState) => state.generator);
   return (
     <div className="generator__img">
       {genLoading ? (

@@ -2,17 +2,15 @@ import { GoNumber } from "react-icons/go";
 import DefaultInput from "../../shared/inputs/default/DefaultInput";
 import { useDispatch, useSelector } from "react-redux";
 import { setFlowersCount, setPresetPrompt } from "../../store/slices/generator";
-import { TypeGenerator } from "../../store/types/types";
+import { RootState } from "../../store/types/types";
 
 const GeneratorMainInput = () => {
   const dispatch = useDispatch();
-  const { flowersCount } = useSelector(
-    (state: TypeGenerator) => state.generator
-  );
+  const { flowersCount } = useSelector((state: RootState) => state.generator);
 
   const handlePromptNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setFlowersCount(e.target.value));
-    dispatch(setPresetPrompt(null))
+    dispatch(setPresetPrompt(null));
   };
 
   return (
