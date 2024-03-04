@@ -22,7 +22,7 @@ const PromptNote = ({ showPromptNote, hidePromptNote }: TypePromptNote) => {
         promptNote ? "generator__prompt-note_active" : ""
       } ${promptNoteHidden ? "generator__prompt-note_hidden" : ""}`}
       style={{
-        zIndex: burgerMenuOpened ? "1" : promptNote ? "1000" : "-5",
+        zIndex: burgerMenuOpened ? "1" : promptNote || promptNoteHidden ? "1000" : "-5",
       }}
     >
       <PromptNoteTitleWrapper>
