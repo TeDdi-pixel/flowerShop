@@ -16,14 +16,6 @@ const PromptNote = ({ showPromptNote, hidePromptNote }: TypePromptNote) => {
   const { burgerMenuOpened } = useSelector(
     (state: RootState) => state.burgerMenu
   );
-  let zIndexValue;
-  if (burgerMenuOpened) {
-    zIndexValue = "1";
-  } else if (promptNote || promptNoteHidden) {
-    zIndexValue = "1000";
-  } else {
-    zIndexValue = "-5";
-  }
 
   return (
     <div
@@ -31,7 +23,11 @@ const PromptNote = ({ showPromptNote, hidePromptNote }: TypePromptNote) => {
         promptNote ? "generator__prompt-note_active" : ""
       } ${promptNoteHidden ? "generator__prompt-note_hidden" : ""}`}
       style={{
-        zIndex: zIndexValue,
+        zIndex: burgerMenuOpened
+          ? "1"
+          : promptNote || promptNoteHidden
+          ? "1000"
+          : "-5",
       }}
     >
       <PromptNoteTitleWrapper>

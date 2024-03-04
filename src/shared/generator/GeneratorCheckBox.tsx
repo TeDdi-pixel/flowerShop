@@ -1,5 +1,5 @@
 import { Checkbox } from "@mui/material";
-import { grey, pink } from "@mui/material/colors";
+import { green, grey } from "@mui/material/colors";
 
 const GeneratorCheckBox = ({ isActive }: { isActive: boolean }) => {
   return (
@@ -13,7 +13,7 @@ const GeneratorCheckBox = ({ isActive }: { isActive: boolean }) => {
         sx={{
           color: grey[600],
           "&.Mui-checked": {
-            color: pink[400],
+            color: "#23de6b",
           },
         }}
       />
