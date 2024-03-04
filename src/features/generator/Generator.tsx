@@ -73,7 +73,7 @@ const Generator = () => {
         showPromptNote={showPromptNote}
         hidePromptNote={hidePromptNote}
       />
-      <GeneratorMainInput />
+      {/* <GeneratorMainInput /> */}
       <GeneratorPrompts handlePrompt={handlePrompt} />
       <Presets />
       <SliderBtnMain

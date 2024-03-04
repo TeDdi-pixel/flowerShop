@@ -125,7 +125,6 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      z-index: 1001;
       border-radius: 50%;
     }
     &-title {
@@ -148,14 +147,14 @@
       width: 100%;
     }
     &-collapse {
-      @include default-font(18px);
+      @include default-font(21px);
       transition: opacity ease 0.3s, scale ease-in-out 0.35s;
       scale: 1;
       z-index: 5;
       cursor: pointer;
       position: absolute;
-      top: 15px;
-      right: 12.5px;
+      top: 13px;
+      right: 11.5px;
       &_hidden {
         opacity: 0;
         scale: 0;
@@ -163,10 +162,10 @@
       }
     }
     &-expand {
-      @include default-font(18px);
+      @include default-font(21px);
       position: absolute;
-      top: 24px;
-      right: 4px;
+      top: 23px;
+      right: 1px;
       transform: translate(-50%, -50%);
       transition: opacity ease 0.3s, scale ease-in-out 0.35s;
       opacity: 0;

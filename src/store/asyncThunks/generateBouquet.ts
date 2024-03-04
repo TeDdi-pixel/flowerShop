@@ -18,7 +18,7 @@ export const generateBouquet = createAsyncThunk<string>(
         text: `${
           prompt != ""
             ? prompt
-            : `draw me a realistic image of a bouquet with ${flowersCount} assorted flowers (${flowers.join(", ")}) on a pink-to-white gradient background`
+            : `draw me a realistic image of a bouquet with 17 assorted flowers (${flowers.join(", ")}) on a pink-to-white gradient background`
         }`,
         resolution: "512x512",
         fallback_providers: "",
