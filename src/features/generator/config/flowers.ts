@@ -18,13 +18,3 @@ export const flowers = [
   { id: 7, text: "Sunflowers", value: "sunflowers", img: sunflowers },
 ];
 
-export const randomFlowers = [
-  { id: 0, text: "Rose", value: "rose", img: roses },
-  { id: 1, text: "Iris", value: "irise", img: irises },
-  { id: 2, text: "Tulip", value: "tulips", img: tulips },
-  { id: 3, text: "Daisy", value: "daisy", img: daisies },
-  { id: 4, text: "Poppy", value: "poppy", img: poppies },
-  { id: 5, text: "Lavender", value: "lavender", img: lavenders },
-  { id: 6, text: "Marigold", value: "marigold", img: marigolds },
-  { id: 7, text: "Sunflower", value: "sunflower", img: sunflowers },
-]

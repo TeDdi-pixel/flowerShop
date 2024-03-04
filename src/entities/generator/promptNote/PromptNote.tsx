@@ -9,26 +9,33 @@ import PromptNoteTitle from "../../../shared/generator/promptNote/PromptNoteTitl
 import PromptNoteText from "../../../shared/generator/promptNote/PromptNoteText";
 import PromptNoteTitleWrapper from "../../../shared/generator/promptNote/PromptNoteTitleWrapper";
 
-const PromptNote = ({ showPromptNote, hidePromptNote }: TypePromptNote) => {
-  const { promptNote, flowers, promptNoteHidden } = useSelector(
+const PromptNote = ({
+  showPromptNote,
+  hidePromptNote,
+  text,
+}: TypePromptNote) => {
+  const { promptNote, promptNoteHidden } = useSelector(
     (state: RootState) => state.generator
   );
   const { burgerMenuOpened } = useSelector(
     (state: RootState) => state.burgerMenu
   );
 
+  let zIndexValue;
+  if (burgerMenuOpened) {
+    zIndexValue = "1";
+  } else if (promptNote || promptNoteHidden) {
+    zIndexValue = "1000";
+  } else {
+    zIndexValue = "-5";
+  }
+
   return (
     <div
       className={`generator__prompt-note ${
         promptNote ? "generator__prompt-note_active" : ""
       } ${promptNoteHidden ? "generator__prompt-note_hidden" : ""}`}
-      style={{
-        zIndex: burgerMenuOpened
-          ? "1"
-          : promptNote || promptNoteHidden
-          ? "1000"
-          : "-5",
-      }}
+      style={{ zIndex: zIndexValue }}
     >
       <PromptNoteTitleWrapper>
         <PromptNoteTitle title={"Chosen flowers:"} />
@@ -39,7 +46,7 @@ const PromptNote = ({ showPromptNote, hidePromptNote }: TypePromptNote) => {
           onClick={hidePromptNote}
         />
       </PromptNoteTitleWrapper>
-      <PromptNoteText text={`${promptNote ? flowers.join(", ") : "empty"}`} />
+      <PromptNoteText>{promptNote ? text : <span>empty</span>}</PromptNoteText>
       <TbLayoutSidebarLeftCollapseFilled
         className={`generator__prompt-note-expand ${
           promptNoteHidden ? "generator__prompt-note-expand_active" : ""

@@ -3,7 +3,7 @@ import { TypeBurgerMenu } from "../../entities/burgerMenu/types/types";
 
 export type TypeGenerator = {
   flowers: string[];
-  flowersCount: string;
+  // flowersCount: string;
   prompt: string;
   generatedImage: string;
   genLoading: boolean;

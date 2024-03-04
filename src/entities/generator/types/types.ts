@@ -9,10 +9,12 @@ export type TypePromptNote = {
   title?: string;
   showPromptNote: () => void;
   hidePromptNote: () => void;
+  text?: ReactNode[];
 };
 
 export type TypePromptNoteComponents = {
   title?: string;
-  text?: string;
+  flowers?: string;
   children?: ReactNode;
+  text?: ReactNode[];
 };

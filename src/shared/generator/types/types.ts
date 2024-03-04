@@ -7,11 +7,18 @@ export type TypeFlowerImageProps = {
 export type TypeFlowerPrompt = {
   children: ReactNode;
   isActive: boolean;
-  handlePrompt: (flowerValue:string) => void;
-  flowerValue:string;
+  handlePrompt: (flowerValue: string) => void;
+  flowerValue: string;
 };
 
 export type TypeCategoryLink = {
-  location: string,
-  icon: ReactNode
-}
+  location: string;
+  icon: ReactNode;
+};
+
+export type TypeFlowerImgButton = {
+  tooltip: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  className: string;
+  icon: ReactNode;
+};

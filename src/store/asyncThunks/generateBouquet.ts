@@ -5,7 +5,7 @@ import axios from "axios";
 export const generateBouquet = createAsyncThunk<string>(
   "generator/generateBouquet",
   async (_, { getState }) => {
-    const { flowers, flowersCount, prompt } = (getState() as RootState)
+    const { flowers, prompt } = (getState() as RootState)
       .generator;
     const options = {
       method: "POST",

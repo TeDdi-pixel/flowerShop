@@ -1,5 +1,5 @@
 import { Checkbox } from "@mui/material";
-import { green, grey } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
 
 const GeneratorCheckBox = ({ isActive }: { isActive: boolean }) => {
   return (

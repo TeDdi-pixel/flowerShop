@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import SliderBtnMain from "../../shared/sliderBtnMain/SliderBntMain";
 import FlowerImgPlaceholder from "../../shared/generator/FlowerImgPlaceholder";
-import FlowerImage from "../../shared/generator/FlowerImage";
+import FlowerImage from "../../entities/generator/FlowerImage";
 import spinner from "../../assets/img/spinner.svg";
 import GeneratorPrompts from "../../entities/generator/GeneratorPrompts";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/types/types";
-import GeneratorMainInput from "../../entities/generator/GeneratorMainInput";
 import Presets from "../../entities/generator/presets/Presets";
 import {
   setFlowers,
@@ -72,6 +71,12 @@ const Generator = () => {
       <PromptNote
         showPromptNote={showPromptNote}
         hidePromptNote={hidePromptNote}
+        text={flowers.map((flower, index) => (
+          <span key={index}>
+            {flower}
+            {index < flowers.length - 1 ? ", " : ""}
+          </span>
+        ))}
       />
       {/* <GeneratorMainInput /> */}
       <GeneratorPrompts handlePrompt={handlePrompt} />

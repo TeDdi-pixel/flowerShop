@@ -5,7 +5,7 @@ export const generatorSlice = createSlice({
   name: "generator",
   initialState: {
     flowers: [] as string[],
-    flowersCount: "1",
+    // flowersCount: "1",
     prompt: "",
     generatedImage: "" as string | string[],
     genLoading: false,
@@ -17,9 +17,9 @@ export const generatorSlice = createSlice({
     setFlowers: (state, action: PayloadAction<string[]>) => {
       state.flowers = action.payload;
     },
-    setFlowersCount: (state, action: PayloadAction<string>) => {
-      state.flowersCount = action.payload;
-    },
+    // setFlowersCount: (state, action: PayloadAction<string>) => {
+    //   state.flowersCount = action.payload;
+    // },
     setPrompt: (state, action: PayloadAction<string>) => {
       state.prompt = action.payload;
     },
@@ -61,7 +61,7 @@ export const generatorSlice = createSlice({
 
 export const {
   setFlowers,
-  setFlowersCount,
+  // setFlowersCount,
   setPrompt,
   setGeneratedImage,
   setGenLoading,
