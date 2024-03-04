@@ -13,7 +13,7 @@ const GeneratorCheckBox = ({ isActive }: { isActive: boolean }) => {
         sx={{
           color: grey[600],
           "&.Mui-checked": {
-            color: "#23de6b",
+            color: "wheat",
           },
         }}
       />
