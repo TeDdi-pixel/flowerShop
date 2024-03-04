@@ -5,7 +5,7 @@ import axios from "axios";
 export const generateBouquet = createAsyncThunk<string>(
   "generator/generateBouquet",
   async (_, { getState }) => {
-    const { flower, flowersCount, prompt } = (getState() as RootState)
+    const { flowers, flowersCount, prompt } = (getState() as RootState)
       .generator;
     const options = {
       method: "POST",
@@ -18,7 +18,7 @@ export const generateBouquet = createAsyncThunk<string>(
         text: `${
           prompt != ""
             ? prompt
-            : `draw me a realistic image of bouquet of ${flowersCount} ${flower} on the pink to white gradient behind on the background`
+            : `draw me a realistic image of a bouquet with ${flowersCount} assorted flowers (${flowers.join(", ")}) on a pink-to-white gradient background`
         }`,
         resolution: "512x512",
         fallback_providers: "",

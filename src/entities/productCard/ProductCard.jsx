@@ -20,11 +20,11 @@ const ProductCard = ({
   const cartData = useSelector((state) => state.cart.cartData);
   const cookiesError = useSelector((state) => state.cookies.cookiesError);
   
-  useEffect(() => {
-    if (text) {
-      setSoledOut(text.toLowerCase() === "sold out");
-    }
-  }, [text, cartData]);
+  // useEffect(() => {
+  //   if (text) {
+  //     setSoledOut(text.toLowerCase() === "sold out");
+  //   }
+  // }, [text, cartData]);
 
   return (
     <div className="product-card">

@@ -1,17 +1,19 @@
 import { AsyncThunkAction } from "@reduxjs/toolkit";
 
 export type TypeGenerator = {
-  flower: string;
-  selectedFlower: number | null;
+  flowers: string[];
   flowersCount: string;
   prompt: string;
   generatedImage: string;
   genLoading: boolean;
   presetPrompt: number | null;
+  promptNote: boolean;
+  promptNoteHidden: boolean;
+  bouquetFlowers: string[]
 };
 
 export type TypeBouquetThunk = {
-  generateBouquet: () => AsyncThunkAction<string, void, {}>;
+  generateBouquet: () => AsyncThunkAction<string[], void, {}>;
 };
 
 export type RootState = {

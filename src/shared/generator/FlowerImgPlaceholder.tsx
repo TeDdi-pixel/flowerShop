@@ -1,6 +1,6 @@
 import spinner from "../../assets/img/spinner.svg";
 import { MdError } from "react-icons/md";
-import { RootState, TypeGenerator } from "../../store/types/types";
+import { RootState } from "../../store/types/types";
 import { useSelector } from "react-redux";
 
 const FlowerImgPlaceholder = () => {

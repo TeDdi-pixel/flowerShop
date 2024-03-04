@@ -25,6 +25,7 @@
     flex-direction: column;
     gap: 5px;
     height: 75%;
+    border-radius: 12px;
   }
   &__links {
     border-radius: 5px;
@@ -61,8 +62,11 @@
         &:nth-child(5) {
           background-color: #a1d062;
         }
-        &:last-child {
+        &:nth-child(6) {
           background-color: #d1dd8c;
+        }
+        &:last-child {
+          background-color: #8b5a8c;
         }
       }
     }

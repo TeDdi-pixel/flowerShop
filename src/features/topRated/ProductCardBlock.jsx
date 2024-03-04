@@ -14,7 +14,7 @@ const ProductCardBlock = () => {
   const cookiesEnabled = useSelector((state) => state.cookies.cookiesEnabled);
   const uid = useSelector((state) => state.user.userData);
   const storageUserData = useSelector((state) => state.user.storageUserData);
-  const cartData = useSelector((state) => state.cart.cartData);
+  const {cartData} = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const { handleAddToCart, addedProducts } = useAddToCart();
 

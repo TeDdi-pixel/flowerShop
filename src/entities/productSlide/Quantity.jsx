@@ -4,7 +4,7 @@ import ProductQuantityBnt from "../../shared/productSlide/ui/ProductQuantityBnt"
 const Quantity = ({ title, titleMargin, height, maxWidth }) => {
   const [quantity, setQuantity] = useState(1);
   const minus = () => {
-    if (quantity > 0) setQuantity((prev) => (prev -= 1));
+    if (quantity > 1) setQuantity((prev) => (prev -= 1));
   };
   const plus = () => {
     setQuantity((prev) => (prev += 1));

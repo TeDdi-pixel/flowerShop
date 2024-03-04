@@ -81,6 +81,76 @@
       }
     }
   }
+  &__prompt-note {
+    position: absolute;
+    top: 30%;
+    right: 50px;
+    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    max-width: 300px;
+    height: auto;
+    width: 100%;
+    padding: 13.5px 13.5px;
+    background-color: wheat;
+    opacity: 0;
+    transition: ease opacity 0.3s, transform ease 0.3s, ease max-width 0.3s,
+      height ease 0.8s, z-index ease 0.3s;
+    transform: translateY(0);
+    z-index: -1;
+    &-title {
+      margin-bottom: 20px;
+      @include default-font(18px, 600);
+      transition: ease opacity 0.2s, scale ease 0.2s;
+      scale: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    &-title_hidden {
+      position: absolute;
+      opacity: 0;
+      scale: 0;
+    }
+    &_active {
+      transform: translateY(10px);
+      opacity: 1;
+      z-index: 1001;
+      svg {
+        cursor: pointer;
+      }
+    }
+    &_hidden {
+      transform: translateY(10px);
+      max-width: 45px;
+      height: 45px;
+      opacity: 1;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    &-text {
+      opacity: 0;
+      transition: opacity ease 0.3s;
+      @include default-font(14px);
+    }
+    &-text_active {
+      opacity: 1;
+    }
+    &-text_hidden {
+      opacity: 1;
+      svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 18px;
+      }
+    }
+  }
   &__flowers {
     display: flex;
     max-width: 900px;
@@ -102,7 +172,6 @@
       overflow: hidden;
       transition: background-color ease 0.3s, color ease 0.3s, scale ease 0.3s,
         box-shadow ease 0.3s, max-width ease 0.7s;
-
       &-text {
         position: relative;
         z-index: 1;
@@ -135,7 +204,7 @@
         background-color: #665f5f;
         img {
           filter: blur(0);
-          transform: translate(-50%, -50%) scale(1.5);
+          transform: translate(-50%, -50%) scale(1.3);
         }
         .generator__flower-link {
           svg {
@@ -172,11 +241,99 @@
     box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.131);
     border-radius: 5px;
     padding: 30px 15px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
-  @media screen and (max-width:460px) {
+
+  &__random {
+    &-flowers {
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      justify-content: space-evenly;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+    &-flower {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background-color: transparent;
+      overflow: hidden;
+      border-radius: 10px;
+
+      img {
+        position: absolute;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform ease 0.7s, filter ease 0.3s;
+        filter: blur(3px);
+      }
+      &:hover {
+        img {
+          filter: blur(0px);
+          transform: translate(-50%, -50%) scale(1.3);
+        }
+      }
+      &-text {
+        position: absolute;
+        z-index: 1;
+        @include default-font(14px);
+        color: white;
+      }
+      &-checkbox {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        transition: opacity ease 0.3s;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    &__prompt-note {
+      &_active {
+        right: 30px;
+        max-width: 240px;
+      }
+      &_hidden {
+        right: 30px;
+      }
+    }
+  }
+  @media screen and (max-width: 675px) {
+    &__prompt-note {
+      top: 27%;
+      &_active {
+        right: 40px;
+        max-width: 240px;
+      }
+      &_hidden {
+        right: 40px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 460px) {
     padding: 20px 15px 10px 15px;
-    &__flowers-prompt{
+    &__prompt-note {
+      &_active {
+        right: 30px;
+        max-width: 240px;
+      }
+      &_hidden {
+        right: 33px;
+      }
+    }
+    &__flowers-prompt {
       max-width: 345px;
       height: 300px;
     }

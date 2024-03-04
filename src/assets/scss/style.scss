@@ -189,6 +189,9 @@
     border-radius: 50%;
     transition: scale ease-in-out 0.3s;
   }
+  svg{
+    z-index: 1;
+  }
 }
 
 .main-title {

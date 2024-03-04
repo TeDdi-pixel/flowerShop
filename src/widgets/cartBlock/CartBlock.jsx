@@ -14,10 +14,11 @@ const CartBlock = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (cartData.length > 0) {
-      dispatch(setEmptyCart(false));
-    }
+    cartData.length > 0
+      ? dispatch(setEmptyCart(false))
+      : dispatch(setEmptyCart(true));
   }, [cartData]);
+
   return (
     <div className="cart">
       {emptyCart ? (

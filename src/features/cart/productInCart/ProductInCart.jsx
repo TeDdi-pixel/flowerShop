@@ -22,7 +22,7 @@ import { saveToCookies } from "../../../helpers/browserActions";
 
 const ProductInCart = ({ img, title, price, id, initialQuantity }) => {
   const [quantity, setQuantity] = useState(initialQuantity);
-  const [productTotalPrice, setproductTotalPrice] = useState(
+  const [productTotalPrice, setProductTotalPrice] = useState(
     price * initialQuantity
   );
   const totalPrice = useSelector((state) => state.cart.totalPrice);
@@ -57,20 +57,25 @@ const ProductInCart = ({ img, title, price, id, initialQuantity }) => {
       const newQuantity = quantity - 1;
       setQuantity(newQuantity);
       dispatch(totalRemove(price));
-      setproductTotalPrice((prev) => (prev -= price));
+      setProductTotalPrice((prev) => (prev -= price));
     }
   };
   const plus = async () => {
     const newQuantity = quantity + 1;
     setQuantity(newQuantity);
     dispatch(totalAdd(price));
-    setproductTotalPrice((prev) => (prev += price));
+    setProductTotalPrice((prev) => (prev += price));
   };
 
   const handleRemoveFromCart = () => {
-    dispatch(totalRemove(price * quantity));
+    const removedPrice = price * quantity;
+    dispatch(totalRemove(removedPrice));
     dispatch(removeFromCart({ id }));
     removeProductFromCart(uid, id);
+
+    if (cartData.length === 1) {
+      dispatch(setTotalPrice(0));
+    }
   };
 
   const quantityBlock = (

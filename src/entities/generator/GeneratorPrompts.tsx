@@ -1,50 +1,42 @@
-import { flowers } from "../../features/generator/config/flowers";
+import { flowers as configFlowers } from "../../features/generator/config/flowers";
 import { TypeFlower } from "../../features/generator/types/types";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/types/types";
-import {
-  setFlower,
-  setPresetPrompt,
-  setPrompt,
-  setSelectedFlower,
-} from "../../store/slices/generator";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { TbExternalLink } from "react-icons/tb";
+import { RootState } from "../../store/types/types";
+import GeneratorCheckBox from "../../shared/generator/GeneratorCheckBox";
+import FlowerPrompt from "../../shared/generator/FlowerPrompt";
+import CategoryLink from "../../shared/generator/CategoryLink";
 
-const GeneratorPrompts = () => {
-  const dispatch = useDispatch();
-
-  const { selectedFlower } = useSelector((state: RootState) => state.generator);
-
-  const handlePrompt = (promptValue: string, id: number) => {
-    dispatch(setFlower(promptValue));
-    dispatch(setSelectedFlower(id));
-    dispatch(setPresetPrompt(null));
-    dispatch(setPrompt(""));
-  };
+const GeneratorPrompts = ({
+  handlePrompt,
+}: {
+  handlePrompt: (flowerValue: string) => void;
+}) => {
+  const { flowers } = useSelector((state: RootState) => state.generator);
 
   return (
     <div className="generator__flowers">
-      {flowers.map((flower: TypeFlower) => (
-        <button
-          key={flower.id}
-          className={`generator__flowers-prompt ${
-            selectedFlower === flower.id
-              ? "generator__flowers-prompt_active"
-              : ""
-          }`}
-          onClick={() => handlePrompt(flower.value, flower.id)}
-        >
-          <img src={flower.img} alt={flower.value} />
-          <span className="generator__flowers-prompt-text">{flower.text}</span>
-          <Link
-            className="generator__flower-link"
-            to={`/Home/Product/${flower.id}`}
+      {configFlowers.map((flower: TypeFlower) => {
+        const isActive = flowers.includes(flower.value);
+        return (
+          <FlowerPrompt
+            key={flower.id}
+            isActive={isActive}
+            flowerValue={flower.value}
+            handlePrompt={handlePrompt}
           >
-            <TbExternalLink />
-          </Link>
-        </button>
-      ))}
+            <img src={flower.img} alt={flower.value} />
+            <GeneratorCheckBox isActive={isActive} />
+            <span className="generator__flowers-prompt-text">
+              {flower.text}
+            </span>
+            <CategoryLink
+              location={`/Home/Product/${flower.id}`}
+              icon={<TbExternalLink />}
+            />
+          </FlowerPrompt>
+        );
+      })}
     </div>
   );
 };

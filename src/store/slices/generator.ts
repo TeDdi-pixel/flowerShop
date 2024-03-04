@@ -4,20 +4,18 @@ import { generateBouquet } from "../asyncThunks/generateBouquet";
 export const generatorSlice = createSlice({
   name: "generator",
   initialState: {
-    flower: "",
-    selectedFlower: null as number | null,
+    flowers: [] as string[],
     flowersCount: "1",
     prompt: "",
     generatedImage: "" as string | string[],
     genLoading: false,
     presetPrompt: null as number | null,
+    promptNote: false,
+    promptNoteHidden: false,
   },
   reducers: {
-    setFlower: (state, action: PayloadAction<string>) => {
-      state.flower = action.payload;
-    },
-    setSelectedFlower: (state, action: PayloadAction<number | null>) => {
-      state.selectedFlower = action.payload;
+    setFlowers: (state, action: PayloadAction<string[]>) => {
+      state.flowers = action.payload;
     },
     setFlowersCount: (state, action: PayloadAction<string>) => {
       state.flowersCount = action.payload;
@@ -34,6 +32,14 @@ export const generatorSlice = createSlice({
     setPresetPrompt: (state, action: PayloadAction<number | null>) => {
       state.presetPrompt = action.payload;
     },
+    setPromptNote: (state, action: PayloadAction<boolean>) => {
+      state.promptNote = action.payload;
+    },
+    setPromptNoteHidden: (state, action: PayloadAction<boolean>) => {
+      state.promptNoteHidden = action.payload;
+      if (state.promptNoteHidden) state.promptNote = false;
+    },
+
   },
   extraReducers: (builder) =>
     builder
@@ -54,13 +60,14 @@ export const generatorSlice = createSlice({
 });
 
 export const {
-  setFlower,
-  setSelectedFlower,
+  setFlowers,
   setFlowersCount,
   setPrompt,
   setGeneratedImage,
   setGenLoading,
   setPresetPrompt,
+  setPromptNote,
+  setPromptNoteHidden,
 } = generatorSlice.actions;
 
 export default generatorSlice.reducer;

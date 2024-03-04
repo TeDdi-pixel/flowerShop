@@ -27,11 +27,10 @@ const ProductInfo = () => {
   const showMore = useSelector((state) => state.productInfo.showMore);
   const selectedItem = useSelector((state) => state.productInfo.selectedItem);
   const soledOutStatuses = useSelector(
-    (stete) => stete.productInfo.soledOutStatuses
+    (state) => state.productInfo.soledOutStatuses
   );
   const cookiesError = useSelector((state) => state.cookies.cookiesError);
   const { handleAddToCart, addedProducts } = useAddToCart();
-
   const dispatch = useDispatch();
   const handleExit = () => {
     dispatch(setIsSliderOpened());
