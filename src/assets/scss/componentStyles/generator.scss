@@ -84,7 +84,7 @@
   &__prompt-note {
     position: absolute;
     top: 30%;
-    right: 50px;
+    right: 70px;
     box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     max-width: 300px;
@@ -95,20 +95,49 @@
     gap: 20px;
     background-color: wheat;
     opacity: 0;
-    min-height: 87px;
-    transition: ease opacity 0.15s, transform ease 0.3s, ease max-width 0.3s,
-      min-height ease 0.5s, z-index ease 0.3s;
+    max-height: 122px;
+    transition: ease opacity 0.3s, transform ease 0.3s, ease max-width 0.3s,
+      top ease 0.5s, max-height ease 0.5s, z-index ease 0.3s,right ease 0.3s;
     transform: translateY(0);
     z-index: -1;
-
     user-select: none;
-
+    &_active {
+      right: 50px;
+      transition: max-height ease 0.35s, max-width ease 0.3s, top ease 0.5s,
+        border-radius ease 0.1s, right ease 0.3s;
+      transform: translateY(10px);
+      max-width: 250px;
+      opacity: 1;
+      z-index: 1001;
+    }
+    &_hidden {
+      transform: translateY(10px);
+      transition: max-height ease 0.35s, max-width ease 0.3s, gap ease 0.3s,right ease 0.3s,
+        border-radius ease 0.1s;
+      max-width: 45px;
+      max-height: 45px;
+      height: 100%;
+      right: 50px;
+      opacity: 1;
+      padding: 0;
+      display: flex;
+      gap: 0;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1001;
+      border-radius: 50%;
+    }
     &-title {
       @include default-font(18px, 600);
-      transition: ease opacity 0.15s, scale ease 0.15s, margin-bottom ease 0.15s;
+      transition: ease opacity 0.15s, scale ease-in-out 0.35s,
+        margin-bottom ease 0.15s, ease top 0.3s, left ease 0.3s;
       scale: 1;
       &_hidden {
+        transition: scale ease 0.3s;
         position: absolute;
+        left: 13.5px;
+        top: 13.5px;
         scale: 0;
       }
     }
@@ -120,10 +149,13 @@
     }
     &-collapse {
       @include default-font(18px);
-      transition: opacity ease 0.3s, scale ease 0.3s;
+      transition: opacity ease 0.3s, scale ease-in-out 0.35s;
       scale: 1;
       z-index: 5;
       cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 12.5px;
       &_hidden {
         opacity: 0;
         scale: 0;
@@ -136,45 +168,25 @@
       top: 24px;
       right: 4px;
       transform: translate(-50%, -50%);
-      transition: opacity ease 0.3s, scale ease 0.3s;
+      transition: opacity ease 0.3s, scale ease-in-out 0.35s;
       opacity: 0;
       scale: 0;
       cursor: pointer;
+      transform-origin: top left;
       &_active {
+        transform: scale ease 0.15s;
         z-index: 5;
         opacity: 1;
         scale: 1;
       }
     }
-    &_active {
-      transition: min-height ease 0.4s, max-width ease 0.3s,
-        border-radius ease 0.1s;
-      transform: translateY(10px);
-      opacity: 1;
-      z-index: 1001;
-    }
-    &_hidden {
-      transform: translateY(10px);
-      transition: min-height ease 0.4s, max-width ease 0.3s,
-        border-radius ease 0.1s;
-      max-width: 45px;
-      min-height: 45px;
-      opacity: 1;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 1001;
-      border-radius: 50%;
-    }
     &-text {
-      transition: opacity ease 0.3s, scale ease 0.3s;
+      transition: opacity ease 0.7s, scale ease 0.15s, font-size ease 0.4s;
       @include default-font(14px);
-      scale: 1;
       opacity: 1;
+      transform-origin: top left;
       &_hidden {
-        scale: 0;
+        @include default-font(0px);
         opacity: 0;
       }
     }
@@ -364,7 +376,7 @@
       height: 300px;
     }
   }
-  @media screen and (max-height: 667px) {
+  @media screen and (max-height: 810px) {
     padding: 20px 15px 10px 15px;
     &__prompt-note {
       top: 23%;
