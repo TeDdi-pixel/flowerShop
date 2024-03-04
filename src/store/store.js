@@ -5,6 +5,7 @@ import cartSlice from "./slices/cartSlice";
 import userSlice from "./slices/userSlice";
 import cookiesSlice from "./slices/cookiesSlice";
 import generatorSlice from "./slices/generator";
+import burgerMenuSlice from "./slices/burgerMenuSlice";
 
 export default configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export default configureStore({
     user: userSlice,
     cookies: cookiesSlice,
     generator: generatorSlice,
+    burgerMenu: burgerMenuSlice,
   },
 });

@@ -10,14 +10,16 @@ import {
   setTotalPrice,
   updateCart,
 } from "../../store/slices/cartSlice";
+import { setBurgerMenuOpen } from "../../store/slices/burgerMenuSlice";
 
-const BurgerMenu = ({ isMenuOpen, onClick }) => {
+const BurgerMenu = () => {
   const userIsSignIn = useSelector((state) => state.user.userIsSignIn);
+  const { burgerMenuOpened } = useSelector((state) => state.burgerMenu);
   const dispatch = useDispatch();
 
   const onLogOut = () => {
     dispatch(logOutUser());
-    onClick();
+    dispatch(setBurgerMenuOpen(false));
     dispatch(setTotalPrice(0));
     dispatch(setUserIsSignedIn(false));
     dispatch(setEmptyCart(true));
@@ -26,10 +28,15 @@ const BurgerMenu = ({ isMenuOpen, onClick }) => {
 
   return (
     <div
-      className={isMenuOpen ? "burger-menu burger-menu_open" : "burger-menu"}
+      className={
+        burgerMenuOpened ? "burger-menu burger-menu_open" : "burger-menu"
+      }
     >
       <div className="burger-menu__wrapper">
-        <Exit onClick={onClick} color={"#665f5f"} />
+        <Exit
+          onClick={() => dispatch(setBurgerMenuOpen(false))}
+          color={"#665f5f"}
+        />
         <div className="burger-menu__links">
           {burgerLinks.map((link, index) => {
             return <BurgerLink key={index} path={link.path} name={link.name} />;

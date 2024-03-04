@@ -7,3 +7,4 @@ export type TypePromptNote = {
   showPromptNote: () => void;
   hidePromptNote: () => void;
 };
+

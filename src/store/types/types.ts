@@ -1,4 +1,5 @@
 import { AsyncThunkAction } from "@reduxjs/toolkit";
+import { TypeBurgerMenu } from "../../entities/burgerMenu/types/types";
 
 export type TypeGenerator = {
   flowers: string[];
@@ -18,4 +19,5 @@ export type TypeBouquetThunk = {
 
 export type RootState = {
   generator: TypeGenerator;
+  burgerMenu: TypeBurgerMenu;
 };

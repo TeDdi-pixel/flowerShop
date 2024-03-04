@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "../../assets/icons/logo.svg";
 import HeaderRight from "../../entities/headerRight/HeaderRight";
 import HeaderIconMenu from "../../shared/header/HeaderIconMenu.jsx";
@@ -7,11 +7,7 @@ import BurgerMenu from "../../entities/burgerMenu/BurgerMenu.jsx";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const userIsSignIn = useSelector((state) => state.user.userIsSignIn);
-  const handleBurgerMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
 
   return (
     <header className="header header_scrolled">
@@ -20,7 +16,7 @@ const Header = () => {
           <div
             className={userIsSignIn ? " header__left-signIn" : " header__left"}
           >
-            <HeaderIconMenu onClick={handleBurgerMenu} />
+            <HeaderIconMenu />
           </div>
           <Link to="/">
             <img src={logo} alt="logo" className="header__logo" />
@@ -28,7 +24,7 @@ const Header = () => {
           <HeaderRight />
         </nav>
       </div>
-      <BurgerMenu isMenuOpen={isMenuOpen} onClick={handleBurgerMenu} />
+      <BurgerMenu />
     </header>
   );
 };
