@@ -21,7 +21,9 @@ const PromptNote = ({ showPromptNote, hidePromptNote }: TypePromptNote) => {
       className={`generator__prompt-note ${
         promptNote ? "generator__prompt-note_active" : ""
       } ${promptNoteHidden ? "generator__prompt-note_hidden" : ""}`}
-      style={{ zIndex: `${burgerMenuOpened ? "1" : "1000"}` }}
+      style={{
+        zIndex: burgerMenuOpened ? "1" : promptNote ? "1000" : "-5",
+      }}
     >
       <PromptNoteTitleWrapper>
         <PromptNoteTitle title={"Chosen flowers:"} />
@@ -35,7 +37,7 @@ const PromptNote = ({ showPromptNote, hidePromptNote }: TypePromptNote) => {
           }}
         />
       </PromptNoteTitleWrapper>
-      <PromptNoteText text={`${promptNote ? flowers.join(", ") : 'empty'}`} />
+      <PromptNoteText text={`${promptNote ? flowers.join(", ") : "empty"}`} />
       <TbLayoutSidebarLeftCollapseFilled
         className={`generator__prompt-note-expand ${
           promptNoteHidden ? "generator__prompt-note-expand_active" : ""
