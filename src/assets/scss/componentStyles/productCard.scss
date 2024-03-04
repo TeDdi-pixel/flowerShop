@@ -158,4 +158,12 @@
       font-size: 13px;
     }
   }
+  @media screen and (max-width: 460px) {
+    &__button {
+      width: 100%;
+      span{
+        transition: scale ease-in-out 0.3s;
+      }
+    }
+  }
 }
