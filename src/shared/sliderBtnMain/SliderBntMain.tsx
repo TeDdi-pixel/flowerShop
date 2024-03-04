@@ -14,6 +14,7 @@ const SliderBtnMain = ({
     gap: icon ? "10px" : "",
     alignItems: icon ? "center" : "",
     width: width,
+    justifyContent: icon ? "center" : "",
   };
   return (
     <button
