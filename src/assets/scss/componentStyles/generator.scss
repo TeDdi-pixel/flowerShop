@@ -147,6 +147,7 @@
     transform: translateY(0);
     z-index: -200;
     user-select: none;
+    overflow: hidden;
     &_active {
       right: 50px;
       transition:opacity ease 0.3s max-height ease 0.35s, max-width ease 0.3s, top ease 0.5s,
