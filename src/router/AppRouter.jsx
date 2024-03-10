@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import spinner from "../assets/img/spinner.svg";
+import mainLoading from "../assets/img/MainLoading.svg";
 import { routes } from "./config/routes";
 
 const AppRouter = () => {
@@ -15,7 +15,7 @@ const AppRouter = () => {
               <Suspense
                 fallback={
                   <img
-                    src={spinner}
+                    src={mainLoading}
                     alt="spinner"
                     className="loading-spinner"
                   />
