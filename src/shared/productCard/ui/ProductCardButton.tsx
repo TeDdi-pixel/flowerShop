@@ -6,7 +6,8 @@ const ProductCardButton = ({
   addToCart,
   handlePreset,
   active,
-}: TypeCardButtonProps & { active: boolean }) => {
+  generateTitle,
+}: TypeCardButtonProps) => {
   return (
     <button
       className={
@@ -16,12 +17,15 @@ const ProductCardButton = ({
           ? "product-card__button product-card__button_active"
           : "product-card__button"
       }
-      onClick={() => {
+      onClick={(event) => {
         if (addToCart) {
           addToCart();
         }
         if (handlePreset) {
           handlePreset();
+        }
+        if (generateTitle) {
+          generateTitle(event);
         }
       }}
     >

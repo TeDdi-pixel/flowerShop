@@ -19,23 +19,23 @@ const ProductCard = ({
   const [soledOut, setSoledOut] = useState(false);
   const cartData = useSelector((state) => state.cart.cartData);
   const cookiesError = useSelector((state) => state.cookies.cookiesError);
-  
-  // useEffect(() => {
-  //   if (text) {
-  //     setSoledOut(text.toLowerCase() === "sold out");
-  //   }
-  // }, [text, cartData]);
+
+  useEffect(() => {
+    if (text) {
+      setSoledOut(text.toLowerCase() === "sold out");
+    }
+  }, [text, cartData]);
 
   return (
     <div className="product-card">
       {!cookiesError && addedProducts[id] ? (
-      <ProductCardMessage
-        isAddedMessage={addedProducts[id]}
-        width={"175px"}
-        height={"50px"}
-        top={"40%"}
-      />
-    ) : null}
+        <ProductCardMessage
+          isAddedMessage={addedProducts[id]}
+          width={"175px"}
+          height={"50px"}
+          top={"40%"}
+        />
+      ) : null}
       <ProductCardImg img={img} alt="flowers" onClick={productInfoOpen} />
       <div className="product-card__info-wrapper">
         <div className="product-card__info">

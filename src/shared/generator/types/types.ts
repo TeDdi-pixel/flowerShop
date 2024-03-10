@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export type TypeFlowerImageProps = {
   image: string;
-  onClick?: React.ReactEventHandler;
+  regenerate: TypeVoidFunc;
 };
 export type TypeFlowerPrompt = {
   children: ReactNode;
@@ -18,7 +18,16 @@ export type TypeCategoryLink = {
 
 export type TypeFlowerImgButton = {
   tooltip: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: TypeVoidFunc;
   className: string;
   icon: ReactNode;
 };
+
+export type TypeVoidFunc = () => void;
+
+export type TypeButton = {
+  tooltip: string
+  icon: ReactNode
+  func?: TypeVoidFunc
+}
+

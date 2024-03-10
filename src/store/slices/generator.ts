@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { generateBouquet } from "../asyncThunks/generateBouquet";
 
-export const generatorSlice = createSlice({
-  name: "generator",
+export const bouquetGeneratorSlice = createSlice({
+  name: "bouquetGenerator",
   initialState: {
     flowers: [] as string[],
     // flowersCount: "1",
@@ -39,7 +39,6 @@ export const generatorSlice = createSlice({
       state.promptNoteHidden = action.payload;
       if (state.promptNoteHidden) state.promptNote = false;
     },
-
   },
   extraReducers: (builder) =>
     builder
@@ -68,6 +67,6 @@ export const {
   setPresetPrompt,
   setPromptNote,
   setPromptNoteHidden,
-} = generatorSlice.actions;
+} = bouquetGeneratorSlice.actions;
 
-export default generatorSlice.reducer;
+export default bouquetGeneratorSlice.reducer;

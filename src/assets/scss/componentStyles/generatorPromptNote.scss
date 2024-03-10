@@ -1,0 +1,146 @@
+.generator {
+  &__prompt-note {
+    position: absolute;
+    top: 30%;
+    right: 70px;
+    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    max-width: 300px;
+    width: 100%;
+    padding: 13.5px 13.5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: wheat;
+    opacity: 0;
+    max-height: 122px;
+    transition: ease opacity 0.3s, transform ease 0.3s, ease max-width 0.3s,
+      top ease 0.5s, max-height ease 0.35s, z-index ease 0.3s, right ease 0.3s, border-radius ease 0.3s;
+    transform: translateY(0);
+    z-index: -200;
+    user-select: none;
+    overflow: hidden;
+    &_active {
+      right: 50px;
+      transition: opacity ease 0.3s max-height ease 0.35s, max-width ease 0.3s,
+        top ease 0.5s, border-radius ease 0.3s, right ease 0.3s, width ease 0.3s,height ease 0.3s;
+      transform: translateY(10px);
+      max-width: 250px;
+      max-height: 122px;
+      opacity: 1;
+      z-index: 1001;
+      border-radius: 10px;
+    }
+    &_hidden {
+      transform: translateY(10px);
+      transition: max-height ease 0.35s, max-width ease 0.3s, gap ease 0.3s,
+        right ease 0.3s, border-radius ease 0.3s;
+      max-width: 45px;
+      max-height: 45px;
+      width: 100%;
+      height: 100%;
+      right: 50px;
+      opacity: 1;
+      padding: 0;
+      display: flex;
+      gap: 0;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    &-title {
+      @include default-font(18px, 600);
+      transition: ease opacity 0.15s, scale ease-in-out 0.35s,
+        margin-bottom ease 0.15s, ease top 0.3s, left ease 0.3s;
+      scale: 1;
+      &_hidden {
+        transition: scale ease 0.3s;
+        position: absolute;
+        left: 13.5px;
+        top: 13.5px;
+        scale: 0;
+      }
+    }
+    &-title-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    &-collapse {
+      @include default-font(21px);
+      transition: opacity ease 0.3s, scale ease-in-out 0.35s;
+      scale: 1;
+      z-index: 5;
+      cursor: pointer;
+      position: absolute;
+      top: 13px;
+      right: 11.5px;
+      &_hidden {
+        opacity: 0;
+        scale: 0;
+        z-index: -5;
+      }
+    }
+    &-expand {
+      @include default-font(21px);
+      position: absolute;
+      top: 23px;
+      right: 1px;
+      transform: translate(-50%, -50%);
+      transition: opacity ease 0.3s, scale ease-in-out 0.35s;
+      opacity: 0;
+      scale: 0;
+      cursor: pointer;
+      transform-origin: top left;
+      &_active {
+        transform: scale ease 0.15s;
+        z-index: 5;
+        opacity: 1;
+        scale: 1;
+      }
+    }
+    &-text {
+      transition: opacity ease 0.7s, scale ease 0.15s, font-size ease 0.4s,
+        max-width ease 0.3s;
+      @include default-font(14px);
+      opacity: 1;
+      transform-origin: top left;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      &_hidden {
+        max-width: 0;
+        @include default-font(0px);
+        opacity: 0;
+      }
+    }
+  }
+  @media screen and (max-width: 675px) {
+    &__prompt-note {
+      top: 18%;
+      &_active {
+        right: 40px;
+      }
+      &_hidden {
+        right: 40px;
+      }
+    }
+  }
+  @media screen and (max-width: 460px) {
+    &__prompt-note {
+      &_active {
+        right: 33px;
+      }
+      &_hidden {
+        right: 33px;
+      }
+    }
+  }
+  @media screen and (max-height: 810px) {
+    &__prompt-note {
+      top: 23%;
+    }
+  }
+}

@@ -3,4 +3,6 @@ export type TypeCardButtonProps = {
   status?: boolean;
   addToCart?: () => void;
   handlePreset?: () => void;
+  generateTitle?: (e: React.MouseEvent) => void;
+  active?: boolean;
 };

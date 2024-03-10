@@ -1,13 +1,18 @@
 import { TypeFlowerImageProps } from "../../shared/generator/types/types";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/types/types";
 import FlowerImgButton from "../../shared/generator/FlowerImgButton";
-import { buttonStyle, buttons } from "./buttons/config";
+import { buttonStyle, buttons } from "./config/buttons";
+import { setIsFormOpen } from "../../store/slices/imageCartFormSlice";
 
-const FlowerImage = ({ image, onClick }: TypeFlowerImageProps) => {
+const FlowerImage = ({ image, regenerate }: TypeFlowerImageProps) => {
   const { genLoading } = useSelector((state: RootState) => state.generator);
+  const dispatch = useDispatch();
+  const openForm = () => {
+    dispatch(setIsFormOpen(true));
+  };
   const buttonCondition = buttonStyle(genLoading);
-  const buttonConfig = buttons(onClick);
+  const buttonConfig = buttons(regenerate, openForm);
   return (
     <div className="generator__img">
       <img src={image} alt="Flower" />
@@ -18,7 +23,7 @@ const FlowerImage = ({ image, onClick }: TypeFlowerImageProps) => {
           className={`generator__img-${button.tooltip
             .toLowerCase()
             .replace(/ /g, "-")}-btn ${buttonCondition}`}
-          onClick={button.onClick}
+          onClick={button.func}
           icon={button.icon}
         />
       ))}

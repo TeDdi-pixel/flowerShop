@@ -1,9 +1,5 @@
 import { useEffect } from "react";
 import SliderBtnMain from "../../shared/sliderBtnMain/SliderBntMain";
-import FlowerImgPlaceholder from "../../shared/generator/FlowerImgPlaceholder";
-import FlowerImage from "../../entities/generator/FlowerImage";
-import spinner from "../../assets/img/spinner.svg";
-import GeneratorPrompts from "../../entities/generator/GeneratorPrompts";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/types/types";
 import Presets from "../../entities/generator/presets/Presets";
@@ -16,13 +12,17 @@ import {
 } from "../../store/slices/generator";
 import { generateBouquet } from "../../store/asyncThunks/generateBouquet";
 import { ThunkDispatch } from "redux-thunk";
-import { scrollTo } from "../../helpers/scrollTo";
 import PromptNote from "../../entities/generator/promptNote/PromptNote";
 import { RiAiGenerate } from "react-icons/ri";
+import { scrollTo } from "../../helpers/scrollTo";
+import FlowerPromptList from "../../entities/generator/FlowerPromptList";
+import GeneratedFlowerImage from "../../entities/generator/GeneratedFlowerImage";
+import { resetGeneratedTitle, setProductId } from "../../store/slices/imageCartFormSlice";
+import { generateNumber } from "../../helpers/generateNumber";
 
 const Generator = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
-  const { flowers, generatedImage, genLoading, promptNote } = useSelector(
+  const { flowers, promptNote } = useSelector(
     (state: RootState) => state.generator
   );
 
@@ -41,6 +41,8 @@ const Generator = () => {
   };
 
   const handleGenerateBouquet = () => {
+    dispatch(setProductId(generateNumber(0, 12576594233)) )
+    dispatch(resetGeneratedTitle(""));
     dispatch(generateBouquet()); // изменить значения в ThunkDispatch
     scrollTo(75);
     if (promptNote) dispatch(setPromptNoteHidden(true));
@@ -54,32 +56,26 @@ const Generator = () => {
     dispatch(setPromptNote(false));
   };
 
+  const promptFlowers = flowers.map((flower, index) => (
+    <span key={index}>
+      {flower}
+      {index < flowers.length - 1 ? ", " : ""}
+    </span>
+  ));
+
   useEffect(() => {
     if (flowers.length === 0) dispatch(setPromptNote(false));
   }, [flowers]);
 
   return (
     <div className="generator">
-      {generatedImage ? (
-        <FlowerImage
-          image={genLoading ? spinner : generatedImage}
-          onClick={handleGenerateBouquet}
-        />
-      ) : (
-        <FlowerImgPlaceholder />
-      )}
+      <GeneratedFlowerImage regenerate={handleGenerateBouquet} />
       <PromptNote
         showPromptNote={showPromptNote}
         hidePromptNote={hidePromptNote}
-        text={flowers.map((flower, index) => (
-          <span key={index}>
-            {flower}
-            {index < flowers.length - 1 ? ", " : ""}
-          </span>
-        ))}
+        text={promptFlowers}
       />
-      {/* <GeneratorMainInput /> */}
-      <GeneratorPrompts handlePrompt={handlePrompt} />
+      <FlowerPromptList handlePrompt={handlePrompt} />
       <Presets />
       <SliderBtnMain
         onClick={handleGenerateBouquet}

@@ -10,6 +10,7 @@ import {
 } from "../../../store/slices/generator";
 import ProductCardButton from "../../../shared/productCard/ui/ProductCardButton";
 import { RootState } from "../../../store/types/types";
+import { resetGeneratedTitle } from "../../../store/slices/imageCartFormSlice";
 
 const Presets = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Presets = () => {
     dispatch(setPromptNote(false));
     dispatch(setPromptNoteHidden(false));
     dispatch(setFlowers([]));
+    dispatch(resetGeneratedTitle(''))
   };
 
   return (

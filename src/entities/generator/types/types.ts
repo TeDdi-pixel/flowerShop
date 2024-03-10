@@ -18,3 +18,8 @@ export type TypePromptNoteComponents = {
   children?: ReactNode;
   text?: ReactNode[];
 };
+
+export type TypeFlowerPromptList = {
+  handlePrompt: (flower: string) => void;
+};
+

@@ -71,7 +71,7 @@
     cursor: pointer;
     overflow: hidden;
     z-index: 0;
-    transition: background-color ease 0.2s, box-shadow ease 0.4s;
+    transition: background-color ease 0.2s, box-shadow ease 0.4s,opacity ease 0.3s;
     &-text {
       position: relative;
       @include default-font(12px, 700, left, 124.182%, white);
@@ -109,6 +109,14 @@
       span {
         scale: 850;
       }
+    }
+    &_hidden{
+      opacity: 0;
+      z-index: -1000;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
     }
   }
 

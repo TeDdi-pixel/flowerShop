@@ -1,4 +1,4 @@
-import spinner from "../../assets/img/spinner.svg";
+import spinner3 from "../../assets/img/spinner3.svg";
 import { MdError } from "react-icons/md";
 import { RootState } from "../../store/types/types";
 import { useSelector } from "react-redux";
@@ -8,7 +8,7 @@ const FlowerImgPlaceholder = () => {
   return (
     <div className="generator__img">
       {genLoading ? (
-        <img src={spinner} alt="Loading spinner" />
+        <img src={spinner3} alt="Loading spinner" />
       ) : (
         <div className="generator__img-placeholder">
           <span className="generator__img-placeholder-text">

@@ -1,0 +1,129 @@
+.img-cart-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(0, 0%, 25%, 0.5);
+  backdrop-filter: blur(5px);
+  transition: all ease 0.3s;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+  scale: 0;
+  &_open {
+    scale: 1;
+  }
+  &__form {
+    max-width: 1050px;
+    width: 100%;
+    background-color: white;
+    border-radius: 12px;
+    display: flex;
+    position: relative;
+  }
+  &__item {
+    @include default-font(20px);
+    color: #665f5f;
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    position: relative;
+    gap: 10px;
+    margin-bottom: 15px;
+    &-text {
+      display: block;
+      @include default-font(18px, 600);
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 40px 25px;
+    gap: 10px;
+    &-price {
+      @include default-font(20px);
+      color: #665f5f;
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      position: relative;
+      justify-content: space-between;
+      gap: 15px;
+      &-text {
+        @include default-font(18px, 600);
+      }
+      &-circle {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #665f5f;
+        position: absolute;
+        left: -18px;
+        top: 4px;
+      }
+      &-lock {
+        font-size: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: white;
+        transform: translate(3px, 2.5px);
+      }
+    }
+  }
+
+  &__generated-img {
+    max-width: 512px;
+    width: 100%;
+    max-height: 512px;
+    height: 100%;
+    img {
+      object-fit: cover;
+      max-width: 512px;
+      border-radius: 12px;
+      max-height: 512px;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &__main-btn {
+    display: flex;
+    justify-content: flex-end;
+  }
+  @media screen and (max-width: 830px) {
+    &__generated-img {
+      max-width: 412px;
+      max-height: 350px;
+      img{
+        max-height: 350px;
+      }
+    }
+    &__form {
+      max-width: 412px;
+      flex-direction: column;
+    }
+    &__info {
+      padding: 25px;
+    }
+  }
+  @media screen and (max-height: 666px){
+    &__form {
+      max-width: 1050px;
+      flex-direction: row;
+      height: 100%;
+    }
+    &__generated-img {
+      max-height: none;
+      img {
+        max-height: none;
+        object-fit: cover;
+      }
+    }
+  }
+}

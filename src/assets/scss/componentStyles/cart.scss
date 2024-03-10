@@ -113,6 +113,10 @@
     }
     &-info {
       margin-left: 25px;
+      &-flowers{
+        @include default-font(16px);
+        @include adaptive-font(16, 12);
+      }
     }
     &-title {
       @include default-font(24px);

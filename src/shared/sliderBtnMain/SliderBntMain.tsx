@@ -7,6 +7,8 @@ const SliderBtnMain = ({
   onClick,
   icon,
   width,
+  handleAddToCart,
+  collectProductData,
 }: TypeProps) => {
   const styles = {
     marginRight: marginRight,
@@ -22,7 +24,10 @@ const SliderBtnMain = ({
         status ? "slider-btn_main slider-btn_main_soledOut" : "slider-btn_main"
       }
       style={styles}
-      onClick={onClick}
+      onClick={() => {
+        if (collectProductData) handleAddToCart(collectProductData());
+        if (onClick) onClick();
+      }}
     >
       <div className="slider-btn_main__text">{text}</div>
       <span></span>

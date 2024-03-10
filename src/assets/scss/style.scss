@@ -27,6 +27,8 @@
 @import "./componentStyles/productInfo.scss";
 @import "./componentStyles/cart.scss";
 @import "./componentStyles/generator.scss";
+@import "./componentStyles/generatorPromptNote.scss";
+@import "./componentStyles/imageCartForm.scss";
 
 #root {
   display: flex;
@@ -189,7 +191,7 @@
     border-radius: 50%;
     transition: scale ease-in-out 0.3s;
   }
-  svg{
+  svg {
     z-index: 1;
   }
 }
@@ -277,6 +279,7 @@
 @media screen and (max-width: 1060px) {
   .current-path {
     padding-left: 39px;
+    padding-right: 25px;
   }
   .cookies {
     &-btn {

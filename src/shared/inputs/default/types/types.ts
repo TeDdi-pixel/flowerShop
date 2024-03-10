@@ -4,5 +4,5 @@ export type TypeDefaultInput = {
   type: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   id?: string;
-  value: string;
+  value?: string;
 };
