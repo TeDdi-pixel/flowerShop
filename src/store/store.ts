@@ -4,7 +4,7 @@ import productInfoSlice from "./slices/productInfoSlice";
 import cartSlice from "./slices/cartSlice";
 import userSlice from "./slices/userSlice";
 import cookiesSlice from "./slices/cookiesSlice";
-import bouquetGeneratorSlice from "./slices/generator";
+import bouquetGeneratorSlice from "./slices/generatorSlice";
 import burgerMenuSlice from "./slices/burgerMenuSlice";
 import imageCartFormSlice from "./slices/imageCartFormSlice";
 import servicesSlice from "./slices/servicesSlice";

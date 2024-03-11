@@ -29,7 +29,7 @@ const SliderBtnMain = ({
         if (onClick) onClick();
       }}
     >
-      <div className="slider-btn_main__text">{text}</div>
+      {text ? <div className="slider-btn_main__text">{text}</div> : null}
       <span></span>
       {icon}
     </button>

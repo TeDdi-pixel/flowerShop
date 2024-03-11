@@ -11,6 +11,7 @@ export type TypeGenerator = {
   promptNote: boolean;
   promptNoteHidden: boolean;
   bouquetFlowers: string[];
+  moreFlowersOpen: boolean;
 };
 
 export type TypeBouquetThunk = {

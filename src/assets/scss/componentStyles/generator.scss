@@ -230,56 +230,6 @@
     padding: 30px 15px;
     margin-bottom: 40px;
   }
-
-  // &__random {
-  //   &-flowers {
-  //     max-width: 900px;
-  //     width: 100%;
-  //     display: flex;
-  //     gap: 10px;
-  //     justify-content: space-evenly;
-  //     margin-bottom: 50px;
-  //     flex-wrap: wrap;
-  //   }
-  //   &-flower {
-  //     width: 200px;
-  //     height: 200px;
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //     position: relative;
-  //     background-color: transparent;
-  //     overflow: hidden;
-  //     border-radius: 10px;
-
-  //     img {
-  //       position: absolute;
-  //       width: 100%;
-  //       object-fit: cover;
-  //       border-radius: 10px;
-  //       height: 100%;
-  //       left: 50%;
-  //       top: 50%;
-  //       transform: translate(-50%, -50%);
-  //       transition: transform ease 0.7s, filter ease 0.3s;
-  //       filter: blur(3px);
-  //     }
-  //     &:hover {
-  //       img {
-  //         filter: blur(0px);
-  //         transform: translate(-50%, -50%) scale(1.3);
-  //       }
-  //     }
-  //     &-text {
-  //       position: absolute;
-  //       z-index: 1;
-  //       @include default-font(14px);
-  //       color: white;
-  //     }
-      
-  //   }
-  // }
-
   @media screen and (max-width: 1080px) {
     &__prompt-note {
       &_active {
@@ -292,7 +242,14 @@
     }
   }
 
-  @media screen and (max-width: 460px) {
+  @media screen and (max-width:879px) {
+    &__flowers{
+      justify-content: center;
+      gap: 20px;
+    }
+  }
+
+  @media screen and (max-width: 469px) {
     padding: 20px 15px 10px 15px;
     &__prompt-note {
       &_active {
@@ -301,6 +258,9 @@
       &_hidden {
         right: 33px;
       }
+    }
+    &__flowers{
+      gap: 12px;
     }
     &__flowers-prompt {
       max-width: 345px;

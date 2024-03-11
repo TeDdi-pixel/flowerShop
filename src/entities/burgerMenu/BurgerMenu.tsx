@@ -15,7 +15,7 @@ import {
   setFlowers,
   setGeneratedImage,
   setPromptNote,
-} from "../../store/slices/generator";
+} from "../../store/slices/generatorSlice";
 
 const BurgerMenu = () => {
   const { userIsSignIn } = useSelector((state: RootState) => state.user);

@@ -9,7 +9,7 @@ import {
   setPrompt,
   setPromptNote,
   setPromptNoteHidden,
-} from "../../store/slices/generator";
+} from "../../store/slices/generatorSlice";
 import { generateBouquet } from "../../store/asyncThunks/generateBouquet";
 import { ThunkDispatch } from "redux-thunk";
 import PromptNote from "../../entities/generator/promptNote/PromptNote";
@@ -17,7 +17,10 @@ import { RiAiGenerate } from "react-icons/ri";
 import { scrollTo } from "../../helpers/scrollTo";
 import FlowerPromptList from "../../entities/generator/FlowerPromptList";
 import GeneratedFlowerImage from "../../entities/generator/GeneratedFlowerImage";
-import { resetGeneratedTitle, setProductId } from "../../store/slices/imageCartFormSlice";
+import {
+  resetGeneratedTitle,
+  setProductId,
+} from "../../store/slices/imageCartFormSlice";
 import { generateNumber } from "../../helpers/generateNumber";
 
 const Generator = () => {
@@ -41,7 +44,7 @@ const Generator = () => {
   };
 
   const handleGenerateBouquet = () => {
-    dispatch(setProductId(generateNumber(0, 12576594233)) )
+    dispatch(setProductId(generateNumber(0, 12576594233)));
     dispatch(resetGeneratedTitle(""));
     dispatch(generateBouquet()); // изменить значения в ThunkDispatch
     scrollTo(75);

@@ -9,10 +9,16 @@ import CategoryLink from "../../shared/generator/CategoryLink";
 import { TypeFlowerPromptList } from "./types/types";
 
 const FlowerPromptList = ({ handlePrompt }: TypeFlowerPromptList) => {
-  const { flowers } = useSelector((state: RootState) => state.generator);
+  const { flowers, moreFlowersOpen } = useSelector(
+    (state: RootState) => state.generator
+  );
 
   return (
-    <div className="generator__flowers">
+    <div
+      className={`generator__flowers ${
+        moreFlowersOpen ? "generator__flowers_extended" : ""
+      }`}
+    >
       {configFlowers.map((flower: TypeFlower) => {
         const isActive = flowers.includes(flower.value);
         return (

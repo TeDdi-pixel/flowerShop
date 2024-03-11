@@ -5,7 +5,6 @@ export const bouquetGeneratorSlice = createSlice({
   name: "bouquetGenerator",
   initialState: {
     flowers: [] as string[],
-    // flowersCount: "1",
     prompt: "",
     generatedImage: "" as string | string[],
     genLoading: false,
@@ -14,29 +13,26 @@ export const bouquetGeneratorSlice = createSlice({
     promptNoteHidden: false,
   },
   reducers: {
-    setFlowers: (state, action: PayloadAction<string[]>) => {
-      state.flowers = action.payload;
+    setFlowers: (state, actions: PayloadAction<string[]>) => {
+      state.flowers = actions.payload;
     },
-    // setFlowersCount: (state, action: PayloadAction<string>) => {
-    //   state.flowersCount = action.payload;
-    // },
-    setPrompt: (state, action: PayloadAction<string>) => {
-      state.prompt = action.payload;
+    setPrompt: (state, actions: PayloadAction<string>) => {
+      state.prompt = actions.payload;
     },
-    setGeneratedImage: (state, action: PayloadAction<string | string[]>) => {
-      state.generatedImage = action.payload;
+    setGeneratedImage: (state, actions: PayloadAction<string | string[]>) => {
+      state.generatedImage = actions.payload;
     },
-    setGenLoading: (state, action: PayloadAction<boolean>) => {
-      state.genLoading = action.payload;
+    setGenLoading: (state, actions: PayloadAction<boolean>) => {
+      state.genLoading = actions.payload;
     },
-    setPresetPrompt: (state, action: PayloadAction<number | null>) => {
-      state.presetPrompt = action.payload;
+    setPresetPrompt: (state, actions: PayloadAction<number | null>) => {
+      state.presetPrompt = actions.payload;
     },
-    setPromptNote: (state, action: PayloadAction<boolean>) => {
-      state.promptNote = action.payload;
+    setPromptNote: (state, actions: PayloadAction<boolean>) => {
+      state.promptNote = actions.payload;
     },
-    setPromptNoteHidden: (state, action: PayloadAction<boolean>) => {
-      state.promptNoteHidden = action.payload;
+    setPromptNoteHidden: (state, actions: PayloadAction<boolean>) => {
+      state.promptNoteHidden = actions.payload;
       if (state.promptNoteHidden) state.promptNote = false;
     },
   },
@@ -60,7 +56,6 @@ export const bouquetGeneratorSlice = createSlice({
 
 export const {
   setFlowers,
-  // setFlowersCount,
   setPrompt,
   setGeneratedImage,
   setGenLoading,

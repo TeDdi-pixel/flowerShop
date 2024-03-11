@@ -7,7 +7,7 @@ import {
   setPrompt,
   setPromptNote,
   setPromptNoteHidden,
-} from "../../../store/slices/generator";
+} from "../../../store/slices/generatorSlice";
 import ProductCardButton from "../../../shared/productCard/ui/ProductCardButton";
 import { RootState } from "../../../store/types/types";
 import { resetGeneratedTitle } from "../../../store/slices/imageCartFormSlice";

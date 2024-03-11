@@ -7,6 +7,7 @@ const MainBtn = ({
   fontColor,
   marginBottom,
   link,
+  onClick
 }: TypeMainButton) => {
   return (
     <Link
@@ -17,6 +18,7 @@ const MainBtn = ({
         marginBottom: marginBottom,
       }}
       className="button_main"
+      onClick={onClick}
     >
       {text}
     </Link>
