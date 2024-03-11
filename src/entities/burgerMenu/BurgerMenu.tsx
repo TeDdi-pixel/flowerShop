@@ -11,6 +11,11 @@ import {
 } from "../../store/slices/cartSlice";
 import { setBurgerMenuOpen } from "../../store/slices/burgerMenuSlice";
 import { RootState } from "../../store/types/types";
+import {
+  setFlowers,
+  setGeneratedImage,
+  setPromptNote,
+} from "../../store/slices/generator";
 
 const BurgerMenu = () => {
   const { userIsSignIn } = useSelector((state: RootState) => state.user);
@@ -26,6 +31,9 @@ const BurgerMenu = () => {
     dispatch(setUserIsSignedIn(false));
     dispatch(setEmptyCart(true));
     dispatch(updateCart([]));
+    dispatch(setGeneratedImage(""));
+    dispatch(setFlowers([]));
+    dispatch(setPromptNote(false));
   };
 
   return (

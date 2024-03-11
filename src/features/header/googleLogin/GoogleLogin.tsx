@@ -14,7 +14,9 @@ import { RootState } from "../../../store/types/types";
 import { loginWithGoogle } from "../../../store/asyncThunks/loginWithGoogle";
 
 const GoogleLogin = () => {
-  const { uid, profilePhoto } = useSelector((state: RootState) => state.user);
+  const { uid, profilePhoto } = useSelector(
+    (state: RootState) => state.user
+  );
   const { cookiesEnabled } = useSelector((state: RootState) => state.cookies);
   const { loading } = useSelector((state: RootState) => state.services);
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
@@ -26,8 +28,8 @@ const GoogleLogin = () => {
 
     const cookiesTotalPrice = getFromCookies("totalPrice");
     if (cookiesTotalPrice && cartData) {
-      dispatch(setTotalPrice(cookiesTotalPrice));
       dispatch(updateCart(cartData));
+      dispatch(setTotalPrice(cookiesTotalPrice));
     }
   }, [uid, cookiesEnabled, cartData, loading]);
 

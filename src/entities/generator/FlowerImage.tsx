@@ -4,9 +4,10 @@ import { RootState } from "../../store/types/types";
 import FlowerImgButton from "../../shared/generator/FlowerImgButton";
 import { buttonStyle, buttons } from "./config/buttons";
 import { setIsFormOpen } from "../../store/slices/imageCartFormSlice";
-
 const FlowerImage = ({ image, regenerate }: TypeFlowerImageProps) => {
-  const { genLoading } = useSelector((state: RootState) => state.generator);
+  const { genLoading, generatedImage } = useSelector(
+    (state: RootState) => state.generator
+  );
   const dispatch = useDispatch();
   const openForm = () => {
     dispatch(setIsFormOpen(true));
@@ -15,7 +16,8 @@ const FlowerImage = ({ image, regenerate }: TypeFlowerImageProps) => {
   const buttonConfig = buttons(regenerate, openForm);
   return (
     <div className="generator__img">
-      <img src={image} alt="Flower" />
+      {generatedImage && !genLoading? <img src={image} alt="Flower" height='512'/> : null}
+      {genLoading ? image : null}
       {buttonConfig.map((button, index) => (
         <FlowerImgButton
           key={index}

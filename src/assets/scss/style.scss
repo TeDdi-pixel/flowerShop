@@ -40,11 +40,18 @@
 }
 .loading-spinner {
   position: absolute;
-  width: 150px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  width: 150px;
+}
+
+.loader-bar{
+  position: absolute;
+  width: 200px;
+  height: 80px;
+  top: 8px;
+  left: -5px;
 }
 
 .cookies {

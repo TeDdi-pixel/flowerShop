@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import mainLoading from "../assets/img/MainLoading.svg";
+import mainLoading from "../assets/img/Loading Square.json";
 import { routes } from "./config/routes";
+import Lottie from "lottie-react";
 
 const AppRouter = () => {
   return (
@@ -14,9 +15,10 @@ const AppRouter = () => {
             element={
               <Suspense
                 fallback={
-                  <img
-                    src={mainLoading}
-                    alt="spinner"
+                  <Lottie
+                    animationData={mainLoading}
+                    loop
+                    autoplay
                     className="loading-spinner"
                   />
                 }

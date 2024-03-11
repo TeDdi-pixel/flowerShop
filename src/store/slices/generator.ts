@@ -23,7 +23,7 @@ export const bouquetGeneratorSlice = createSlice({
     setPrompt: (state, action: PayloadAction<string>) => {
       state.prompt = action.payload;
     },
-    setGeneratedImage: (state, action: PayloadAction<string[]>) => {
+    setGeneratedImage: (state, action: PayloadAction<string | string[]>) => {
       state.generatedImage = action.payload;
     },
     setGenLoading: (state, action: PayloadAction<boolean>) => {

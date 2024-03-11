@@ -14,7 +14,7 @@ export const cartSlice = createSlice({
     totalPrice: cart.length > 0 ? calculateTotalPrice(cart) : 0,
   },
   reducers: {
-    initializeCart: (state, actions:PayloadAction<TypeInitCart>) => {
+    initializeCart: (state, actions: PayloadAction<TypeInitCart>) => {
       const { cartData, cookiesEnabled } = actions.payload;
       if (cartData) {
         saveToCookies("cart", cartData);
@@ -32,9 +32,7 @@ export const cartSlice = createSlice({
     },
     setTotalPrice: (state, action) => {
       state.totalPrice = action.payload;
-      const totalPrice = state.totalPrice;
-      if (totalPrice && Cookies.get("totalPrice"))
-        Cookies.set("totalPrice", JSON.stringify(totalPrice));
+      Cookies.set("totalPrice", JSON.stringify(state.totalPrice));
     },
     totalAdd: (state, actions) => {
       state.totalPrice += actions.payload;
@@ -45,8 +43,10 @@ export const cartSlice = createSlice({
     },
     addToCart: (state, actions) => {
       const product = actions.payload;
-      const cartData = state.cartData;      
-      const existingProduct = cartData.find((item : TypeProduct) => item.id === product.id);
+      const cartData = state.cartData;
+      const existingProduct = cartData.find(
+        (item: TypeProduct) => item.id === product.id
+      );
       if (existingProduct) {
         existingProduct.quantity += 1;
       } else {

@@ -2,8 +2,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/types/types";
 import FlowerImage from "./FlowerImage";
 import FlowerImgPlaceholder from "../../shared/generator/FlowerImgPlaceholder";
-import spinner3 from "../../assets/img/spinner3.svg";
+import barLoader from "../../assets/img/Bar Loader.json";
 import { TypeOutputImage } from "../../features/generator/types/types";
+import Lottie from "lottie-react";
 
 export default function GeneratedFlowerImage({ regenerate }: TypeOutputImage) {
   const { generatedImage, genLoading } = useSelector(
@@ -12,7 +13,18 @@ export default function GeneratedFlowerImage({ regenerate }: TypeOutputImage) {
 
   return generatedImage ? (
     <FlowerImage
-      image={genLoading ? spinner3 : generatedImage}
+      image={
+        genLoading ? (
+          <Lottie
+            animationData={barLoader}
+            loop
+            autoplay
+            className="loading-spinner"
+          />
+        ) : (
+          generatedImage
+        )
+      }
       regenerate={regenerate}
     />
   ) : (

@@ -1,9 +1,5 @@
 import { ReactNode } from "react";
 
-export type TypeFlowerImageProps = {
-  image: string;
-  regenerate: TypeVoidFunc;
-};
 export type TypeFlowerPrompt = {
   children: ReactNode;
   isActive: boolean;

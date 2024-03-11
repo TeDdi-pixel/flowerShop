@@ -1,10 +1,10 @@
-import logo from "../../assets/icons/logo.svg";
 import HeaderRight from "../../entities/headerRight/HeaderRight.jsx";
 import HeaderIconMenu from "../../shared/header/HeaderIconMenu.jsx";
 import { Link } from "react-router-dom";
 import BurgerMenu from "../../entities/burgerMenu/BurgerMenu.js";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/types/types.js";
+import LogoIcon from "../../shared/icons/header/LogoIcon";
 
 const Header = () => {
   const { userIsSignIn } = useSelector((state: RootState) => state.user);
@@ -19,7 +19,7 @@ const Header = () => {
             <HeaderIconMenu />
           </div>
           <Link to="/">
-            <img src={logo} alt="logo" className="header__logo" />
+            <LogoIcon className="header__logo" />
           </Link>
           <HeaderRight />
         </nav>

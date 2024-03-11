@@ -12,7 +12,7 @@ export const useAddToCart = () => {
   const { storageUserData, uid } = useSelector(
     (state: RootState) => state.user
   );
-  const cartData = useSelector((state: RootState) => state.cart.cartData);
+  const { cartData } = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
   const [addedProducts, setAddedProducts] = useState<TypeAddedProds>({});
 
