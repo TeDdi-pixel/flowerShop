@@ -1,4 +1,3 @@
-import React from "react";
 import TopRated from "../../widgets/topRated/TopRated";
 import EntranceBlock from "../../widgets/entranceBlock/EntranceBlock";
 import DeliveryOptionsBlock from "../../shared/deliveryOption/DeliveryOptionsBlock";

@@ -1,6 +1,6 @@
 const ProductImg = ({ img }: { img: string }) => {
   return (
-    <a data-fancybox="gallery" href={img}>
+    <a data-fancybox="gallery" href={img} >
       <img
         src={img}
         alt=""

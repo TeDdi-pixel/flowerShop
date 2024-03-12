@@ -9,6 +9,7 @@ import { useAddToCart } from "../../hooks/useAddToCart";
 import { setUserCart } from "../../services/setters/setUserCart";
 import ProductCard from "../../entities/productCard/ProductCard";
 import { RootState, TypeProduct } from "../../store/types/types";
+import { notify } from "../../helpers/notify";
 
 const ProductCardBlock = () => {
   const { collectionsData } = useCollections("products", "productsImg");
@@ -18,11 +19,15 @@ const ProductCardBlock = () => {
   );
   const { cartData } = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
-  const { handleAddToCart, addedProducts } = useAddToCart();
+  const { handleAddToCart } = useAddToCart();
 
   const productInfoOpen = (id: string) => {
     dispatch(setSelectedItem(id));
     dispatch(handleShowMore());
+  };
+
+  const addToCart = (card) => {
+    handleAddToCart(card);
   };
 
   useEffect(() => {
@@ -36,14 +41,14 @@ const ProductCardBlock = () => {
       {collectionsData.map((card: TypeProduct) => (
         <ProductCard
           key={card.id}
-          id={card.id}
           img={card.imageUrl}
           title={card.title}
           price={card.price}
           text={card.text}
-          addedProducts={addedProducts}
           productInfoOpen={() => productInfoOpen(card.id)}
-          handleAddToCart={() => handleAddToCart(card)}
+          handleAddToCart={() => {
+            addToCart(card);
+          }}
           soledOut={card.text.toLowerCase() === "sold out"}
         />
       ))}

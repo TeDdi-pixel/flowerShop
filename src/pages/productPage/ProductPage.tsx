@@ -1,4 +1,3 @@
-import React from 'react';
 import DefaultLayout from '../../layouts/default/DefaultLayout';
 
 const ProductPage = () => {

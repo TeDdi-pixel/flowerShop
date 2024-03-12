@@ -5,6 +5,7 @@ export const imageCartFormSlice = createSlice({
   name: "imageCartForm",
   initialState: {
     isFormOpen: false,
+    isSharedFormOpen: false,
     generatedTitle: "",
     genLoading: false,
     productId: "",
@@ -18,6 +19,9 @@ export const imageCartFormSlice = createSlice({
     },
     setProductId: (state, actions: PayloadAction<string>) => {
       state.productId = actions.payload;
+    },
+    setSharedFormOpen: (state, actions: PayloadAction<boolean>) => {
+      state.isSharedFormOpen = actions.payload;
     },
   },
   extraReducers: (builder) =>
@@ -38,6 +42,10 @@ export const imageCartFormSlice = createSlice({
       }),
 });
 
-export const { setIsFormOpen, resetGeneratedTitle, setProductId } =
-  imageCartFormSlice.actions;
+export const {
+  setIsFormOpen,
+  resetGeneratedTitle,
+  setProductId,
+  setSharedFormOpen,
+} = imageCartFormSlice.actions;
 export default imageCartFormSlice.reducer;

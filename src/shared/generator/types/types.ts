@@ -17,13 +17,14 @@ export type TypeFlowerImgButton = {
   onClick?: TypeVoidFunc;
   className: string;
   icon: ReactNode;
+  placement: string;
 };
 
 export type TypeVoidFunc = () => void;
 
 export type TypeButton = {
-  tooltip: string
-  icon: ReactNode
-  func?: TypeVoidFunc
-}
-
+  tooltip: string;
+  icon: ReactNode;
+  func?: TypeVoidFunc;
+  placement: string;
+};

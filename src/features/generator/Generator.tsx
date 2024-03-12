@@ -21,6 +21,7 @@ import {
   resetGeneratedTitle,
   setProductId,
 } from "../../store/slices/imageCartFormSlice";
+import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import { generateNumber } from "../../helpers/generateNumber";
 
 const Generator = () => {
@@ -83,7 +84,7 @@ const Generator = () => {
       <SliderBtnMain
         onClick={handleGenerateBouquet}
         text={"Generate"}
-        icon={<RiAiGenerate />}
+        icon={<AutoAwesomeRoundedIcon />}
         width={"223px"}
       />
     </div>

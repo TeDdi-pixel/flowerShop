@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 const TotalPrice = () => {
   const { isFullWidth } = useWindowResize(695);
-  const { data } = useData("products");
+  const { data } = useData(true, "products");
   const product = data[0];
   const totalPrice = useSelector((state) => state.cart.totalPrice);
 

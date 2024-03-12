@@ -1,4 +1,3 @@
-import React from "react";
 import CollectionItem from "../../shared/collectionItem/CollectionItem";
 import useCollections from "../../hooks/useCollections";
 

@@ -3,7 +3,7 @@ import FAQItem from "../../entities/FAQ/FAQ_Item";
 import useData from "../../hooks/useData";
 
 const FAQ = () => {
-  const { data } = useData("FAQ");
+  const { data } = useData(true, "FAQ");
   return (
     <div className="FAQ">
       <h2 className="FAQ__title">Frequently Asking Questions</h2>

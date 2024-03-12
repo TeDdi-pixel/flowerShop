@@ -1,4 +1,3 @@
-import React from "react";
 import FooterTabs from "../../entities/footerTabs/FooterTabs";
 import SocialLinks from "../../shared/socialLinks/SocialLinks";
 import CreditCards from "../../shared/creditCards/CreditCards";
@@ -11,7 +10,7 @@ const Footer = () => {
         <FooterTabs />
         <SocialLinks />
         <CreditCards />
-        <Link className="footer__rights">© 2022, Los Angeles Florist - Cherry Blossom</Link>
+        <Link to='/' className="footer__rights">© 2022, Los Angeles Florist - Cherry Blossom</Link>
       </div>
     </footer>
   );

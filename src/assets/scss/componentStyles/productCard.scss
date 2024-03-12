@@ -71,10 +71,11 @@
     cursor: pointer;
     overflow: hidden;
     z-index: 0;
+    text-align: center;
     transition: background-color ease 0.2s, box-shadow ease 0.4s,opacity ease 0.3s;
     &-text {
       position: relative;
-      @include default-font(12px, 700, left, 124.182%, white);
+      @include default-font(12px, 700, center, 124.182%, white);
       z-index: 2;
     }
     span {
@@ -168,7 +169,7 @@
   }
   @media screen and (max-width: 460px) {
     &__button {
-      width: 100%;
+      width: 43%;
       span{
         transition: scale ease-in-out 0.3s;
       }

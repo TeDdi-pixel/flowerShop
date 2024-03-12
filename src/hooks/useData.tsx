@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import { getFilteredData } from "../helpers/hooks/getFilteredData";
 import { db } from "../services/firebase/firebase-config";
 
-const useData = (collectionName, uid) => {
+const useData = (
+  saveToStorage: boolean,
+  collectionName: string,
+  uid: string
+) => {
   const [data, setData] = useState([]);
   let collectionRef;
 
@@ -17,7 +21,8 @@ const useData = (collectionName, uid) => {
     try {
       const filteredData = await getFilteredData(collectionRef);
       setData(filteredData);
-      localStorage.setItem(collectionName, JSON.stringify(filteredData));
+      if (saveToStorage)
+        localStorage.setItem(collectionName, JSON.stringify(filteredData));
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +45,8 @@ const useData = (collectionName, uid) => {
         };
       });
       setData(filteredData);
-      localStorage.setItem(collectionName, JSON.stringify(filteredData));
+      if (saveToStorage)
+        localStorage.setItem(collectionName, JSON.stringify(filteredData));
     });
 
     return () => unsubscribe();

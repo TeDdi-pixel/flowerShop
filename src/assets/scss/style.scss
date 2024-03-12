@@ -38,6 +38,10 @@
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
 }
+.fancybox__container {
+  --fancybox-zIndex: 1052;
+}
+
 .loading-spinner {
   position: absolute;
   left: 50%;
@@ -46,7 +50,7 @@
   width: 150px;
 }
 
-.loader-bar{
+.loader-bar {
   position: absolute;
   width: 200px;
   height: 80px;

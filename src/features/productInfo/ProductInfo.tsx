@@ -19,18 +19,16 @@ import {
 } from "../../store/slices/productInfoSlice";
 import PickAddress from "../../shared/pickAddress/PickAddress";
 import { useAddToCart } from "../../hooks/useAddToCart";
-import ProductCardMessage from "../../shared/productCard/ui/ProductCardMessage";
 import { RootState, TypeProduct } from "../../store/types/types";
 
 const ProductInfo = () => {
   const { collectionsData } = useCollections("products", "productsImg");
-  const { data } = useData("products");
+  const { data } = useData(true, "products");
   const { showMore, selectedItem, soledOutStatuses } = useSelector(
     (state: RootState) => state.productInfo
   );
 
-  const { cookiesError } = useSelector((state: RootState) => state.cookies);
-  const { handleAddToCart, addedProducts } = useAddToCart();
+  const { handleAddToCart } = useAddToCart();
   const dispatch = useDispatch();
   const handleExit = () => {
     dispatch(setIsSliderOpened());
@@ -48,18 +46,10 @@ const ProductInfo = () => {
         <Exit onClick={handleExit} color={"#665f5f"} />
         <div className="product-info__slider">
           <Slider selectedItem={selectedItem}>
-            {collectionsData.map((item:TypeProduct, index) => {
+            {collectionsData.map((item: TypeProduct, index) => {
               return (
                 <SliderSlide key={item.id}>
                   <ProductSlideImg image={item.imageUrl} />
-                  {!cookiesError && addedProducts[item.id] ? (
-                    <ProductCardMessage
-                      isAddedMessage={addedProducts[item.id]}
-                      width={"175px"}
-                      height={"50px"}
-                      top={"40%"}
-                    />
-                  ) : null}
                   <div className="product-info__data-wrapper">
                     <ProductSlideTitle title={item.title} />
                     <ProductSlidePrice price={item.price} />

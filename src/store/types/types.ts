@@ -23,6 +23,7 @@ export type TypeImageCartForm = {
   generatedTitle: string;
   genLoading: boolean;
   productId: string;
+  isSharedFormOpen: boolean;
 };
 
 export type TypeProduct = {

@@ -7,7 +7,7 @@ const Generator = () => {
   return (
     <DefaultLayout>
       <PageTitle title={"Bouquet generator"} marginBottom={"30px"} />
-      <ImageCartForm/>
+      <ImageCartForm />
       <BouquetsGenerator />
     </DefaultLayout>
   );

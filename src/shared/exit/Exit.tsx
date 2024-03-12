@@ -1,9 +1,9 @@
-import { RxCross1 } from "react-icons/rx";
 import { TypeExit } from "./types/types";
-
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 const Exit = ({ onClick, top, right, color }: TypeExit) => {
   return (
-    <RxCross1
+    <CloseRoundedIcon
+      fontSize="large"
       onClick={onClick}
       className="exit"
       style={{

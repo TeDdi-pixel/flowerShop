@@ -6,4 +6,5 @@ export type TypeProps = {
   marginRight?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   icon?: ReactNode;
+  width?: string;
 };

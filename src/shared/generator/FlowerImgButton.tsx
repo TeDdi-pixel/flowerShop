@@ -1,3 +1,4 @@
+import { Tooltip, Zoom } from "@mui/material";
 import { TypeFlowerImgButton } from "./types/types";
 
 const FlowerImgButton = ({
@@ -5,11 +6,19 @@ const FlowerImgButton = ({
   onClick,
   className,
   icon,
+  placement,
 }: TypeFlowerImgButton) => {
   return (
-    <button onClick={onClick} className={className} title={tooltip}>
-      {icon}
-    </button>
+    <Tooltip
+      title={tooltip}
+      placement={placement}
+      arrow
+      TransitionComponent={Zoom}
+    >
+      <button onClick={onClick} className={className}>
+        {icon}
+      </button>
+    </Tooltip>
   );
 };
 

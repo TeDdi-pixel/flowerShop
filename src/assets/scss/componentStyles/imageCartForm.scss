@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1002;
+  z-index: 1052;
   scale: 0;
   &_open {
     scale: 1;
@@ -79,6 +79,13 @@
     }
   }
 
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    align-items: center;
+  }
+
   &__generated-img {
     max-width: 512px;
     width: 100%;
@@ -93,15 +100,12 @@
       width: 100%;
     }
   }
-  &__main-btn {
-    display: flex;
-    justify-content: flex-end;
-  }
+
   @media screen and (max-width: 830px) {
     &__generated-img {
       max-width: 412px;
       max-height: 350px;
-      img{
+      img {
         max-height: 350px;
       }
     }
@@ -113,7 +117,7 @@
       padding: 25px;
     }
   }
-  @media screen and (max-height: 666px){
+  @media screen and (max-height: 666px) {
     &__form {
       max-width: 1050px;
       flex-direction: row;

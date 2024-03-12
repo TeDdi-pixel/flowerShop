@@ -6,8 +6,6 @@ export const cookiesSlice = createSlice({
   initialState: {
     cookiesEnabled: !!getFromCookies("user"),
     cookiesMessage: true,
-    cookiesError: false,
-    cookiesErrorMessage: false,
   },
   reducers: {
     enableCookies: (state) => {
@@ -20,16 +18,9 @@ export const cookiesSlice = createSlice({
     closeCookiesMessage: (state) => {
       state.cookiesMessage = false;
     },
-    setError: (state, action) => {
-      state.cookiesError = action.payload;
-    },
-    setErrorMessage: (state, action) => {
-      state.cookiesErrorMessage = action.payload;
-    },
   },
 });
 
-export const { enableCookies, closeCookiesMessage, setError, setErrorMessage } =
-  cookiesSlice.actions;
+export const { enableCookies, closeCookiesMessage } = cookiesSlice.actions;
 
 export default cookiesSlice.reducer;
