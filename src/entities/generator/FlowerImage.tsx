@@ -2,7 +2,13 @@ import { TypeFlowerImageProps } from "../../shared/generator/types/types";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/types/types";
 import { setIsFormOpen } from "../../store/slices/imageCartFormSlice";
-import { SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
+import {
+  SpeedDial,
+  SpeedDialAction,
+  SpeedDialIcon,
+  Typography,
+  Zoom,
+} from "@mui/material";
 import AutoModeIcon from "@mui/icons-material/AutoMode";
 import DownloadingRoundedIcon from "@mui/icons-material/DownloadingRounded";
 import ShoppingBasketRoundedIcon from "@mui/icons-material/ShoppingBasketRounded";
@@ -33,6 +39,7 @@ const FlowerImage = ({ image, regenerate }: TypeFlowerImageProps) => {
     },
     { icon: <DownloadingRoundedIcon />, name: "Download", func: saveImg },
   ];
+
   return (
     <div className="generator__img">
       {generatedImage && !genLoading ? (
@@ -60,7 +67,12 @@ const FlowerImage = ({ image, regenerate }: TypeFlowerImageProps) => {
                 <SpeedDialAction
                   key={action.name}
                   icon={action.icon}
-                  tooltipTitle={action.name}
+                  TransitionComponent={Zoom}
+                  tooltipTitle={
+                    <Typography variant="caption" fontSize={12} fontFamily='Montserrat'>
+                      {action.name}
+                    </Typography>
+                  }
                   onClick={action.func}
                   sx={{ width: 35, height: 35 }}
                 />

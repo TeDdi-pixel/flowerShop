@@ -63,11 +63,11 @@ const FormBlock = () => {
       flowers: flowers,
     };
     if (generatedTitle) handleAddToCart(product);
-    else warn("Generator: Title must to be set");
+    else warn("Generator: You need to create title");
   };
   const sharePhoto = () => {
     if (generatedTitle) setCatalog("sharedCatalog", setProduct());
-    else warn("Generator: Title must to be set");
+    else warn("Generator: You need to create title");
   };
 
   useEffect(() => {

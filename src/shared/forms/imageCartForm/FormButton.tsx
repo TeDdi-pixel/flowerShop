@@ -1,4 +1,4 @@
-import { Button, Tooltip } from "@mui/material";
+import { Button, Tooltip, Typography, Zoom } from "@mui/material";
 import { TypeFormButtons } from "../../../entities/forms/types/types";
 import { pink } from "@mui/material/colors";
 
@@ -10,12 +10,22 @@ const FormButton = ({
   variant = "contained",
   size = "medium",
   tooltip,
-  placement='top',
-  color
+  placement = "top",
+  color,
 }: TypeFormButtons) => {
   return (
     <div className="img-cart-form__main-btn">
-      <Tooltip title={tooltip} placement={placement as "top"| "bottom"}>
+      <Tooltip
+        TransitionComponent={Zoom}
+        title={
+          tooltip ? (
+            <Typography variant="caption" fontSize={12} fontFamily="Montserrat">
+              {tooltip}
+            </Typography>
+          ) : null
+        }
+        placement={placement as "top" | "bottom"}
+      >
         <Button
           size={size as "small" | "medium" | "large"}
           onClick={func}

@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store/types/types";
-import { Button, Tooltip } from "@mui/material";
+import { Button, Tooltip, Typography, Zoom } from "@mui/material";
 import { TypeFormButtons } from "../../../entities/forms/types/types";
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import { pink } from "@mui/material/colors";
 
 const GenerateTitleBtn = ({ generateAnswer }: TypeFormButtons) => {
@@ -10,17 +10,25 @@ const GenerateTitleBtn = ({ generateAnswer }: TypeFormButtons) => {
     (state: RootState) => state.imageCartForm
   );
   return generatedTitle || genLoading ? null : (
-    <Tooltip title="Generator will try to find the best name for your bouquet according to count and type of your flowers">
-      <Button
-      size="small"
-      onClick={generateAnswer}
-      variant="contained"
-      style={{ backgroundColor: pink[100] }}
-      color="secondary"
-      endIcon={<AutoAwesomeIcon />}
+    <Tooltip
+      TransitionComponent={Zoom}
+      title={
+        <Typography variant="caption" fontSize={12} fontFamily="Montserrat">
+          Generator will try to find the best name for your bouquet according to
+          count and type of your flowers
+        </Typography>
+      }
     >
-      Create title
-    </Button>
+      <Button
+        size="small"
+        onClick={generateAnswer}
+        variant="contained"
+        style={{ backgroundColor: pink[100] }}
+        color="secondary"
+        endIcon={<AutoAwesomeIcon />}
+      >
+        Create title
+      </Button>
     </Tooltip>
   );
 };
