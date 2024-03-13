@@ -24,7 +24,7 @@ const ProductCard = ({
 
   return (
     <div className="product-card">
-      <ProductCardImg img={img} alt="flowers" onClick={productInfoOpen} />
+      <ProductCardImg img={img} onClick={productInfoOpen} />
       <div className="product-card__info-wrapper">
         <div className="product-card__info">
           <ProductCardTitle title={title} />
