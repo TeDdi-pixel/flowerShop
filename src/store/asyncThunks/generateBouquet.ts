@@ -26,8 +26,6 @@ export const generateBouquet = createAsyncThunk<string>(
     };
     try {
       const response = await axios.request(options);
-      console.log(response);
-      
       return response.data.replicate.items[0].image_resource_url;
     } catch (error) {
       console.error(error);

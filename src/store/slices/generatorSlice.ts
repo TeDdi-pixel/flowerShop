@@ -43,8 +43,8 @@ export const bouquetGeneratorSlice = createSlice({
       })
       .addCase(
         generateBouquet.fulfilled,
-        (state, action: PayloadAction<string>) => {
-          state.generatedImage = action.payload;
+        (state, actions: PayloadAction<string>) => {
+          state.generatedImage = actions  .payload;
           state.genLoading = false;
         }
       )

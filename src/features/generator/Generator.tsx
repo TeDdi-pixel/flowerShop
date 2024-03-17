@@ -13,7 +13,6 @@ import {
 import { generateBouquet } from "../../store/asyncThunks/generateBouquet";
 import { ThunkDispatch } from "redux-thunk";
 import PromptNote from "../../entities/generator/promptNote/PromptNote";
-import { RiAiGenerate } from "react-icons/ri";
 import { scrollTo } from "../../helpers/scrollTo";
 import FlowerPromptList from "../../entities/generator/FlowerPromptList";
 import GeneratedFlowerImage from "../../entities/generator/GeneratedFlowerImage";
