@@ -69,7 +69,11 @@ const FlowerImage = ({ image, regenerate }: TypeFlowerImageProps) => {
                   icon={action.icon}
                   TransitionComponent={Zoom}
                   tooltipTitle={
-                    <Typography variant="caption" fontSize={12} fontFamily='Montserrat'>
+                    <Typography
+                      variant="caption"
+                      fontSize={12}
+                      fontFamily="Montserrat"
+                    >
                       {action.name}
                     </Typography>
                   }

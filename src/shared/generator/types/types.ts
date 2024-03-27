@@ -22,9 +22,15 @@ export type TypeFlowerImgButton = {
 
 export type TypeVoidFunc = () => void;
 
+export type TypeFlowerImageProps = {
+  image: string;
+  regenerate: TypeVoidFunc;
+};
+
 export type TypeButton = {
   tooltip: string;
   icon: ReactNode;
   func?: TypeVoidFunc;
   placement: string;
 };
+

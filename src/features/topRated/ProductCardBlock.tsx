@@ -9,12 +9,11 @@ import { useAddToCart } from "../../hooks/useAddToCart";
 import { setUserCart } from "../../services/setters/setUserCart";
 import ProductCard from "../../entities/productCard/ProductCard";
 import { RootState, TypeProduct } from "../../store/types/types";
-import { notify } from "../../helpers/notify";
 
 const ProductCardBlock = () => {
   const { collectionsData } = useCollections("products", "productsImg");
   const { cookiesEnabled } = useSelector((state: RootState) => state.cookies);
-  const { uid, storageUserData } = useSelector(
+  const { uid } = useSelector(
     (state: RootState) => state.user
   );
   const { cartData } = useSelector((state: RootState) => state.cart);
@@ -26,12 +25,12 @@ const ProductCardBlock = () => {
     dispatch(handleShowMore());
   };
 
-  const addToCart = (card) => {
+  const addToCart = (card:TypeProduct) => {
     handleAddToCart(card);
   };
 
   useEffect(() => {
-    if (storageUserData && cartData.length > 0 && uid && cookiesEnabled) {
+    if (cartData.length > 0 && uid && cookiesEnabled) {
       setUserCart(uid, cartData);
     }
   }, [cartData, uid]);

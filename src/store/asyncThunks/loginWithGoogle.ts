@@ -11,15 +11,15 @@ export const loginWithGoogle = createAsyncThunk(
     const { cartData } = state.cart;
     const { cookiesEnabled } = state.cookies;
 
-    const { uid } = await signInWithGoogle(dispatch);
-    if (!uid) {
+    const user = await signInWithGoogle();
+    if (!user) {
       throw new Error("User data is not set");
     }
-    dispatch(setUserIsSignedIn(uid));
+    dispatch(setUserIsSignedIn(user));
 
     if (!cookiesEnabled) throw new Error("Cookies is disabled");
 
-    dispatch(setUid(uid));
+    dispatch(setUid(user.uid));
 
     if (!cartData) throw new Error("Cart data is not set");
 

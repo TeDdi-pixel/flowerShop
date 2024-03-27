@@ -6,14 +6,16 @@
   height: 100%;
   background-color: hsla(0, 0%, 25%, 0.5);
   backdrop-filter: blur(5px);
-  transition: all ease 0.3s;
+  transition: scale ease 0.3s, opacity ease 0.2s;
   padding: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
   scale: 0;
+  opacity: 0;
   &_open {
     scale: 1;
+    opacity: 1;
   }
   &__wrapper {
     position: relative;

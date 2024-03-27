@@ -7,14 +7,12 @@ import { notify, error } from "../helpers/notify";
 
 export const useAddToCart = () => {
   const { cookiesEnabled } = useSelector((state: RootState) => state.cookies);
-  const { storageUserData, uid } = useSelector(
-    (state: RootState) => state.user
-  );
+  const { uid } = useSelector((state: RootState) => state.user);
   const { cartData } = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
 
   const handleAddToCart = async (product: TypeProduct) => {
-    if (uid && cookiesEnabled && storageUserData?.user?.uid) {
+    if (uid && cookiesEnabled) {
       saveToCookies("cart", [...cartData, product]);
       dispatch(addToCart(product));
       if (cartData) {
@@ -28,7 +26,7 @@ export const useAddToCart = () => {
       }
     } else if (!cookiesEnabled) {
       error("Cookies: No enabled cookies found");
-    } else if (!uid || !storageUserData?.user?.uid) {
+    } else if (!uid) {
       error("Cookies: No signed in user found");
     }
   };

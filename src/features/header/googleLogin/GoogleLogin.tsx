@@ -5,26 +5,21 @@ import ProfileImg from "../../../shared/profileImg/ProfileImg";
 import useCart from "../../../hooks/useCart";
 import { setTotalPrice, updateCart } from "../../../store/slices/cartSlice";
 import { setProfilePhoto } from "../../../store/slices/userSlice";
-import {
-  getFromCookies,
-  getFromLocalStorage,
-} from "../../../helpers/storageUtils";
+import { getFromCookies } from "../../../helpers/storageUtils";
 import { ThunkDispatch } from "redux-thunk";
 import { RootState } from "../../../store/types/types";
 import { loginWithGoogle } from "../../../store/asyncThunks/loginWithGoogle";
 
 const GoogleLogin = () => {
-  const { uid, profilePhoto } = useSelector(
-    (state: RootState) => state.user
-  );
+  const { uid, profilePhoto } = useSelector((state: RootState) => state.user);
   const { cookiesEnabled } = useSelector((state: RootState) => state.cookies);
   const { loading } = useSelector((state: RootState) => state.services);
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const { cartData } = useCart();
 
   useEffect(() => {
-    const storageUserData = getFromLocalStorage("user");
-    if (!loading) dispatch(setProfilePhoto(storageUserData?.user?.photoURL));
+    const user = getFromCookies("user");
+    if (!loading) dispatch(setProfilePhoto(user.profilePhoto));
 
     const cookiesTotalPrice = getFromCookies("totalPrice");
     if (cookiesTotalPrice && cartData) {
