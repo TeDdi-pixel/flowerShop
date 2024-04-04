@@ -1,4 +1,4 @@
-import HeaderRight from "../../entities/headerRight/HeaderRight.jsx";
+import HeaderRight from "../../features/header/HeaderRight.js";
 import HeaderIconMenu from "../../shared/header/HeaderIconMenu.jsx";
 import { Link } from "react-router-dom";
 import BurgerMenu from "../../entities/burgerMenu/BurgerMenu.js";

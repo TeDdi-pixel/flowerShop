@@ -19,7 +19,7 @@ const GoogleLogin = () => {
 
   useEffect(() => {
     const user = getFromCookies("user");
-    if (!loading) dispatch(setProfilePhoto(user.profilePhoto));
+    if (!loading) dispatch(setProfilePhoto(user?.profilePhoto));
 
     const cookiesTotalPrice = getFromCookies("totalPrice");
     if (cookiesTotalPrice && cartData) {

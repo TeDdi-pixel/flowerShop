@@ -1,5 +1,4 @@
 import ProductCard from "../../entities/productCard/ProductCard";
-import { notify } from "../../helpers/notify";
 import { useAddToCart } from "../../hooks/useAddToCart";
 import useData from "../../hooks/useData";
 import { TypeProduct } from "../../store/types/types";
@@ -9,7 +8,6 @@ const Catalog = () => {
   const { handleAddToCart } = useAddToCart();
   const addToCart = (item: TypeProduct) => {
     handleAddToCart(item);
-    notify("Product successfully added!", "layout");
   };
   return (
     <div className="top-rated__cards">

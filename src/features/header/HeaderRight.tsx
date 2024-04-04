@@ -1,7 +1,7 @@
 import HeaderIconSearch from "../../shared/header/HeaderIconSearch";
 import useWindowResize from "../../hooks/useWindowResize";
 import { Link } from "react-router-dom";
-import GoogleLogin from "../../features/header/googleLogin/GoogleLogin";
+import GoogleLogin from "../../entities/headerRight/googleLogin/GoogleLogin";
 import { useSelector } from "react-redux";
 import { RiShoppingCartLine } from "react-icons/ri";
 import HeaderGeneratorIcon from "../../shared/header/HeaderGeneratorIcon";

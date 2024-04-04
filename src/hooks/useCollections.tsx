@@ -6,7 +6,7 @@ const useCollections = (collectionName: string, folder: string) => {
   const [urls, setUrls] = useState([]);
   const [collectionsData, setCollectionsData] = useState([]);
 
-  const getUrlsCallback = useCallback(() => getUrls(folder, setUrls), [folder]);
+  const getUrlsCallback = useCallback(() => {getUrls(folder, setUrls)}, [folder]);
   const getDataCallback = useCallback(
     () => getData(collectionName, urls, setCollectionsData),
     [collectionName, urls]

@@ -17,6 +17,7 @@ const FormButton = ({
     <div className="img-cart-form__main-btn">
       <Tooltip
         TransitionComponent={Zoom}
+        enterDelay={750}
         title={
           tooltip ? (
             <Typography variant="caption" fontSize={12} fontFamily="Montserrat">

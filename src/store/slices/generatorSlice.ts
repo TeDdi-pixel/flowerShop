@@ -44,14 +44,14 @@ export const bouquetGeneratorSlice = createSlice({
       .addCase(
         generateBouquet.fulfilled,
         (state, actions: PayloadAction<string>) => {
-          state.generatedImage = actions  .payload;
+          state.generatedImage = actions.payload;
           state.genLoading = false;
         }
       )
       .addCase(generateBouquet.rejected, (state) => {
         state.prompt = "";
         state.genLoading = false;
-      }),
+      })
 });
 
 export const {

@@ -20,7 +20,7 @@ import {
   resetGeneratedTitle,
   setProductId,
 } from "../../store/slices/imageCartFormSlice";
-import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
+import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
 import { generateNumber } from "../../helpers/generateNumber";
 
 const Generator = () => {
@@ -59,7 +59,7 @@ const Generator = () => {
     dispatch(setPromptNote(false));
   };
 
-  const promptFlowers = flowers.map((flower, index) => (
+  const promptFlowers = flowers.map((flower: string, index: number) => (
     <span key={index}>
       {flower}
       {index < flowers.length - 1 ? ", " : ""}

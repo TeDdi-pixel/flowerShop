@@ -6,8 +6,8 @@ export const userSlice = createSlice({
   name: "user",
   initialState: {
     userIsSignIn: !!getFromCookies("user"),
-    uid: getFromCookies("user").uid,
-    profilePhoto: "",
+    uid: getFromCookies("user")?.uid,
+    profilePhoto: null,
   },
   reducers: {
     setUid: (state, actions: PayloadAction<string | null>) => {

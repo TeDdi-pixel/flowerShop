@@ -43,30 +43,28 @@ const FormBlock = () => {
     dispatch(setIsFormOpen(false));
     dispatch(setSharedFormOpen(false));
   };
-
-  const setProduct = () => {
-    return {
+  const setProduct = (includeId = false) => {
+    let product = {
       imageUrl: generatedImage,
       price: 299,
       quantity: 1,
       title: generatedTitle,
       flowers: flowers,
     };
+    if (includeId) {
+      product.id = productId;
+    }
+    return product;
   };
+
   const addToCart = () => {
-    const product = {
-      id: productId,
-      imageUrl: generatedImage,
-      price: 299,
-      quantity: 1,
-      title: generatedTitle,
-      flowers: flowers,
-    };
+    const product = setProduct(true);
     if (generatedTitle) handleAddToCart(product);
     else warn("Generator: You need to create title");
   };
   const sharePhoto = () => {
-    if (generatedTitle) setCatalog("sharedCatalog", setProduct());
+    const product = setProduct();
+    if (product.title) setCatalog("sharedCatalog", product);
     else warn("Generator: You need to create title");
   };
 
