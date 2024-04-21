@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { RootState } from "../../../store/types/types";
 import {
   TbLayoutSidebarRightCollapseFilled,
@@ -8,6 +8,18 @@ import { TypePromptNote } from "../types/types";
 import PromptNoteTitle from "../../../shared/generator/promptNote/PromptNoteTitle";
 import PromptNoteText from "../../../shared/generator/promptNote/PromptNoteText";
 import PromptNoteTitleWrapper from "../../../shared/generator/promptNote/PromptNoteTitleWrapper";
+// import { generateBouquet } from "../../../store/asyncThunks/generateBouquet";
+// import { ThunkDispatch } from "redux-thunk";
+// import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
+// import { Button } from "@mui/material";
+// import { grey } from "@mui/material/colors";
+// import { generateNumber } from "../../../helpers/generateNumber";
+// import {
+//   resetGeneratedTitle,
+//   setProductId,
+// } from "../../../store/slices/imageCartFormSlice";
+// import { setPromptNoteHidden } from "../../../store/slices/generatorSlice";
+// import { scrollTo } from "../../../helpers/scrollTo";
 
 const PromptNote = ({
   showPromptNote,
@@ -17,6 +29,7 @@ const PromptNote = ({
   const { promptNote, promptNoteHidden } = useSelector(
     (state: RootState) => state.generator
   );
+  // const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const { burgerMenuOpened } = useSelector(
     (state: RootState) => state.burgerMenu
   );
@@ -30,6 +43,13 @@ const PromptNote = ({
     zIndexValue = "-5";
   }
 
+  // const handleGenerateBouquet = () => {
+  //   dispatch(setProductId(generateNumber(0, 12576594233)));
+  //   dispatch(resetGeneratedTitle(""));
+  //   dispatch(generateBouquet());
+  //   scrollTo(75);
+  //   if (promptNote) dispatch(setPromptNoteHidden(true));
+  // };
   return (
     <div
       className={`generator__prompt-note ${
@@ -53,6 +73,17 @@ const PromptNote = ({
         }`}
         onClick={showPromptNote}
       />
+        {/* <Button
+          endIcon={<AutoAwesomeRoundedIcon />}
+          variant="text"
+          className={`generator__prompt-note-generate-btn ${
+            promptNoteHidden ? "generator__prompt-note-generate-btn_hidden" : ""
+          }`}
+          style={{ color: grey[700]}}
+          onClick={handleGenerateBouquet}
+        >
+          Generate
+        </Button> */}
     </div>
   );
 };

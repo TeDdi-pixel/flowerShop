@@ -8,14 +8,22 @@ export const userSlice = createSlice({
     userIsSignIn: !!getFromCookies("user"),
     uid: getFromCookies("user")?.uid,
     profilePhoto: null,
+    isAdmin: getFromCookies("user")?.isAdmin,
+    displayName: getFromCookies("user")?.displayName,
   },
   reducers: {
     setUid: (state, actions: PayloadAction<string | null>) => {
       if (actions.payload) state.uid = actions.payload;
     },
-    setUserIsSignedIn: (state, action) => {
-      if (action.payload) state.userIsSignIn = action.payload;
+    setIsAdmin: (state, actions: PayloadAction<boolean>) => {
+      state.isAdmin = actions.payload;
+    },
+    setUserIsSignedIn: (state, actions) => {
+      if (actions.payload) state.userIsSignIn = actions.payload;
       else state.userIsSignIn = false;
+    },
+    setDisplayName: (state, actions) => {
+      state.displayName = actions.payload;
     },
     logOutUser: (state) => {
       state.uid = null;
@@ -31,7 +39,13 @@ export const userSlice = createSlice({
   },
 });
 
-export const { logOutUser, setUserIsSignedIn, setProfilePhoto, setUid } =
-  userSlice.actions;
+export const {
+  logOutUser,
+  setUserIsSignedIn,
+  setProfilePhoto,
+  setUid,
+  setIsAdmin,
+  setDisplayName,
+} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -218,6 +218,9 @@
     }
   }
   @media screen and (max-width: 525px) {
+    &__cart-block {
+      padding: 15px 15px;
+    }
     &__icon-search {
       &_opened {
         justify-content: center;
@@ -235,9 +238,10 @@
   }
   @media screen and (max-width: 375px) {
     &__cart-block {
-      padding: 0;
-      width: 45px;
-      height: 45px;
+      max-width: 45px;
+      max-height: 45px;
+      width: 100%;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;

@@ -1,11 +1,9 @@
 import { flowers as configFlowers } from "../../features/generator/config/flowers";
 import { TypeFlower } from "../../features/generator/types/types";
 import { useSelector } from "react-redux";
-import { TbExternalLink } from "react-icons/tb";
 import { RootState } from "../../store/types/types";
 import GeneratorCheckBox from "../../shared/generator/GeneratorCheckBox";
 import FlowerPrompt from "../../shared/generator/FlowerPrompt";
-import CategoryLink from "../../shared/generator/CategoryLink";
 import { TypeFlowerPromptList } from "./types/types";
 
 const FlowerPromptList = ({ handlePrompt }: TypeFlowerPromptList) => {
@@ -33,10 +31,6 @@ const FlowerPromptList = ({ handlePrompt }: TypeFlowerPromptList) => {
             <span className="generator__flowers-prompt-text">
               {flower.text}
             </span>
-            <CategoryLink
-              location={`/Home/Product/${flower.id}`}
-              icon={<TbExternalLink />}
-            />
           </FlowerPrompt>
         );
       })}

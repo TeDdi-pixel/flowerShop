@@ -7,6 +7,7 @@ import bouquetGeneratorSlice from "./slices/generatorSlice";
 import burgerMenuSlice from "./slices/burgerMenuSlice";
 import imageCartFormSlice from "./slices/imageCartFormSlice";
 import servicesSlice from "./slices/servicesSlice";
+import orderSlice from "./slices/orderSlice";
 
 export default configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export default configureStore({
     burgerMenu: burgerMenuSlice,
     imageCartForm: imageCartFormSlice,
     services: servicesSlice,
+    order: orderSlice,
   },
 });

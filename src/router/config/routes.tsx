@@ -2,17 +2,18 @@ import { lazy } from "react";
 
 const HomePage = lazy(() => import("../../pages/homePage/HomePage"));
 const SearchPage = lazy(() => import("../../pages/searchPage/SearchPage"));
-const ContactsPage = lazy(() =>
-  import("../../pages/contactsPage/ContactsPage")
+const ContactsPage = lazy(
+  () => import("../../pages/contactsPage/ContactsPage")
 );
 const AboutUsPage = lazy(() => import("../../pages/aboutUsPage/AboutUsPage"));
 const CatalogPage = lazy(() => import("../../pages/catalogPage/CatalogPage"));
 const ProductPage = lazy(() => import("../../pages/productPage/ProductPage"));
 const ShoppingCart = lazy(() => import("../../pages/cartPage/ShoppingCart"));
-const CollectionsPage = lazy(() =>
-  import("../../pages/collectionsPage/CollectionsPage")
+const CollectionsPage = lazy(
+  () => import("../../pages/collectionsPage/CollectionsPage")
 );
 const Generator = lazy(() => import("../../pages/generator/Generator"));
+const AdminPage = lazy(() => import("../../pages/adminPage/AdminPage"));
 
 export const routes = [
   { id: 0, path: "/", element: <HomePage /> },
@@ -24,4 +25,5 @@ export const routes = [
   { id: 6, path: "Home/Cart", element: <ShoppingCart /> },
   { id: 7, path: "Home/Collections", element: <CollectionsPage /> },
   { id: 8, path: "Home/Generator", element: <Generator /> },
+  { id: 9, path: "Home/Admin-panel", element: <AdminPage /> },
 ];

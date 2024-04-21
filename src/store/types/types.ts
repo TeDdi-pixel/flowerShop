@@ -54,6 +54,8 @@ export type TypeUser = {
   storageUserData: firebase.UserCredential;
   profilePhoto: string;
   uid: string | null;
+  isAdmin: boolean;
+  displayName: string | null;
 };
 
 export type TypeCookies = {
@@ -67,6 +69,10 @@ export type TypeServices = {
   loading: boolean;
 };
 
+export type TypeOrder = {
+  orderData: TypeOrder;
+};
+
 export type RootState = {
   generator: TypeGenerator;
   burgerMenu: TypeBurgerMenu;
@@ -75,4 +81,5 @@ export type RootState = {
   user: TypeUser;
   cookies: TypeCookies;
   services: TypeServices;
+  order: TypeOrder;
 };

@@ -2,7 +2,12 @@ import { burgerLinks } from "./burgerMenu-config";
 import BurgerLink from "../../shared/burgerLink/BurgerLink";
 import Exit from "../../shared/exit/Exit";
 import { useDispatch, useSelector } from "react-redux";
-import { logOutUser, setUserIsSignedIn } from "../../store/slices/userSlice";
+import {
+  logOutUser,
+  setDisplayName,
+  setIsAdmin,
+  setUserIsSignedIn,
+} from "../../store/slices/userSlice";
 import { Link } from "react-router-dom";
 import {
   setEmptyCart,
@@ -18,7 +23,9 @@ import {
 } from "../../store/slices/generatorSlice";
 
 const BurgerMenu = () => {
-  const { userIsSignIn } = useSelector((state: RootState) => state.user);
+  const { userIsSignIn, isAdmin } = useSelector(
+    (state: RootState) => state.user
+  );
   const { burgerMenuOpened } = useSelector(
     (state: RootState) => state.burgerMenu
   );
@@ -34,6 +41,8 @@ const BurgerMenu = () => {
     dispatch(setGeneratedImage(""));
     dispatch(setFlowers([]));
     dispatch(setPromptNote(false));
+    dispatch(setIsAdmin(false));
+    dispatch(setDisplayName(""));
   };
 
   return (
@@ -51,7 +60,13 @@ const BurgerMenu = () => {
           {burgerLinks.map((link, index) => {
             return <BurgerLink key={index} path={link.path} name={link.name} />;
           })}
+          {isAdmin ? (
+            <BurgerLink path="/Home/Admin-panel" name="Admin-panel" />
+          ) : (
+            false
+          )}
         </div>
+
         <div
           className={userIsSignIn ? "burger-menu_logOut" : "burger-menu_signIn"}
         >

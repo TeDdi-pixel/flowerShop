@@ -7,6 +7,7 @@ const ProductCardButton = ({
   handlePreset,
   active,
   generateTitle,
+  generateBouquet
 }: TypeCardButtonProps) => {
   return (
     <button

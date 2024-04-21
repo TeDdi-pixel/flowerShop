@@ -26,8 +26,7 @@ export const cartSlice = createSlice({
     updateCart: (state, action) => {
       state.cartData = action.payload;
     },
-
-    setEmptyCart: (state, action) => {
+    setEmptyCart: (state, action) => {      
       state.emptyCart = action.payload;
     },
     setTotalPrice: (state, action) => {

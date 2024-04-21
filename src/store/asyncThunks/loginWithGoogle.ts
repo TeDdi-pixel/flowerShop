@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { signInWithGoogle } from "../../services/signInWithGoogle";
 import { RootState } from "../types/types";
-import { setUid, setUserIsSignedIn } from "../slices/userSlice";
+import { setDisplayName, setIsAdmin, setUid, setUserIsSignedIn } from "../slices/userSlice";
 import { initializeCart, setTotalPrice } from "../slices/cartSlice";
 
 export const loginWithGoogle = createAsyncThunk(
@@ -20,6 +20,8 @@ export const loginWithGoogle = createAsyncThunk(
     if (!cookiesEnabled) throw new Error("Cookies is disabled");
 
     dispatch(setUid(user.uid));
+    dispatch(setIsAdmin(user.isAdmin));
+    dispatch(setDisplayName(user.displayName));
 
     if (!cartData) throw new Error("Cart data is not set");
 

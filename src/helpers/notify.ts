@@ -2,7 +2,7 @@ import { ToastOptions, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const config: ToastOptions = {
-  position: "top-right",
+  position: "bottom-right",
   autoClose: 3000,
   transition: Zoom,
 };
