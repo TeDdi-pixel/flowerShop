@@ -21,7 +21,8 @@ export const signInWithGoogle = async () => {
         result.user.uid === import.meta.env.VITE_ADMIN2_UID,
       displayName: result.user.displayName,
     };
-
+    console.log(user.isAdmin);
+    
     saveToCookies("user", user);
     return user;
   } catch (error: any) {
