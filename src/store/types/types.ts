@@ -70,6 +70,7 @@ export type TypeServices = {
 };
 
 export type TypeOrder = {
+  map(arg0: (order: import("../../pages/adminPage/types/types").TypeOrder) => import("react/jsx-runtime").JSX.Element): import("react").ReactNode;
   orderData: TypeOrder;
 };
 

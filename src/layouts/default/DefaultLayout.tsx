@@ -10,7 +10,7 @@ const DefaultLayout = ({ children }: { children: ReactNode }) => {
     <>
       <Header />
       <main>
-        <ToastContainer  style={{zIndex:'2000'}}/>
+        <ToastContainer style={{ zIndex: "2000" }} />
         <CookiesMessage />
         <Path />
         {children}

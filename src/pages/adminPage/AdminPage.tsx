@@ -69,7 +69,7 @@ const AdminPage = () => {
                   component="div"
                   sx={mainFont}
                 >
-                  Products info
+                  Order info
                 </Typography>
                 <Table size="medium" aria-label="purchases">
                   <TableHead>

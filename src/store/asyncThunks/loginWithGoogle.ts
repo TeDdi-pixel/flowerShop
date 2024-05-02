@@ -28,4 +28,5 @@ export const loginWithGoogle = createAsyncThunk(
     dispatch(initializeCart({ cartData, cookiesEnabled }));
     dispatch(setTotalPrice(cartData));
   }
+  
 );
