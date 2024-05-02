@@ -17,7 +17,7 @@ export const generateAnswer = createAsyncThunk<string>(
         file_url: generatedImage,
         question:
           "Create a short name for this bouquet. In the name of bouquet try to put flower's name and number of flowers. I need only the name of bouquet as an answer without quotation marks",
-        fallback_providers: "",
+        fallback_providers: "google",
       },
     };
     try {
