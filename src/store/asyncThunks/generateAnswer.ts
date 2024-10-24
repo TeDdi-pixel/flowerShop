@@ -13,16 +13,18 @@ export const generateAnswer = createAsyncThunk<string>(
         Authorization: `Bearer ${import.meta.env.VITE_EDEN_API_KEY}`,
       },
       data: {
-        providers: "google",
+        providers: "alephalpha",
         file_url: generatedImage,
         question:
           "Create a short name for this bouquet. In the name of bouquet try to put flower's name and number of flowers. I need only the name of bouquet as an answer without quotation marks",
-        fallback_providers: "google",
+        fallback_providers: "alephalpha",
       },
     };
     try {
       const response = await axios.request(options);
-      const title = response.data.google.answers[0].replace('"', "").trim();
+      console.log(response);
+      
+      const title = response.data.alephalpha.answers[0].replace('"', "").trim();
       return title;
     } catch (error) {
       console.error(error);
